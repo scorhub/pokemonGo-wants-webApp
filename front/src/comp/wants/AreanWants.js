@@ -23,7 +23,7 @@ const AreanWants = ({type})  => {
 
   const changeEngine = (e, id, value) => {
     e.stopPropagation();
-    let tempPokemon = areanWants.find(n => n.aid === id);
+    let tempPokemon = areanWants.find(p => p.aid === id);
     tempPokemon = { ...tempPokemon, arwant: value };
     apiService.changeWant(id, tempPokemon, type)
     .then(res => {

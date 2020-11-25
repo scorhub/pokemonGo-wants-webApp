@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import apiService from '../../serv/apiservice';
+import GetCountHook from '../hooks/GetCountHook';
 
-const AddData = ( {data} ) => {
+const AddData = () => {
+    const [count, setCount] = useState([]);
     const [newData, setnewData] = useState( { "number": "", "name": "" });
-    const biggestid = data.length +1;
+    const biggestid = count +1;
 
     const addNewData = (e) => {
         e.preventDefault();
@@ -19,6 +21,8 @@ const AddData = ( {data} ) => {
     };
 
     return (
+        <>
+        <GetCountHook setList={setCount} />
         <div className="item">
             <h4>Add new Pokémon.</h4>
             <p>Number of next Pokémon: {biggestid}</p>
@@ -36,6 +40,7 @@ const AddData = ( {data} ) => {
             <br />
             Starred (*) fields are required.
         </div>
+        </>
     );
 };
 

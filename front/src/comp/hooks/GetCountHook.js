@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import apiService from '../../serv/apiservice';
 
-const GetDataHook = ({setList}) => {
-  const datahook = () => {
-    apiService.getList()
+const GetCountHook = ({setList}) => {
+  const counthook = () => {
+    apiService.getPokemonCount()
     .then(res => { setList(res) })
     .catch(err => { console.log('error: ', err) });
   };
-  useEffect(datahook, []);
+  useEffect(counthook, []);
   return (<></>);
 };
 
-export default GetDataHook;
+export default GetCountHook;

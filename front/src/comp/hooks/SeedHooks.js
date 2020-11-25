@@ -11,4 +11,15 @@ const WantSeedsHook = ({setList, type}) => {
   return (<></>);
 };
 
+const GetDataHook = ({setList}) => {
+  const datahook = () => {
+    apiService.getPokemonSeeds()
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(datahook, []);
+  return (<></>);
+};
+
 export default WantSeedsHook;
+export { GetDataHook };

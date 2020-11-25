@@ -4,9 +4,10 @@ const config = require('../utils/config');
 const options = config.DATABASE_OPTIONS;
 const knex = require('knex')(options);
 
-router.get('/', (req, res, next) => {
-    knex.select("*").from('pokemons').orderBy('pokemons.number')
-    .then(rows => { res.status(200).json(rows) });
+router.get('/count', (req, res, next) => {
+    knex('pokemons').count('pid as amount')
+    .then(data => { console.log (data[0].amount); res.status(200).json(data[0].amount) })
+    .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
 router.post('/', (req, res, next) => {
@@ -31,10 +32,10 @@ router.post('/', (req, res, next) => {
         };
         knex('pokemons').insert(addPokemon)
         .then(pid => {
-            pogo.pid = pid[0];
+            addPokemon.pid = pid[0];
             res.status(200).json(addPokemon)
         }).catch(err => { res.status(500).json({error: 'Database error in insert, or auth failed.'}) });
-    }).catch(err => { res.status(500).json({error: 'Database error in insert, or auth failed.'}) });
+    }).catch(err => { res.status(503).json({error: 'Database error in insert, or auth failed.'}) });
 });
 
 module.exports = router;
