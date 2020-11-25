@@ -15,7 +15,7 @@ app.use('/pokemons', pokeRouter);
 app.use('/wants', wantRouter);
 app.use('/users', userRouter);
 app.use('/seeds', seedRouter);
-app.use('/newfeature', featureRouter);
+app.use('/features', featureRouter);
 app.use('/mywants', myWantsRouter);
 app.use('/changes', changesRouter);
 app.use('/password', passwordRouter);

@@ -6,7 +6,7 @@ const pokeURI = `${verifiedURI}/pokemons`;
 const userURI = `${verifiedURI}/users`;
 const wantsURI = `${verifiedURI}/wants`;
 const seedURI = `${verifiedURI}/seeds`;
-const featureURI = `${verifiedURI}/newfeature`;
+const featureURI = `${verifiedURI}/features`;
 const myWantsURI = `${verifiedURI}/mywants`;
 
 let token = null;
