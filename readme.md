@@ -31,9 +31,9 @@ The app is currently labeled as version 0.57, as it does not yet have all the ba
 
 ### Version history
 
-- 0.57 Moderator check added, Always want size restricted to 50.
-- 0.55 Test added to backend
-- 0.5 First public upload of the code
+- 0.57 Moderator check added, always-want size restricted to 50.
+- 0.55 Tests added to backend
+- 0.5  First public upload of the code
 
 ## Features of the App
 
