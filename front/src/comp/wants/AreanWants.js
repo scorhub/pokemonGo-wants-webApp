@@ -42,7 +42,7 @@ const AreanWants = ({type})  => {
             let tempWantFilt = tempFiltered.filter(p => p.arwant === 1);
             setFilWantArean(tempWantFilt);
         };
-    }).catch(err => { console.log('error: ', err) });
+    }).catch(err => { window.alert("Database error, please try again later.")});
 };
 
   const searchFilter = (value, fieldname) => {

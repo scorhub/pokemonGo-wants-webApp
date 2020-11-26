@@ -42,7 +42,12 @@ const AlwaysWants = ({type})  => {
               let tempWantFilt = tempFiltered.filter(p => p.awant === 1);
               setFilMyAlWants(tempWantFilt);
           };
-      }).catch(err => { console.log('error: ', err) });
+      }).catch(err => {
+        if(err.response.status === 400){ window.alert("Want sended in wrong format, please contact admin.");
+        } else if(err.response.status === 403){ window.alert("Maximum amount of always wants is 50.");
+        } else if(err.response.status === 500){ window.alert("Database error, please try again later.");
+        } else { window.alert("Unknown error, please try again later."); };
+      });
   };
 
   const searchFilter = (value, fieldname) => {

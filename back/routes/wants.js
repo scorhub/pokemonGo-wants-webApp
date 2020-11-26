@@ -74,6 +74,12 @@ router.patch('/always/:id', (req, res) => {
     const uid = res.locals.auth.uid;
     if (!(typeof entryData.awant === 'boolean')) { return res.status(400).json({error: 'Want must be in boolean!'}) };
     const updAlwaysWant = { awant: entryData.awant };
+    if (entryData.awant === true) {
+        knex.select('*').from('wants_always').where('wants_always.uid', '=', uid)
+        knex('wants_always').where('uid', '=', uid).andWhere('awant', '=', true).count('awid as amount')
+        .then(areanAmount => { if (areanAmount[0].amount >= 50) { res.status(403).json({error: 'Maximum amount of always wants is 50.'}) };
+        }).catch(err => { res.status(500).json({error: 'Database error in checking always want amount.'}) });
+    };
     knex('wants_always').where('awpid', '=', id).andWhere('uid', '=', uid)
     .then(AlwaysWant => {
         if(AlwaysWant.length === 0){

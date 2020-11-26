@@ -6,7 +6,7 @@ const knex = require('knex')(options);
 
 router.get('/count', (req, res, next) => {
     knex('pokemons').count('pid as amount')
-    .then(data => { console.log (data[0].amount); res.status(200).json(data[0].amount) })
+    .then(data => { res.status(200).json(data[0].amount) })
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 

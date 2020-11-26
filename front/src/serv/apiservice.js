@@ -1,5 +1,5 @@
 import axios from 'axios';
-const apiURI = '/api';
+// const apiURI = '/api';
 const logURI = '/api/login';
 const verifiedURI = '/api/verified';
 const pokeURI = `${verifiedURI}/pokemons`;
