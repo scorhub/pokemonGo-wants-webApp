@@ -27,10 +27,11 @@ As of this is hobby project, and not complete, user interface were originally wr
 
 ## Version
 
-The app is currently labeled as version 0.55, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
+The app is currently labeled as version 0.57, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
 
 ### Version history
 
+- 0.57 Moderator check added, Always want size restricted to 50.
 - 0.55 Test added to backend
 - 0.5 First public upload of the code
 

@@ -12,7 +12,6 @@ const getTokenFrom = req => {
 const isModerator = (req, res, next) => {
     const token = getTokenFrom(req);
     const decodedToken = jwt.verify(token, config.SECRET);
-    console.log(decodedToken)
     if(!token){ return res.status(401).json({ error: 'Token missing.' }); };
     if(!decodedToken || !decodedToken.uid){ return res.status(401).json({ error: "Invalid token." }); };
     knex.from('userclasses').first('*').where('ucname', '=', 'Moderator')
