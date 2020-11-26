@@ -8,6 +8,7 @@ As of this is hobby project, and not complete, user interface were originally wr
 # Table of Contents
 
 - [Version](#version)
+	- [Version history](#version-history)
 - [Features of the App](#features-of-the-app)
 - [Frameworks and Dependencies](#frameworks-and-dependencies)
 	- [Backend](#backend)
