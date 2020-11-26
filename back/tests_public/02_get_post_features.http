@@ -1,0 +1,16 @@
+### Get all asked features ###
+GET http://localhost:3001/api/verified/features HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######
+
+### Make new feature asking entry ###
+POST http://localhost:3001/api/verified/features HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+{
+    "aftitle": "Test title",
+    "afinfo": "Additional information for test title."
+}

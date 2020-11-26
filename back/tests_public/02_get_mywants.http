@@ -1,0 +1,18 @@
+### Get own lucky wants ###
+GET http://localhost:3001/api/verified/mywants/lucky HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get own always wants ###
+GET http://localhost:3001/api/verified/mywants/always HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get own arean wants ###
+GET http://localhost:3001/api/verified/mywants/arean HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json

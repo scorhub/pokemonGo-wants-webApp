@@ -7,8 +7,8 @@ As of this is hobby project, and not complete, user interface were originally wr
 
 # Table of Contents
 
-- [Features of the App](#features-of-the-app)
 - [Version](#version)
+- [Features of the App](#features-of-the-app)
 - [Frameworks and Dependencies](#frameworks-and-dependencies)
 	- [Backend](#backend)
 	- [Database](#database)
@@ -23,6 +23,15 @@ As of this is hobby project, and not complete, user interface were originally wr
 	- [Deploy Online](#deploy-online)
 	- [Test Locally](#test-locally)
 - [Licence](#licence)
+
+## Version
+
+The app is currently labeled as version 0.55, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
+
+### Version history
+
+- 0.55 Test added to backend
+- 0.5 First public upload of the code
 
 ## Features of the App
 
@@ -59,10 +68,6 @@ I have long personal list of features to be implemented to the app, and here is 
 - Variant Want (for variants, i.e. Castform's weather variants)
 - Costume Want (for event-based costume variants, i.e. Pikachu in Mimikyu costume)
 - Shiny Want
-
-## Version
-
-The app is currently labeled as version 0.5, as it does not yet have all the basic features as I would it like to have (as listed in Upcoming Features)
 
 ## Frameworks and Dependencies
 
@@ -107,6 +112,7 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        │  └── stylesheets
        ├── routes
        ├── *tests*                         *# Test for each interaction with backend*
+       ├── tests_public                    # Test for each interaction with backend (not including encoded token)
        ├── utils
        ├── *.env*
        ├── app.js

@@ -1,0 +1,25 @@
+### Get list of other users ###
+GET http://localhost:3001/api/verified/users HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get lucky wants of specific user ###
+GET http://localhost:3001/api/verified/users/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get always wants of specific user ###
+GET http://localhost:3001/api/verified/users/always/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get arean wants of specific user ###
+GET http://localhost:3001/api/verified/users/arean/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
