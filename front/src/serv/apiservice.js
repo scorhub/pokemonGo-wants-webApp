@@ -58,9 +58,14 @@ const changeWant = async (id, tempPokemon, type) => {
   return res.data;
 };
 
-const getPokemonSeeds = async () => {
+const getPokemonSeeds = async (type) => {
   const config = { headers: { Authorization: token } };
-  const res = await axios.get(`${seedURI}/pokemons`, config);
+  let res = null;
+  if (type === "normal") {
+    res = await axios.get(`${seedURI}/pokemons`, config);
+  } else if (type === "arean") {
+    res = await axios.get(`${seedURI}/pokemons/arean`, config);
+  } else { return null; };
   return res.data;
 };
 
@@ -123,7 +128,7 @@ const myWantGetter = async type => {
 
 const changePass = async newpass => {
   const config = { headers: { Authorization: token } };
-  const res = await axios.patch(`${apiURI}/password/change`, newpass, config);
+  const res = await axios.patch(`${verifiedURI}/password/change`, newpass, config);
   return res.data;
 };
 

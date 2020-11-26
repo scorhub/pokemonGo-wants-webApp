@@ -13,7 +13,7 @@ const PrintDataSeeds = () => {
     const [data, setData] = useState([]);
     return (
         <>
-        <GetDataHook setList={setData} />
+        <GetDataHook setList={setData} type={"normal"} />
         <div>
             <h3 className="centered">Print Data seeds</h3>
         </div>

@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 router.patch('/change', (req, res, next) => {
     const uid = res.locals.auth.uid;
     const body = req.body;
+    console.log(body)
     knex.first('password').from('users').where('uid', '=', uid)
     .then(user => {
         if(user.length === 0){ return res.status(401).json({ err: 'Invalid password.'}) };

@@ -9,6 +9,11 @@ router.get('/pokemons', (req, res, next) => {
     .then(rows => { res.status(200).json(rows) });
 });
 
+router.get('/pokemons/arean', (req, res, next) => {
+    knex.select("*").from('pokemons_arean').orderBy('pokemons_arean.apid')
+    .then(rows => { res.status(200).json(rows) });
+});
+
 router.get('/wants', (req, res, next) => {
     knex.select("*").from('wants').orderBy('wid')
     .then(rows => { res.status(200).json(rows) })

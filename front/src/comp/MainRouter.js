@@ -21,6 +21,7 @@ import Personal from './Personal';
 
 import AddData from './admin/AddData';
 import PrintDataSeeds from './admin/prints/PrintDataSeeds';
+import PrintAreanDataSeeds from './admin/prints/PrintAreanDataSeeds';
 import PrintWantSeeds from './admin/prints/PrintWantSeeds';
 import PrintAlWantSeeds from './admin/prints/PrintAlWantSeed';
 import PrintAreanWantSeeds from './admin/prints/PrintAreanWantSeeds';
@@ -46,6 +47,7 @@ const MainRouter = () => {
                     <Route exact path={`/personal`} render={(props) => <Personal {...props} />} />
                     <Route exact path={`/admin/adddata`} render={(props) => <AddData {...props} />} />
                     <Route exact path={`/admin/print/printdataseeds`} render={(props) => <PrintDataSeeds {...props} />} />
+                    <Route exact path={`/admin/print/printareandataseeds`} render={(props) => <PrintAreanDataSeeds {...props} />} />
                     <Route exact path={`/admin/print/printwantseeds`} render={(props) => <PrintWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/printarwantseeds`} render={(props) => <PrintAlWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/printareanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />

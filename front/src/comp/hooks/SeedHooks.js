@@ -11,9 +11,9 @@ const WantSeedsHook = ({setList, type}) => {
   return (<></>);
 };
 
-const GetDataHook = ({setList}) => {
+const GetDataHook = ({setList, type}) => {
   const datahook = () => {
-    apiService.getPokemonSeeds()
+    apiService.getPokemonSeeds(type)
     .then(res => { setList(res) })
     .catch(err => { console.log('error: ', err) });
   };
