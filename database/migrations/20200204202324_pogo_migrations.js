@@ -17,7 +17,9 @@ exports.up = function(knex, Promise) {
       t.string("name", 255).notNullable();
       t.string("type1", 255).nullable();
       t.string("type2", 255).nullable();
-      t.string("rarity", 255).nullable();
+      t.string("rarity", 20).nullable();
+      t.string("subrarity", 20).nullable();
+      t.boolean("ingame").nullable();
       t.string("generation", 255).nullable();
       t.string("img", 255).notNullable();
     })

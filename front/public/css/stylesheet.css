@@ -189,3 +189,7 @@ button {
   padding: 1em;
   word-wrap: normal;
 }
+
+.printdata {
+  word-break: break-word;
+}
