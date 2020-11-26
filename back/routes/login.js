@@ -18,7 +18,8 @@ router.post('/', (req, res, next) => {
             const userForToken = {
                 username: tempUser.username,
                 uid: tempUser.uid,
-                name: tempUser.showname
+                name: tempUser.showname,
+                ucid: tempUser.ucid
             };
             const token = jwt.sign(userForToken, config.SECRET);
             res.status(200).send({name: tempUser.showname, uid: tempUser.uid, ucid: tempUser.ucid, token});
