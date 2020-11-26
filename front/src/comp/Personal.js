@@ -19,6 +19,7 @@ const Personal = () => {
             })
             .catch(err => {
                 if(err.response.status === 401){ window.alert("Invalid password.");
+                } else if(err.response.status === 403){ window.alert("New password cannot be the same as current one!");
                 } else if(err.response.status === 418){ window.alert("Server error, please try later.");
                 } else if(err.response.status === 500){ window.alert("Database error, please try again later.");
                 } else { window.alert("Unknown error, please try again later."); };
