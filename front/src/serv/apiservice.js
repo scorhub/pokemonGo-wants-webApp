@@ -8,6 +8,7 @@ const wantsURI = `${verifiedURI}/wants`;
 const seedURI = `${verifiedURI}/seeds`;
 const featureURI = `${verifiedURI}/features`;
 const myWantsURI = `${verifiedURI}/mywants`;
+const addDataURI = `${verifiedURI}/adddata`;
 
 let token = null;
 
@@ -26,7 +27,7 @@ const getPokemonCount = async () => {
   return res.data
 };
 
-const addData = async credentials => {
+const addPokemon = async credentials => {
   const config = { headers: { Authorization: token } };
   const res = await axios.post(`${pokeURI}`, credentials, config);
   return res.data
@@ -132,4 +133,34 @@ const changePass = async newpass => {
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addData, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass };
+const getAddData = async type => {
+  const config = { headers: { Authorization: token } };
+  let res = null;
+  if (type === "type") {
+    res = await axios.get(`${addDataURI}/type/list`, config);
+  } else if (type === "generation") {
+    res = await axios.get(`${addDataURI}/generation/list`, config);
+  } else if (type === "rarity") {
+    res = await axios.get(`${addDataURI}/rarity/list`, config);
+  } else if (type === "released") {
+    res = await axios.get(`${addDataURI}/released/list`, config);
+  } else { return null; };
+  return res.data;
+};
+
+const patchAddData = async (id, status, type) => {
+  const config = { headers: { Authorization: token } };
+  let res = null;
+  if (type === "type") {
+    res = await axios.patch(`${addDataURI}/type/${id}`, status, config);
+  } else if (type === "generation") {
+    res = await axios.patch(`${addDataURI}/generation/${id}`, status, config);
+  } else if (type === "rarity") {
+    res = await axios.patch(`${addDataURI}/rarity/${id}`, status, config);
+  } else if (type === "released") {
+    res = await axios.patch(`${addDataURI}/released/${id}`, status, config);
+  } else { return null; };
+  return res.data;
+};
+
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData };

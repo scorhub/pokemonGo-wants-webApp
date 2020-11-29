@@ -19,12 +19,17 @@ import AreanWants from './wants/AreanWants';
 // import MasterWant from './wants/MasterWant';
 import Personal from './Personal';
 
-import AddData from './admin/AddData';
 import PrintDataSeeds from './admin/prints/PrintDataSeeds';
 import PrintAreanDataSeeds from './admin/prints/PrintAreanDataSeeds';
 import PrintWantSeeds from './admin/prints/PrintWantSeeds';
 import PrintAlWantSeeds from './admin/prints/PrintAlWantSeed';
 import PrintAreanWantSeeds from './admin/prints/PrintAreanWantSeeds';
+
+import AddPokemon from './admin/add/AddPokemon';
+import AddTypes from './admin/add/AddTypes';
+import AddGeneration from './admin/add/AddGeneration';
+import AddRarity from './admin/add/AddRarity';
+import AddReleased from './admin/add/AddReleased';
 
 const MainRouter = () => {
     const [users, setUsers] = useState([]);
@@ -45,12 +50,16 @@ const MainRouter = () => {
                     <Route exact path={`/otherwants/:uid`} render={(props) => <OneWants {...props} users={users} />} />
                     <Route exact path={`/askfeature`} render={(props) => <AskFeature {...props} />} />
                     <Route exact path={`/personal`} render={(props) => <Personal {...props} />} />
-                    <Route exact path={`/admin/adddata`} render={(props) => <AddData {...props} />} />
                     <Route exact path={`/admin/print/printdataseeds`} render={(props) => <PrintDataSeeds {...props} />} />
                     <Route exact path={`/admin/print/printareandataseeds`} render={(props) => <PrintAreanDataSeeds {...props} />} />
                     <Route exact path={`/admin/print/printwantseeds`} render={(props) => <PrintWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/printarwantseeds`} render={(props) => <PrintAlWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/printareanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />
+                    <Route exact path={`/admin/add/pokemon`} render={(props) => <AddPokemon {...props} />} />
+                    <Route exact path={`/admin/add/types`} render={(props) => <AddTypes {...props} />} />
+                    <Route exact path={`/admin/add/generation`} render={(props) => <AddGeneration {...props} />} />
+                    <Route exact path={`/admin/add/rarity`} render={(props) => <AddRarity {...props} />} />
+                    <Route exact path={`/admin/add/released`} render={(props) => <AddReleased {...props} />} />
                     <Route exact path={`/`} render={(props) => <Front {...props} />} />
                     <Route component={PageNotFound} />
                 </Switch>

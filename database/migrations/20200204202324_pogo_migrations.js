@@ -19,8 +19,8 @@ exports.up = function(knex, Promise) {
       t.string("type2", 255).nullable();
       t.string("rarity", 20).nullable();
       t.string("subrarity", 20).nullable();
-      t.boolean("ingame").nullable();
-      t.string("generation", 255).nullable();
+      t.boolean("released").nullable();
+      t.integer("generation", 10).nullable();
       t.string("img", 255).notNullable();
     })
     .createTable("pokemons_arean", t => {

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import apiService from '../../serv/apiservice';
-import GetCountHook from '../hooks/GetCountHook';
+import apiService from '../../../serv/apiservice';
+import GetCountHook from '../../hooks/GetCountHook';
 
-const AddData = () => {
+const AddPokemon = () => {
     const [count, setCount] = useState([]);
     const [newData, setnewData] = useState( { "number": "", "name": "" });
     const biggestid = count +1;
 
     const addNewData = (e) => {
         e.preventDefault();
-        apiService.addData(newData)
+        apiService.addPokemon(newData)
         .then(res => { })
         .catch(e => { alert('Something went wrong.') });
     };
@@ -44,4 +44,4 @@ const AddData = () => {
     );
 };
 
-export default AddData;
+export default AddPokemon;

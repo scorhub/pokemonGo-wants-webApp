@@ -232,7 +232,7 @@ module.exports = [
 ##### pokemondata.js
 ```
 module.exports = [
-      { pid: 1, number:'001', name:'name', img:'url', type1: null, type2: null, rarity: null }
+      { pid: 1, number:'001', name:'name', img:'url', type1: null, type2: null, rarity: null, subrarity: null, released: true, generation: 'generation_number' }
     ];
 ```
 ##### userdata.js
