@@ -111,7 +111,7 @@ router.patch('/always/:id', (req, res) => {
 
 router.get('/arean', (req, res, next) => {
     const uid = res.locals.auth.uid;
-    knex.select('aid', 'apid', 'areanimg', 'pid', 'number', 'name', 'img').from('pokemons_arean').join('pokemons', 'pokemons_arean.apid', '=', 'pokemons.pid').orderBy('pokemons.number')
+    knex.select('aid', 'apid', 'areanimg', 'pid', 'number', 'name').from('pokemons_arean').join('pokemons', 'pokemons_arean.apid', '=', 'pokemons.pid').orderBy('pokemons.number')
     .then(areans => {
         knex.select("*").from('wants_arean').where('wants_arean.uid', '=', uid)
         .then(areanwants => {
@@ -150,6 +150,53 @@ router.patch('/arean/:id', (req, res) => {
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         };
     }).catch(err => { res.status(500).json({error: 'Database error in changing areanwant.'}) });
+});
+
+//
+// Routes for own "costume" wants.
+//
+
+router.get('/costumes', (req, res, next) => {
+    const uid = res.locals.auth.uid;
+    knex.select('cid', 'cpid', 'version', 'costumeimg', 'pid', 'number', 'name', 'img').from('pokemons_costumes').join('pokemons', 'pokemons_costumes.cpid', '=', 'pokemons.pid').orderBy('pokemons.number')
+    .then(costumes => {
+        knex.select("*").from('wants_costumes').where('wants_costumes.uid', '=', uid)
+        .then(costumeWants => {
+            const myCostumeWants = costumes.map(x => Object.assign(x, costumeWants.find(y => y.cwpid == x.cid)));
+            res.status(200).json(myCostumeWants);
+        });
+    });
+});
+
+router.patch('/costumes/:id', (req, res) => {
+    const entryData = req.body;
+    const id = req.params.id;
+    const uid = res.locals.auth.uid;
+    if (!(typeof entryData.cwant === 'boolean')) { return res.status(400).json({error:'Want must be in boolean!'}) };
+    const updCosWant = { cwant: entryData.cwant };
+    knex('wants_costumes').where('cwpid', '=', id).andWhere('uid', '=', uid)
+    .then(cosWant => {
+        if(cosWant.length === 0){
+            const newCosWant = {
+                cwpid: req.body.cid,
+                uid: uid,
+                cwant: true
+            };
+            knex('wants_costumes').insert(newCosWant)
+            .then(cwid => {
+                knex('changes').insert({uid: uid, cwid: cwid, changetime: new Date()})
+                .then(status => { res.status(200).json(entryData) })
+                .catch(err => { res.status(500).json({error: 'Database error in making new costume want.'})  });
+            }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
+        } else {
+            knex('wants_costumes').where('cwpid', '=', id).andWhere('uid', '=', uid).update(updCosWant)
+            .then(status => {
+                knex('changes').insert({uid: uid, cwid: cosWant[0].cwid, changetime: new Date()})
+                .then(status => { res.status(200).json(entryData) })
+                .catch(err => { res.status(500).json({error: 'Database error in updating existing costume want.'}) });
+            }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
+        };
+    }).catch(err => { res.status(500).json({error: 'Database error in changing costume want.'}) });
 });
 
 module.exports = router;

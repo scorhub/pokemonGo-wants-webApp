@@ -21,6 +21,7 @@ import Personal from './Personal';
 
 import PrintDataSeeds from './admin/prints/PrintDataSeeds';
 import PrintAreanDataSeeds from './admin/prints/PrintAreanDataSeeds';
+import PrintCostumeDataSeeds from './admin/prints/PrintCostumeDataSeeds';
 import PrintWantSeeds from './admin/prints/PrintWantSeeds';
 import PrintAlWantSeeds from './admin/prints/PrintAlWantSeed';
 import PrintAreanWantSeeds from './admin/prints/PrintAreanWantSeeds';
@@ -32,6 +33,7 @@ import AddGeneration from './admin/add/AddGeneration';
 import AddRarity from './admin/add/AddRarity';
 import AddReleased from './admin/add/AddReleased';
 import PrintFeaturesSeeds from './admin/prints/PrintFeaturesSeeds';
+import CostumeWants from './wants/CostumeWants';
 
 const MainRouter = () => {
     const [users, setUsers] = useState([]);
@@ -48,12 +50,14 @@ const MainRouter = () => {
                     <Route exact path={`/luckys`} render={(props) => <Wants {...props} type={"lucky"} />} />
                     <Route exact path={`/always`} render={(props) => <AlwaysWants {...props} type={"always"} />} />
                     <Route exact path={`/arean`} render={(props) => <AreanWants {...props} type={"arean"} />} />
+                    <Route exact path={`/costumes`} render={(props) => <CostumeWants {...props} type={"costumes"} />} />
                     <Route exact path={`/otherwants`} render={(props) => <OtherWants {...props} users={users} />} />
                     <Route exact path={`/otherwants/:uid`} render={(props) => <OneWants {...props} users={users} />} />
                     <Route exact path={`/askfeature`} render={(props) => <AskFeature {...props} />} />
                     <Route exact path={`/personal`} render={(props) => <Personal {...props} />} />
                     <Route exact path={`/admin/print/dataseeds`} render={(props) => <PrintDataSeeds {...props} />} />
                     <Route exact path={`/admin/print/areandataseeds`} render={(props) => <PrintAreanDataSeeds {...props} />} />
+                    <Route exact path={`/admin/print/costumedataseeds`} render={(props) => <PrintCostumeDataSeeds {...props} />} />
                     <Route exact path={`/admin/print/wantseeds`} render={(props) => <PrintWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/arwantseeds`} render={(props) => <PrintAlWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/areanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />

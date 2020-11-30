@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SeedsHook from '../../hooks/SeedHooks';
+import { OtherDataHook } from '../../hooks/SeedHooks';
 
 const Feature = ({feat}) => {
     return (
@@ -13,7 +13,7 @@ const PrintFeaturesSeeds = () => {
     const [featuresSeeds, setFeaturesSeeds] = useState([]);
     return (
         <>
-        <SeedsHook setList={setFeaturesSeeds} type={"features"} />
+        <OtherDataHook setList={setFeaturesSeeds} type={"features"} />
         <div>
             <h3 className="centered">Print features seeds</h3>
         </div>

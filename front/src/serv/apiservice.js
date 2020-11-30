@@ -51,6 +51,8 @@ const wantGetter = async type => {
     res = await axios.get(`${wantsURI}/always`, config);
   } else if (type === "arean") {
     res = await axios.get(`${wantsURI}/arean`, config);
+  } else if (type === "costumes") {
+    res = await axios.get(`${wantsURI}/costumes`, config);
   } else { return null; };
   return res.data;
 };
@@ -64,6 +66,8 @@ const changeWant = async (id, tempPokemon, type) => {
     res = await axios.patch(`${wantsURI}/always/${id}`, tempPokemon, config);
   } else if (type === "arean") {
     res = await axios.patch(`${wantsURI}/arean/${id}`, tempPokemon, config);
+  } else if (type === "costumes") {
+    res = await axios.patch(`${wantsURI}/costumes/${id}`, tempPokemon, config);
   } else { return null; };
   return res.data;
 };
@@ -75,11 +79,13 @@ const getPokemonSeeds = async (type) => {
     res = await axios.get(`${seedURI}/pokemons`, config);
   } else if (type === "arean") {
     res = await axios.get(`${seedURI}/pokemons/arean`, config);
+  } else if (type === "costumes") {
+    res = await axios.get(`${seedURI}/pokemons/costumes`, config);
   } else { return null; };
   return res.data;
 };
 
-const seedGetter = async (type) => {
+const wantSeedGetter = async (type) => {
   const config = { headers: { Authorization: token } };
   let res = null;
   if (type === "lucky") {
@@ -88,7 +94,16 @@ const seedGetter = async (type) => {
     res = await axios.get(`${seedURI}/always`, config);
   } else if (type === "arean") {
     res = await axios.get(`${seedURI}/arean`, config);
-  } else if (type === "features") {
+  } else if (type === "costumes") {
+    res = await axios.get(`${seedURI}/costumes`, config);
+  } else { return null; };
+  return res.data;
+};
+
+const otherDataSeeds = async (type) => {
+  const config = { headers: { Authorization: token } };
+  let res = null;
+  if (type === "features") {
     res = await axios.get(`${seedURI}/features`, config);
   } else { return null; };
   return res.data;
@@ -121,6 +136,8 @@ const otherWantGetter = async (id, type) => {
     res = await axios.get(`${userURI}/always/${id}`, config);
   } else if (type === "arean") {
     res = await axios.get(`${userURI}/arean/${id}`, config);
+  } else if (type === "costumes") {
+    res = await axios.get(`${userURI}/costumes/${id}`, config);
   } else { return null; };
   return res.data;
 };
@@ -174,4 +191,4 @@ const patchAddData = async (id, status, type) => {
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, seedGetter, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData };
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData };

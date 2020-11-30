@@ -5,12 +5,17 @@ const options = config.DATABASE_OPTIONS;
 const knex = require('knex')(options);
 
 router.get('/pokemons', (req, res, next) => {
-    knex.select("*").from('pokemons').orderBy('pokemons.number')
+    knex.select("*").from('pokemons').orderBy('number')
     .then(rows => { res.status(200).json(rows) });
 });
 
 router.get('/pokemons/arean', (req, res, next) => {
-    knex.select("*").from('pokemons_arean').orderBy('pokemons_arean.apid')
+    knex.select("*").from('pokemons_arean').orderBy('apid')
+    .then(rows => { res.status(200).json(rows) });
+});
+
+router.get('/pokemons/costumes', (req, res, next) => {
+    knex.select("*").from('pokemons_costumes').orderBy('cpid')
     .then(rows => { res.status(200).json(rows) });
 });
 
@@ -28,6 +33,12 @@ router.get('/always', (req, res, next) => {
 
 router.get('/arean', (req, res, next) => {
     knex.select("*").from('wants_arean').orderBy('arwid')
+    .then(rows => { res.status(200).json(rows) })
+    .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
+});
+
+router.get('/costumes', (req, res, next) => {
+    knex.select("*").from('wants_costume').orderBy('cwid')
     .then(rows => { res.status(200).json(rows) })
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });

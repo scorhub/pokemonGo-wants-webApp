@@ -8,6 +8,8 @@ const PokemonMapper = ({ pokemon, changeEngine, type }) => {
         return ( <ImageBox id={pokemon.pid} pokeImg={pokemon.img} pokeId={pokemon.pid} pokeWant={pokemon.awant} changeEngine={changeEngine} /> );
     } else if (type === "arean"){
         return ( <ImageBox id={pokemon.pid} pokeImg={pokemon.areanimg} pokeId={pokemon.aid} pokeWant={pokemon.arwant} changeEngine={changeEngine} /> );
+    } else if (type === "costumes"){
+        return ( <ImageBox id={pokemon.cid} pokeImg={pokemon.costumeimg} pokeId={pokemon.cid} pokeWant={pokemon.cwant} changeEngine={changeEngine} /> );
     } else { return null; };
 };
 
@@ -20,6 +22,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})} </div>
     <br/>
     <div className="container">{wants.filter(p => p.number >= 152 && p.number <= 251).map(pokemon => {
@@ -27,6 +31,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
     <div className="container">{wants.filter(p => p.number >= 252 && p.number <= 386).map(pokemon => {
@@ -34,6 +40,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
     <div className="container">{wants.filter(p => p.number >= 387 && p.number <= 493).map(pokemon => {
@@ -41,6 +49,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
     <div className="container">{wants.filter(p => p.number >= 494 && p.number <= 649).map(pokemon => {
@@ -48,6 +58,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
     <div className="container">{wants.filter(p => p.number >= 650 && p.number <= 721).map(pokemon => {
@@ -55,6 +67,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
     <div className="container">{wants.filter(p => p.number >= 722 && p.number <= 809).map(pokemon => {
@@ -62,6 +76,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
     <div className="container">{wants.filter(p => p.number >= 810 && p.number <= 894).map(pokemon => {
@@ -69,6 +85,8 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
+        } else if (type === "costumes"){
+            return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     </>
     );

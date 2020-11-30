@@ -29,9 +29,9 @@ const Navbar = () => {
   return (
     <div className="navbar" id="activeNavbar">
           <NavLink exact to={`/`} activeClassName="active">Front</NavLink>
-          <NavLink exact to="#" activeClassName="notactive" id="showmemore" onClick={e => setShowWants(!showWants)}>Wants {showWants ? <i className="fa fa-caret-up"></i> : <i className="fa fa-caret-down"></i>}</NavLink>
+          <NavLink exact to="#" activeClassName="notactive" id="showmemore" onClick={e => setShowWants(!showWants)}>My Wants {showWants ? <i className="fa fa-caret-up"></i> : <i className="fa fa-caret-down"></i>}</NavLink>
         {showWants && <NavWantsDrop />}
-          <NavLink exact to={`/otherwants`} activeClassName="active">Others Wants</NavLink>
+          <NavLink exact to={`/otherwants`} activeClassName="active">Others</NavLink>
           <NavLink exact to={`/askfeature`} activeClassName="active">Ask Feature</NavLink>
         
         {(ucid === 1 || 2) && <NavLink exact to="#" activeClassName="notactive" id="showmemore" onClick={e => setShowAdmin(!showAdmin)}>{ucid === 1 ? "Admin " : "Moderator "}{showAdmin ? <i className="fa fa-caret-up"></i> : <i className="fa fa-caret-down"></i>}</NavLink>}

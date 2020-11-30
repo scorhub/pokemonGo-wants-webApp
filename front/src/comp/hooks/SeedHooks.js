@@ -3,7 +3,7 @@ import apiService from '../../serv/apiservice';
 
 const SeedsHook = ({setList, type}) => {
   const seedhook = () => {
-    apiService.seedGetter(type)
+    apiService.wantSeedGetter(type)
     .then(res => { setList(res) })
     .catch(err => { console.log('error: ', err) });
   };
@@ -21,5 +21,15 @@ const GetDataHook = ({setList, type}) => {
   return (<></>);
 };
 
+const OtherDataHook = ({setList, type}) => {
+  const otherdatahook = () => {
+    apiService.otherDataSeeds(type)
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(otherdatahook, []);
+  return (<></>);
+};
+
 export default SeedsHook;
-export { GetDataHook };
+export { GetDataHook, OtherDataHook };

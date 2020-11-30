@@ -128,13 +128,15 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        ├── migrations
        ├── *node_modules*
        ├── seeds
-       │  ├── *datafiles*                   *# Needed to upload database*
-       │  ├── *wantsalwaysdata.js*          *# Predata of "always wants"*
-       │  ├── *pokemonareandata.js*         *# Data / image url for arean variants i.e. Alolan forms*
-       │  ├── *wantsareandata.js*           *# Predata of "arean wants"*
-       │  ├── *pokemondata.js*              *# Basic data (including image url) for Pokémons*
-       │  ├── *userdata.js*                 *# Basic user data, includes premade hashed passwords*
-       │  └── *wantsdata.js*                *# Predata of "wants"*
+       │  └── *datafiles*                   *# Needed to upload database*
+       │     ├── *pokemonareandata.js*      *# Data / image url for arean variants i.e. Alolan forms*
+       │     ├── *pokemoncostumesdata.js*   *# Data / image url for costume variants*
+       │     ├── *wantsalwaysdata.js*       *# Predata of "always wants"*
+       │     ├── *wantsareandata.js*        *# Predata of "arean wants"*
+       │     ├── *wantscostumesdata.js*     *# Predata of "costume wants"*
+       │     ├── *pokemondata.js*           *# Basic data (including image url) for Pokémons*
+       │     ├── *userdata.js*              *# Basic user data, includes premade hashed passwords*
+       │     └── *wantsdata.js*             *# Predata of "wants"*
        ├── package-lock.json
        ├── package.json
        └── *knexfile.js*                    *# File for knex-interaction*
@@ -212,22 +214,16 @@ module.exports = {
 I have used mysql as my database, but it can be changed to your preferred one, check [Knex](http://www.knexjs.org) for more information.
 
 Inside of ```datafiles```, there are 6 files that are needed to migrate database to server. Examples of contents of files are listed below:
-##### wantsalwaysdata.js
-```
-module.exports = [
-    { awid: 1, awpid:'1', uid:'1', awant:'1' }
-    ];
-```
 ##### pokemonareandata.js
 ```
 module.exports = [
     { aid: 1, apid: 19, areanimg: 'url' }
     ];
 ```
-##### wantsareandata.js
+##### pokemoncostumesdata.js
 ```
 module.exports = [
-    { arwid: 1, arwpid:'3', uid:'1', arwant:'1'}
+    { cid: 1, cpid: 25, version: 'version_name', costumeimg: 'costume_image_url'}
     ];
 ```
 ##### pokemondata.js
@@ -240,6 +236,24 @@ module.exports = [
 ```
 module.exports = [
     { uid: 1, ucid: 1, username: 'name', password: 'hashed_pass', showname: 'Name' },
+    ];
+```
+##### wantsalwaysdata.js
+```
+module.exports = [
+    { awid: 1, awpid:'1', uid:'1', awant:'1' }
+    ];
+```
+##### wantscostumesdata.js
+```
+module.exports = [
+    { cwid: 1, cwpid:'1', uid:'1', cwant:'1'}
+    ];
+```
+##### wantsareandata.js
+```
+module.exports = [
+    { arwid: 1, arwpid:'3', uid:'1', arwant:'1'}
     ];
 ```
 ##### wantsdata.js
