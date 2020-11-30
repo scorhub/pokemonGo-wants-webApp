@@ -11,7 +11,6 @@ const Feature = ({feat}) => {
 
 const PrintFeaturesSeeds = () => {
     const [featuresSeeds, setFeaturesSeeds] = useState([]);
-    console.log(featuresSeeds)
     return (
         <>
         <SeedsHook setList={setFeaturesSeeds} type={"features"} />

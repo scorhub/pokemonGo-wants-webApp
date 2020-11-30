@@ -38,4 +38,18 @@ router.post('/', (req, res, next) => {
     }).catch(err => { res.status(503).json({error: 'Database error in insert, or auth failed.'}) });
 });
 
+router.post('/costume', (req, res, next) => {
+    const costume = {
+        // Note: Input requires specific Pokédex entry number, which works as foreign key.
+        cpid: Number(req.body.number),
+        version: req.body.version,
+        costumeimg: req.body.img
+    };
+    if (!costume.cpid || !costume.version || !costume.costumeimg) { return res.status(400).json({error: 'Content missing: Number, version or image.'}) };
+    knex('pokemons_costumes').insert(costume)
+    .then(ok => {
+        res.status(204).end();
+    }).catch(err => { res.status(500).json({error: 'Database error in insert, or auth failed.'}) });
+});
+
 module.exports = router;

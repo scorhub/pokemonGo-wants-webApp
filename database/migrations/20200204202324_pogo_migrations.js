@@ -11,6 +11,13 @@ exports.up = function(knex, Promise) {
       t.string("password", 255).notNullable();
       t.string("showname", 50).notNullable();
     })
+    .createTable("events", t => {
+      t.increments("eid").primary();
+      t.string("etitle", 300).notNullable();
+      t.string("etext", 2500).nullable();
+      t.datetime("estart").nullable();
+      t.datetime("eend").nullable();
+    })
     .createTable("pokemons", t => {
       t.increments("pid").primary();
       t.string("number", 5).notNullable().unique();
@@ -27,6 +34,12 @@ exports.up = function(knex, Promise) {
       t.increments("aid").primary();
       t.integer("apid").unsigned().references("pid").inTable("pokemons").notNull().onDelete("cascade");
       t.string("areanimg", 255).notNullable();
+    })
+    .createTable("pokemons_costumes", t => {
+      t.increments("cid").primary();
+      t.integer("cpid").unsigned().references("pid").inTable("pokemons").notNull().onDelete("cascade");
+      t.string("version", 20).notNullable();
+      t.string("costumeimg", 255).notNullable().unique();
     })
     .createTable("wants", t => {
       t.increments("wid").primary();
@@ -46,20 +59,20 @@ exports.up = function(knex, Promise) {
       t.integer("uid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
       t.boolean("arwant").notNullable();
     })
+    .createTable("wants_costumes", t => {
+      t.increments("cwid").primary();
+      t.integer("cwpid").unsigned().references("cid").inTable("pokemons_costumes").notNull().onDelete("cascade");
+      t.integer("uid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
+      t.boolean("cwant").notNullable();
+    })
     .createTable("changes", t => {
       t.increments("chid").primary();
       t.integer("uid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
       t.integer("wid").unsigned().references("wid").inTable("wants").nullable().onDelete("cascade");
       t.integer("awid").unsigned().references("awid").inTable("wants_always").nullable().onDelete("cascade");
       t.integer("arwid").unsigned().references("arwid").inTable("wants_arean").nullable().onDelete("cascade");
+      t.integer("cwid").unsigned().references("cwid").inTable("wants_costumes").nullable().onDelete("cascade");
       t.datetime("changetime").notNullable();
-    })
-    .createTable("events", t => {
-      t.increments("eid").primary();
-      t.string("etitle", 300).notNullable();
-      t.string("etext", 2500).nullable();
-      t.datetime("estart").nullable();
-      t.datetime("eend").nullable();
     })
     .createTable("eventmons", t => {
       t.increments("emid").primary();
@@ -90,13 +103,15 @@ exports.down = function(knex, Promise) {
   .dropTableIfExists("askfeature")
   .dropTableIfExists("workinprogress")
   .dropTableIfExists("eventmons")
-  .dropTableIfExists("events")
   .dropTableIfExists("changes")
+  .dropTableIfExists("wants_costumes")
   .dropTableIfExists("wants_arean")
   .dropTableIfExists("wants_always")
   .dropTableIfExists("wants")
+  .dropTableIfExists("pokemons_costumes")
   .dropTableIfExists("pokemons_arean")
   .dropTableIfExists("pokemons")
+  .dropTableIfExists("events")
   .dropTableIfExists("users")
   .dropTableIfExists("userclasses");
 };

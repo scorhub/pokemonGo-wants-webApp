@@ -9,7 +9,8 @@ const AddPokemon = () => {
 
     const addNewData = (e) => {
         e.preventDefault();
-        apiService.addPokemon(newData)
+        const type = "normal";
+        apiService.addPokemon(newData, type)
         .then(res => { })
         .catch(e => { alert('Something went wrong.') });
     };

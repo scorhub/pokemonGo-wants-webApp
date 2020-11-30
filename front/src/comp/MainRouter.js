@@ -26,6 +26,7 @@ import PrintAlWantSeeds from './admin/prints/PrintAlWantSeed';
 import PrintAreanWantSeeds from './admin/prints/PrintAreanWantSeeds';
 
 import AddPokemon from './admin/add/AddPokemon';
+import AddCostume from './admin/add/AddCostume';
 import AddTypes from './admin/add/AddTypes';
 import AddGeneration from './admin/add/AddGeneration';
 import AddRarity from './admin/add/AddRarity';
@@ -58,6 +59,7 @@ const MainRouter = () => {
                     <Route exact path={`/admin/print/areanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/featuresseeds`} render={(props) => <PrintFeaturesSeeds {...props} />} />
                     <Route exact path={`/admin/add/pokemon`} render={(props) => <AddPokemon {...props} />} />
+                    <Route exact path={`/admin/add/costume`} render={(props) => <AddCostume {...props} />} />
                     <Route exact path={`/admin/add/types`} render={(props) => <AddTypes {...props} />} />
                     <Route exact path={`/admin/add/generation`} render={(props) => <AddGeneration {...props} />} />
                     <Route exact path={`/admin/add/rarity`} render={(props) => <AddRarity {...props} />} />

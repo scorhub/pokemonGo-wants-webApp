@@ -27,10 +27,19 @@ const getPokemonCount = async () => {
   return res.data
 };
 
-const addPokemon = async credentials => {
+const addPokemon = async (data, type) => {
   const config = { headers: { Authorization: token } };
-  const res = await axios.post(`${pokeURI}`, credentials, config);
-  return res.data
+  let res = null;
+  if (type === "normal") {
+    res = await axios.post(`${pokeURI}`, data, config);
+  } else if (type === "arean") {
+    res = await axios.post(`${pokeURI}/arean`, data, config);
+  } else if (type === "costume") {
+    res = await axios.post(`${pokeURI}/costume`, data, config);
+  } else if (type === "shiny") {
+    res = await axios.post(`${pokeURI}/shiny`, data, config);
+  } else { return null; };
+  return res.data;
 };
 
 const wantGetter = async type => {
