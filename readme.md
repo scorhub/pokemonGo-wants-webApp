@@ -150,6 +150,7 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        ├── src                             # Source files
        │  ├── comp                         # Components
        │  │  ├── admin                     # Components for admin features
+       │  │  │  └── add                    # Data adding components
        │  │  │  └── navbar                 # Admin Navbar addons
        │  │  │  └── prints                 # Components for printing data from database
        │  │  ├── hooks                     # Hooks for data inquiry from backend

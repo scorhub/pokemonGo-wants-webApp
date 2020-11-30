@@ -30,6 +30,7 @@ import AddTypes from './admin/add/AddTypes';
 import AddGeneration from './admin/add/AddGeneration';
 import AddRarity from './admin/add/AddRarity';
 import AddReleased from './admin/add/AddReleased';
+import PrintFeaturesSeeds from './admin/prints/PrintFeaturesSeeds';
 
 const MainRouter = () => {
     const [users, setUsers] = useState([]);
@@ -50,11 +51,12 @@ const MainRouter = () => {
                     <Route exact path={`/otherwants/:uid`} render={(props) => <OneWants {...props} users={users} />} />
                     <Route exact path={`/askfeature`} render={(props) => <AskFeature {...props} />} />
                     <Route exact path={`/personal`} render={(props) => <Personal {...props} />} />
-                    <Route exact path={`/admin/print/printdataseeds`} render={(props) => <PrintDataSeeds {...props} />} />
-                    <Route exact path={`/admin/print/printareandataseeds`} render={(props) => <PrintAreanDataSeeds {...props} />} />
-                    <Route exact path={`/admin/print/printwantseeds`} render={(props) => <PrintWantSeeds {...props} />} />
-                    <Route exact path={`/admin/print/printarwantseeds`} render={(props) => <PrintAlWantSeeds {...props} />} />
-                    <Route exact path={`/admin/print/printareanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />
+                    <Route exact path={`/admin/print/dataseeds`} render={(props) => <PrintDataSeeds {...props} />} />
+                    <Route exact path={`/admin/print/areandataseeds`} render={(props) => <PrintAreanDataSeeds {...props} />} />
+                    <Route exact path={`/admin/print/wantseeds`} render={(props) => <PrintWantSeeds {...props} />} />
+                    <Route exact path={`/admin/print/arwantseeds`} render={(props) => <PrintAlWantSeeds {...props} />} />
+                    <Route exact path={`/admin/print/areanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />
+                    <Route exact path={`/admin/print/featuresseeds`} render={(props) => <PrintFeaturesSeeds {...props} />} />
                     <Route exact path={`/admin/add/pokemon`} render={(props) => <AddPokemon {...props} />} />
                     <Route exact path={`/admin/add/types`} render={(props) => <AddTypes {...props} />} />
                     <Route exact path={`/admin/add/generation`} render={(props) => <AddGeneration {...props} />} />

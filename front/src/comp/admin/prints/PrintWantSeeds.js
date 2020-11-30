@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import WantSeedsHook from '../../hooks/SeedHooks';
+import SeedsHook from '../../hooks/SeedHooks';
 
 const Wants = ({ wants, index }) => {
     const idnum = index+1;
     return (
         <div>
-            &#123;&nbsp;wid&#58;&nbsp;{idnum}&#44;&nbsp;wpid&#58;&#39;{wants.wpid}&#39;&#44;&nbsp;uid&#58;&#39;{wants.uid}&#39;&#44;&nbsp;want&#58;&#39;{wants.want}&#39;&nbsp;&#125;&#44;
+            &#123;&nbsp;wid&#58;&nbsp;{idnum}&#44;&nbsp;wpid&#58;&nbsp;&#39;{wants.wpid}&#39;&#44;&nbsp;uid&#58;&nbsp;&#39;{wants.uid}&#39;&#44;&nbsp;want&#58;&nbsp;&#39;{wants.want}&#39;&nbsp;&#125;&#44;
         </div>
     );
 };
@@ -14,7 +14,7 @@ const PrintWantSeeds = () => {
     const [wantSeeds, setWantSeeds] = useState([]);
     return (
         <>
-        <WantSeedsHook setList={setWantSeeds} type={"lucky"} />
+        <SeedsHook setList={setWantSeeds} type={"lucky"} />
         <div>
             <h3 className="centered">Print want seeds</h3>
         </div>

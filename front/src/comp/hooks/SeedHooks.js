@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import apiService from '../../serv/apiservice';
 
-const WantSeedsHook = ({setList, type}) => {
+const SeedsHook = ({setList, type}) => {
   const seedhook = () => {
-    apiService.wantSeedGetter(type)
+    apiService.seedGetter(type)
     .then(res => { setList(res) })
     .catch(err => { console.log('error: ', err) });
   };
@@ -21,5 +21,5 @@ const GetDataHook = ({setList, type}) => {
   return (<></>);
 };
 
-export default WantSeedsHook;
+export default SeedsHook;
 export { GetDataHook };

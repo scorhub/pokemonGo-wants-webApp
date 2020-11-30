@@ -70,7 +70,7 @@ const getPokemonSeeds = async (type) => {
   return res.data;
 };
 
-const wantSeedGetter = async (type) => {
+const seedGetter = async (type) => {
   const config = { headers: { Authorization: token } };
   let res = null;
   if (type === "lucky") {
@@ -79,6 +79,8 @@ const wantSeedGetter = async (type) => {
     res = await axios.get(`${seedURI}/always`, config);
   } else if (type === "arean") {
     res = await axios.get(`${seedURI}/arean`, config);
+  } else if (type === "features") {
+    res = await axios.get(`${seedURI}/features`, config);
   } else { return null; };
   return res.data;
 };
@@ -163,4 +165,4 @@ const patchAddData = async (id, status, type) => {
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData };
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, seedGetter, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData };

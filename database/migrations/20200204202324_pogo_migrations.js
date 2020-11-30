@@ -81,6 +81,7 @@ exports.up = function(knex, Promise) {
       t.boolean("addedtolist").nullable().default(false);
       t.boolean("inprogress").nullable().default(false);
       t.boolean("completed").nullable().default(false);
+      t.string("dnote", 255).nullable();
     })
 };
 

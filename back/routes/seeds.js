@@ -32,4 +32,10 @@ router.get('/arean', (req, res, next) => {
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
+router.get('/features', (req, res, next) => {
+    knex.select("*").from('askfeature').orderBy('afid')
+    .then(rows => { res.status(200).json(rows) })
+    .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
+});
+
 module.exports = router;

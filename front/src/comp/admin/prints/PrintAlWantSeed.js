@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import WantSeedsHook from '../../hooks/SeedHooks';
+import SeedsHook from '../../hooks/SeedHooks';
 
 const AlWants = ({ alWants, index }) => {
     const idnum = index+1;
     return (
         <div>
-            &#123;&nbsp;awid&#58;&nbsp;{idnum}&#44;&nbsp;awpid&#58;&#39;{alWants.awpid}&#39;&#44;&nbsp;uid&#58;&#39;{alWants.uid}&#39;&#44;&nbsp;awant&#58;&#39;{alWants.awant}&#39;&nbsp;&#125;&#44;
+            &#123;&nbsp;awid&#58;&nbsp;{idnum}&#44;&nbsp;awpid&#58;&nbsp;&#39;{alWants.awpid}&#39;&#44;&nbsp;uid&#58;&nbsp;&#39;{alWants.uid}&#39;&#44;&nbsp;awant&#58;&nbsp;&#39;{alWants.awant}&#39;&nbsp;&#125;&#44;
         </div>
     );
 };
@@ -14,7 +14,7 @@ const PrintAlWantSeeds = () => {
     const [alWantSeeds, setAlWantSeeds] = useState([]);
     return (
         <>
-        <WantSeedsHook setList={setAlWantSeeds} type={"always"} />
+        <SeedsHook setList={setAlWantSeeds} type={"always"} />
         <div>
             <h3 className="centered">Print always want seeds</h3>
         </div>

@@ -4,11 +4,12 @@ import { NavLink } from 'react-router-dom';
 const NavAdminPrints = ({ucid}) => {
     return (
         <>
-        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/printdataseeds`}>Pokémon seeds</NavLink>}
-        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/printareandataseeds`}>Arean seeds</NavLink>}
-        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/printwantseeds`}>Want seeds</NavLink>}
-        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/printarwantseeds`}>AllWant seeds</NavLink>}
-        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/printareanwantseeds`}>AreanWant seeds</NavLink>}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/dataseeds`}>Pokémon seeds</NavLink>}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/areandataseeds`}>Arean seeds</NavLink>}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/wantseeds`}>Want seeds</NavLink>}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/arwantseeds`}>AllWant seeds</NavLink>}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/areanwantseeds`}>AreanWant seeds</NavLink>}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/featuresseeds`}>Features seeds</NavLink>}
         </>
     );
 };
