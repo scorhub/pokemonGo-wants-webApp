@@ -5,11 +5,15 @@ const options = config.DATABASE_OPTIONS;
 const knex = require('knex')(options);
 
 router.get('/type/list', (req, res, next) => {
-    console.log("type list")
+    knex.select('pid', 'number', 'name', 'type1', 'type2', 'img').from('pokemons').whereNull('type1').orWhereNull('type2').orderBy('number', 'ASC')
+    .then(notSet => {
+        res.status(200).json(notSet);
+    }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
 });
 
 router.patch('/type/:id', (req, res, next) => {
     const body = req.body;
+    console.log(body)
     const id = req.params.id;
     if (body.type1 === undefined && body.type2 === undefined) { return res.status(400).json({error: 'Type required.'}); };
     knex.first('*').from('pokemons').where('pid', '=', id)
@@ -36,7 +40,6 @@ router.get('/generation/list', (req, res, next) => {
 
 router.patch('/generation/:id', (req, res, next) => {
     const body = req.body;
-    console.log(body.generation)
     const id = req.params.id;
     if (body.generation === undefined) { return res.status(400).json({error: 'Generation required.'}); };
     if (isNaN(body.generation)) { return res.status(400).json({error: 'Generation required in number format.'}); };
