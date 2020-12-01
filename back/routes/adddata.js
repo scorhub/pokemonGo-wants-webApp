@@ -28,15 +28,15 @@ router.patch('/type/:id', (req, res, next) => {
 });
 
 router.get('/generation/list', (req, res, next) => {
-    // knex.select('*').from('pokemons').whereNull('generation')
-    // .then(notSet => {
-    //     console.log(notSet)
-    //     res.status(200).json(notSet);
-    // }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
+    knex.select('pid', 'number', 'name', 'generation', 'img').from('pokemons').whereNull('generation').orderBy('number', 'ASC')
+    .then(notSet => {
+        res.status(200).json(notSet);
+    }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
 });
 
 router.patch('/generation/:id', (req, res, next) => {
     const body = req.body;
+    console.log(body.generation)
     const id = req.params.id;
     if (body.generation === undefined) { return res.status(400).json({error: 'Generation required.'}); };
     if (isNaN(body.generation)) { return res.status(400).json({error: 'Generation required in number format.'}); };
@@ -53,7 +53,10 @@ router.patch('/generation/:id', (req, res, next) => {
 });
 
 router.get('/rarity/list', (req, res, next) => {
-    console.log("rarity list")
+    knex.select('pid', 'number', 'name', 'rarity', 'img').from('pokemons').whereNull('rarity').orderBy('number', 'ASC')
+    .then(notSet => {
+        res.status(200).json(notSet);
+    }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
 });
 
 router.patch('/rarity/:id', (req, res, next) => {
@@ -62,7 +65,7 @@ router.patch('/rarity/:id', (req, res, next) => {
     if (body.rarity === undefined && body.subrarity === undefined) { return res.status(400).json({error: 'Rarity required.'}); };
     knex.first('*').from('pokemons').where('pid', '=', id)
     .then(pokemon => {
-        if ((pokemon.rarity && pokemon.subrarity) !== null) { return res.status(403).json({error: 'Types are already defined.'}); };
+        if ((pokemon.rarity && pokemon.subrarity) !== null) { return res.status(403).json({error: 'Rarities are already defined.'}); };
         if ((pokemon.rarity !== null && body.rarity !== undefined)) { return res.status(403).json({error: 'Rarity is already defined.'}); };
         if ((body.rarity === undefined && pokemon.rarity === null)) { return res.status(403).json({error: 'Rarity must be defined before subrarity.'}); };
         var updRarity = {};
@@ -78,7 +81,6 @@ router.patch('/rarity/:id', (req, res, next) => {
 router.get('/released/list', (req, res, next) => {
     knex.select('pid', 'number', 'name', 'img').from('pokemons').whereNull('released').orderBy('number', 'ASC')
     .then(notSet => {
-        console.log(notSet)
         res.status(200).json(notSet);
     }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
 });

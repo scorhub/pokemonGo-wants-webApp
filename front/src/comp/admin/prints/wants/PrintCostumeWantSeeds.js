@@ -5,7 +5,7 @@ const Wants = ({ cosWants, index }) => {
     const idnum = index+1;
     return (
         <div>
-            &#123;&nbsp;cwid&#58;&nbsp;{idnum}&#44;&nbsp;cwpid&#58;&nbsp;&#39;{cosWants.arwpid}&#39;&#44;&nbsp;uid&#58;&nbsp;&#39;{cosWants.uid}&#39;&#44;&nbsp;cwant&#58;&nbsp;&#39;{cosWants.cwant}&#39;&#125;&#44;
+            &#123;&nbsp;cwid&#58;&nbsp;{idnum}&#44;&nbsp;cwpid&#58;&nbsp;&#39;{cosWants.cwpid}&#39;&#44;&nbsp;uid&#58;&nbsp;&#39;{cosWants.uid}&#39;&#44;&nbsp;cwant&#58;&nbsp;&#39;{cosWants.cwant}&#39;&#125;&#44;
         </div>
     );
 };
