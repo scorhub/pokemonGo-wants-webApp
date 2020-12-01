@@ -27,10 +27,11 @@ As of this is hobby project, and not complete, user interface were originally wr
 
 ## Version
 
-The app is currently labeled as version 0.57, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
+The app is currently labeled as version 0.58, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
 
 ### Version history
 
+- 0.58 Moderator navbar, add additional data to pokemon data, add costume variants.
 - 0.57 Moderator check added, always-want size restricted to 50.
 - 0.55 Tests added to backend
 - 0.5  First public upload of the code
@@ -46,6 +47,7 @@ App can be used to track and show to your friends what you need and want to trad
   - Always Want (what you can take in trade always, e.g. good for PVP, raids, etc.)
   - Alolan Want (for Alolan variants)
   - Galarian Want (for Galarian variants)
+  - Costume Want (for event-based costume variants, i.e. Pikachu in Mimikyu costume)
 - Ask a feature (as single coder/player does not always spot everything)
 - Change password
 
@@ -53,13 +55,21 @@ App can be used to track and show to your friends what you need and want to trad
 
 App supports user class "Moderator", and functionality of the class is to help Admin to add new Pokémons/variants to database and update data of existing Pokémons.
 
+Current configuration of app gives moderator following access rights:
+- Add Pokémon data
+  - Types
+  - Generation
+  - Rarity
+  - Released
+
 #### Admin Features
 
-App supports user class "Admin", and admin has extra features additionally to basic user.
+App supports user class "Admin", and admin has extra features additionally to basic user and moderator.
 
 - Print seeds (Admin can print information from the database - the seed printer ignores not currently wanted Pokémons, so it can be used to clean up tables)
-- Add new Pokémon (as new Pokémons are added to mobile game, they can be easily added to the app)
-- *Update data of Pokémon* (future feature)
+- Add new Pokémons to database.
+  - Add Pokémon (as new Pokémons are added to mobile game, they can be easily added to the app).
+  - Add costume variant.
 - *Add news* (future feature, for posting crucial information of the game)
 - *Add events* (future feature, for posting upcoming events of the game, their time and info for easily to have on hand)
 
@@ -68,7 +78,6 @@ App supports user class "Admin", and admin has extra features additionally to ba
 I have long personal list of features to be implemented to the app, and here is the crucial ones that are under work:
 - Last changes on lists (as which Pokémons have lefted from each persons list and which are new wants)
 - Variant Want (for variants, i.e. Castform's weather variants)
-- Costume Want (for event-based costume variants, i.e. Pikachu in Mimikyu costume)
 - Shiny Want
 
 ## Frameworks and Dependencies
