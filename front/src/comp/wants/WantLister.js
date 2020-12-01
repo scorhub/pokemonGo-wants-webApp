@@ -8,7 +8,7 @@ const PokemonMapper = ({ pokemon, changeEngine, type }) => {
         return ( <ImageBox id={pokemon.pid} pokeImg={pokemon.img} pokeId={pokemon.pid} pokeWant={pokemon.awant} changeEngine={changeEngine} /> );
     } else if (type === "arean"){
         return ( <ImageBox id={pokemon.pid} pokeImg={pokemon.areanimg} pokeId={pokemon.aid} pokeWant={pokemon.arwant} changeEngine={changeEngine} /> );
-    } else if (type === "costumes"){
+    } else if (type === "costume"){
         return ( <ImageBox id={pokemon.cid} pokeImg={pokemon.costumeimg} pokeId={pokemon.cid} pokeWant={pokemon.cwant} changeEngine={changeEngine} /> );
     } else { return null; };
 };
@@ -22,7 +22,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})} </div>
     <br/>
@@ -31,7 +31,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
@@ -40,7 +40,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
@@ -49,7 +49,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
@@ -58,7 +58,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
@@ -67,7 +67,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
@@ -76,7 +76,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     <br/>
@@ -85,7 +85,7 @@ const WantLister = ({ wants, changeEngine, type }) => {
             return ( <PokemonMapper key={pokemon.pid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else if (type === "arean"){
             return ( <PokemonMapper key={pokemon.aid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
-        } else if (type === "costumes"){
+        } else if (type === "costume"){
             return ( <PokemonMapper key={pokemon.cid} pokemon={pokemon} changeEngine={changeEngine} type={type} /> );
         } else { return null };})}</div>
     </>

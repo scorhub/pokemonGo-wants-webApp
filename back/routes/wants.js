@@ -156,25 +156,25 @@ router.patch('/arean/:id', (req, res) => {
 // Routes for own "costume" wants.
 //
 
-router.get('/costumes', (req, res, next) => {
+router.get('/costume', (req, res, next) => {
     const uid = res.locals.auth.uid;
-    knex.select('cid', 'cpid', 'version', 'costumeimg', 'pid', 'number', 'name', 'img').from('pokemons_costumes').join('pokemons', 'pokemons_costumes.cpid', '=', 'pokemons.pid').orderBy('pokemons.number')
-    .then(costumes => {
-        knex.select("*").from('wants_costumes').where('wants_costumes.uid', '=', uid)
+    knex.select('cid', 'cpid', 'version', 'costumeimg', 'pid', 'number', 'name', 'img').from('pokemons_costume').join('pokemons', 'pokemons_costume.cpid', '=', 'pokemons.pid').orderBy('pokemons.number')
+    .then(costume => {
+        knex.select("*").from('wants_costume').where('wants_costume.uid', '=', uid)
         .then(costumeWants => {
-            const myCostumeWants = costumes.map(x => Object.assign(x, costumeWants.find(y => y.cwpid == x.cid)));
+            const myCostumeWants = costume.map(x => Object.assign(x, costumeWants.find(y => y.cwpid == x.cid)));
             res.status(200).json(myCostumeWants);
         });
     });
 });
 
-router.patch('/costumes/:id', (req, res) => {
+router.patch('/costume/:id', (req, res) => {
     const entryData = req.body;
     const id = req.params.id;
     const uid = res.locals.auth.uid;
     if (!(typeof entryData.cwant === 'boolean')) { return res.status(400).json({error:'Want must be in boolean!'}) };
     const updCosWant = { cwant: entryData.cwant };
-    knex('wants_costumes').where('cwpid', '=', id).andWhere('uid', '=', uid)
+    knex('wants_costume').where('cwpid', '=', id).andWhere('uid', '=', uid)
     .then(cosWant => {
         if(cosWant.length === 0){
             const newCosWant = {
@@ -182,14 +182,14 @@ router.patch('/costumes/:id', (req, res) => {
                 uid: uid,
                 cwant: true
             };
-            knex('wants_costumes').insert(newCosWant)
+            knex('wants_costume').insert(newCosWant)
             .then(cwid => {
                 knex('changes').insert({uid: uid, cwid: cwid, changetime: new Date()})
                 .then(status => { res.status(200).json(entryData) })
                 .catch(err => { res.status(500).json({error: 'Database error in making new costume want.'})  });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         } else {
-            knex('wants_costumes').where('cwpid', '=', id).andWhere('uid', '=', uid).update(updCosWant)
+            knex('wants_costume').where('cwpid', '=', id).andWhere('uid', '=', uid).update(updCosWant)
             .then(status => {
                 knex('changes').insert({uid: uid, cwid: cosWant[0].cwid, changetime: new Date()})
                 .then(status => { res.status(200).json(entryData) })

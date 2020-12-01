@@ -46,7 +46,7 @@ router.post('/costume', (req, res, next) => {
         costumeimg: req.body.img
     };
     if (!costume.cpid || !costume.version || !costume.costumeimg) { return res.status(400).json({error: 'Content missing: Number, version or image.'}) };
-    knex('pokemons_costumes').insert(costume)
+    knex('pokemons_costume').insert(costume)
     .then(ok => {
         res.status(204).end();
     }).catch(err => { res.status(500).json({error: 'Database error in insert, or auth failed.'}) });

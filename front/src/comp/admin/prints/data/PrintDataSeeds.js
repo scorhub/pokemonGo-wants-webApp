@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GetDataHook } from '../../hooks/SeedHooks';
+import { GetDataHook } from '../../../hooks/SeedHooks';
 
 const SingleData = ({sData}) => {
     return (

@@ -130,10 +130,10 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        ├── seeds
        │  └── *datafiles*                   *# Needed to upload database*
        │     ├── *pokemonareandata.js*      *# Data / image url for arean variants i.e. Alolan forms*
-       │     ├── *pokemoncostumesdata.js*   *# Data / image url for costume variants*
+       │     ├── *pokemoncostumedata.js*   *# Data / image url for costume variants*
        │     ├── *wantsalwaysdata.js*       *# Predata of "always wants"*
        │     ├── *wantsareandata.js*        *# Predata of "arean wants"*
-       │     ├── *wantscostumesdata.js*     *# Predata of "costume wants"*
+       │     ├── *wantscostumedata.js*     *# Predata of "costume wants"*
        │     ├── *pokemondata.js*           *# Basic data (including image url) for Pokémons*
        │     ├── *userdata.js*              *# Basic user data, includes premade hashed passwords*
        │     └── *wantsdata.js*             *# Predata of "wants"*
@@ -152,9 +152,11 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        ├── src                             # Source files
        │  ├── comp                         # Components
        │  │  ├── admin                     # Components for admin features
-       │  │  │  └── add                    # Data adding components
-       │  │  │  └── navbar                 # Admin Navbar addons
+       │  │  │  ├── add                    # Data adding components
+       │  │  │  ├── navbar                 # Admin Navbar addons
        │  │  │  └── prints                 # Components for printing data from database
+       │  │  │     ├── data                # Pokémon data printing components
+       │  │  │     └── wants               # Want data printing components
        │  │  ├── hooks                     # Hooks for data inquiry from backend
        │  │  ├── parts                     # Partial areas of the page, e.g. Footer, Header, etc.
        │  │  └── wants                     # Pages for listing and interacting with wants
@@ -220,7 +222,7 @@ module.exports = [
     { aid: 1, apid: 19, areanimg: 'url' }
     ];
 ```
-##### pokemoncostumesdata.js
+##### pokemoncostumedata.js
 ```
 module.exports = [
     { cid: 1, cpid: 25, version: 'version_name', costumeimg: 'costume_image_url'}
@@ -244,7 +246,7 @@ module.exports = [
     { awid: 1, awpid:'1', uid:'1', awant:'1' }
     ];
 ```
-##### wantscostumesdata.js
+##### wantscostumedata.js
 ```
 module.exports = [
     { cwid: 1, cwpid:'1', uid:'1', cwant:'1'}

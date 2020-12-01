@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SeedsHook from '../../hooks/SeedHooks';
+import SeedsHook from '../../../hooks/SeedHooks';
 
 const Wants = ({ wants, index }) => {
     const idnum = index+1;

@@ -10,6 +10,7 @@ const NavAdminPrints = ({ucid}) => {
         {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/wantseeds`}>Want seeds</NavLink>}
         {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/arwantseeds`}>AllWant seeds</NavLink>}
         {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/areanwantseeds`}>AreanWant seeds</NavLink>}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/costumewantseeds`}>CostumeWant seeds</NavLink>}
         {ucid === 1 && <NavLink className="left1em" exact to={`/admin/print/featuresseeds`}>Features seeds</NavLink>}
         </>
     );

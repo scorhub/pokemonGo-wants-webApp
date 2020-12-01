@@ -35,7 +35,7 @@ exports.up = function(knex, Promise) {
       t.integer("apid").unsigned().references("pid").inTable("pokemons").notNull().onDelete("cascade");
       t.string("areanimg", 255).notNullable();
     })
-    .createTable("pokemons_costumes", t => {
+    .createTable("pokemons_costume", t => {
       t.increments("cid").primary();
       t.integer("cpid").unsigned().references("pid").inTable("pokemons").notNull().onDelete("cascade");
       t.string("version", 20).notNullable();
@@ -59,9 +59,9 @@ exports.up = function(knex, Promise) {
       t.integer("uid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
       t.boolean("arwant").notNullable();
     })
-    .createTable("wants_costumes", t => {
+    .createTable("wants_costume", t => {
       t.increments("cwid").primary();
-      t.integer("cwpid").unsigned().references("cid").inTable("pokemons_costumes").notNull().onDelete("cascade");
+      t.integer("cwpid").unsigned().references("cid").inTable("pokemons_costume").notNull().onDelete("cascade");
       t.integer("uid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
       t.boolean("cwant").notNullable();
     })
@@ -71,7 +71,7 @@ exports.up = function(knex, Promise) {
       t.integer("wid").unsigned().references("wid").inTable("wants").nullable().onDelete("cascade");
       t.integer("awid").unsigned().references("awid").inTable("wants_always").nullable().onDelete("cascade");
       t.integer("arwid").unsigned().references("arwid").inTable("wants_arean").nullable().onDelete("cascade");
-      t.integer("cwid").unsigned().references("cwid").inTable("wants_costumes").nullable().onDelete("cascade");
+      t.integer("cwid").unsigned().references("cwid").inTable("wants_costume").nullable().onDelete("cascade");
       t.datetime("changetime").notNullable();
     })
     .createTable("eventmons", t => {
@@ -104,11 +104,11 @@ exports.down = function(knex, Promise) {
   .dropTableIfExists("workinprogress")
   .dropTableIfExists("eventmons")
   .dropTableIfExists("changes")
-  .dropTableIfExists("wants_costumes")
+  .dropTableIfExists("wants_costume")
   .dropTableIfExists("wants_arean")
   .dropTableIfExists("wants_always")
   .dropTableIfExists("wants")
-  .dropTableIfExists("pokemons_costumes")
+  .dropTableIfExists("pokemons_costume")
   .dropTableIfExists("pokemons_arean")
   .dropTableIfExists("pokemons")
   .dropTableIfExists("events")

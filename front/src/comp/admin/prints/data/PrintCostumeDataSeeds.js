@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GetDataHook } from '../../hooks/SeedHooks';
+import { GetDataHook } from '../../../hooks/SeedHooks';
 
 const SingleCostume = ({costume}) => {
     return (
@@ -13,7 +13,7 @@ const PrintCostumeDataSeeds = () => {
     const [costumeData, setCostumeData] = useState([]);
     return (
         <>
-        <GetDataHook setList={setCostumeData} type={"costumes"} />
+        <GetDataHook setList={setCostumeData} type={"costume"} />
         <div>
             <h3 className="centered">Print Arean Data seeds</h3>
         </div>

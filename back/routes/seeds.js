@@ -14,8 +14,8 @@ router.get('/pokemons/arean', (req, res, next) => {
     .then(rows => { res.status(200).json(rows) });
 });
 
-router.get('/pokemons/costumes', (req, res, next) => {
-    knex.select("*").from('pokemons_costumes').orderBy('cpid')
+router.get('/pokemons/costume', (req, res, next) => {
+    knex.select("*").from('pokemons_costume').orderBy('cpid')
     .then(rows => { res.status(200).json(rows) });
 });
 
@@ -37,7 +37,7 @@ router.get('/arean', (req, res, next) => {
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
-router.get('/costumes', (req, res, next) => {
+router.get('/costume', (req, res, next) => {
     knex.select("*").from('wants_costume').orderBy('cwid')
     .then(rows => { res.status(200).json(rows) })
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });

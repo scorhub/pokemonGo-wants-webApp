@@ -19,12 +19,13 @@ import AreanWants from './wants/AreanWants';
 // import MasterWant from './wants/MasterWant';
 import Personal from './Personal';
 
-import PrintDataSeeds from './admin/prints/PrintDataSeeds';
-import PrintAreanDataSeeds from './admin/prints/PrintAreanDataSeeds';
-import PrintCostumeDataSeeds from './admin/prints/PrintCostumeDataSeeds';
-import PrintWantSeeds from './admin/prints/PrintWantSeeds';
-import PrintAlWantSeeds from './admin/prints/PrintAlWantSeed';
-import PrintAreanWantSeeds from './admin/prints/PrintAreanWantSeeds';
+import PrintDataSeeds from './admin/prints/data/PrintDataSeeds';
+import PrintAreanDataSeeds from './admin/prints/data/PrintAreanDataSeeds';
+import PrintCostumeDataSeeds from './admin/prints/data/PrintCostumeDataSeeds';
+import PrintWantSeeds from './admin/prints/wants/PrintWantSeeds';
+import PrintAlWantSeeds from './admin/prints/wants/PrintAlWantSeed';
+import PrintAreanWantSeeds from './admin/prints/wants/PrintAreanWantSeeds';
+import PrintCostumeWantSeeds from './admin/prints/wants/PrintCostumeWantSeeds';
 
 import AddPokemon from './admin/add/AddPokemon';
 import AddCostume from './admin/add/AddCostume';
@@ -50,7 +51,7 @@ const MainRouter = () => {
                     <Route exact path={`/luckys`} render={(props) => <Wants {...props} type={"lucky"} />} />
                     <Route exact path={`/always`} render={(props) => <AlwaysWants {...props} type={"always"} />} />
                     <Route exact path={`/arean`} render={(props) => <AreanWants {...props} type={"arean"} />} />
-                    <Route exact path={`/costumes`} render={(props) => <CostumeWants {...props} type={"costumes"} />} />
+                    <Route exact path={`/costume`} render={(props) => <CostumeWants {...props} type={"costume"} />} />
                     <Route exact path={`/otherwants`} render={(props) => <OtherWants {...props} users={users} />} />
                     <Route exact path={`/otherwants/:uid`} render={(props) => <OneWants {...props} users={users} />} />
                     <Route exact path={`/askfeature`} render={(props) => <AskFeature {...props} />} />
@@ -61,6 +62,7 @@ const MainRouter = () => {
                     <Route exact path={`/admin/print/wantseeds`} render={(props) => <PrintWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/arwantseeds`} render={(props) => <PrintAlWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/areanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />
+                    <Route exact path={`/admin/print/costumewantseeds`} render={(props) => <PrintCostumeWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/featuresseeds`} render={(props) => <PrintFeaturesSeeds {...props} />} />
                     <Route exact path={`/admin/add/pokemon`} render={(props) => <AddPokemon {...props} />} />
                     <Route exact path={`/admin/add/costume`} render={(props) => <AddCostume {...props} />} />
