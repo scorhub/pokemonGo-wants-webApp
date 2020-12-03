@@ -49,4 +49,16 @@ router.get('/features', (req, res, next) => {
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
+router.get('/events', (req, res, next) => {
+
+});
+
+router.get('/eventmons', (req, res, next) => {
+
+});
+
+router.get('/news', (req, res, next) => {
+    
+});
+
 module.exports = router;

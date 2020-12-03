@@ -34,7 +34,7 @@ import AddGeneration from './admin/add/AddGeneration';
 import AddRarity from './admin/add/AddRarity';
 import AddReleased from './admin/add/AddReleased';
 import AddMega from './admin/add/AddMega';
-import PrintFeaturesSeeds from './admin/prints/PrintFeaturesSeeds';
+import PrintFeaturesSeeds from './admin/prints/otherseeds/PrintFeaturesSeeds';
 import ManageModerator from './admin/users/ManageModerator';
 import CostumeWants from './wants/CostumeWants';
 

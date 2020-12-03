@@ -109,6 +109,12 @@ const otherDataSeeds = async (type) => {
   let res = null;
   if (type === "features") {
     res = await axios.get(`${seedURI}/features`, config);
+  } else if (type === "events") {
+    res = await axios.get(`${seedURI}/events`, config);
+  } else if (type === "eventmons") {
+    res = await axios.get(`${seedURI}/eventmons`, config);
+  } else if (type === "news") {
+    res = await axios.get(`${seedURI}/news`, config);
   } else { return null; };
   return res.data;
 };

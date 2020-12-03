@@ -97,10 +97,19 @@ exports.up = function(knex, Promise) {
       t.boolean("completed").nullable().default(false);
       t.string("dnote", 255).nullable();
     })
+    .createTable("news", t => {
+      t.increments("nid").primary();
+      t.integer("nuid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
+      t.datetime("ndate").notNullable();
+      t.string("ntitle", 255).notNullable();
+      t.string("ntext", 2500).nullable();
+      t.boolean("archived").nullable().default(false);
+    })
 };
 
 exports.down = function(knex, Promise) {
   return knex.schema
+  .dropTableIfExists("news")
   .dropTableIfExists("askfeature")
   .dropTableIfExists("workinprogress")
   .dropTableIfExists("eventmons")

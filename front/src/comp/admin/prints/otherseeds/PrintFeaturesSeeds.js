@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OtherDataHook } from '../../hooks/SeedHooks';
+import { OtherDataHook } from '../../../hooks/SeedHooks';
 
 const Feature = ({feat}) => {
     return (

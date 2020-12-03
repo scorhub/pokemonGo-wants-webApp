@@ -166,6 +166,7 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        │  │  │  ├── navbar                 # Admin Navbar addons
        │  │  │  └── prints                 # Components for printing data from database
        │  │  │  │  ├── data                # Pokémon data printing components
+       │  │  │  │  ├── otherseeds          # Other seed data printing components
        │  │  │  │  └── wants               # Want data printing components
        │  │  │  └── users                  # User interactions for admin
        │  │  ├── hooks                     # Hooks for data inquiry from backend
