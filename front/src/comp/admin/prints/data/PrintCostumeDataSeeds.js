@@ -15,7 +15,7 @@ const PrintCostumeDataSeeds = () => {
         <>
         <GetDataHook setList={setCostumeData} type={"costume"} />
         <div>
-            <h3 className="centered">Print Arean Data seeds</h3>
+            <h3 className="centered">Print Costume Data seeds</h3>
         </div>
         <div className="container pad1em">
             module&#46;exports &#61; &#91;

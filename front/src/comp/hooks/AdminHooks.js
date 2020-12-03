@@ -11,4 +11,15 @@ const GetAddHook = ({setList, type}) => {
   return (<></>);
 };
 
+const GetModHook = ({setList}) => {
+  const getmodhook = () => {
+    apiService.getModData()
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(getmodhook, []);
+  return (<></>);
+};
+
 export default GetAddHook;
+export { GetModHook };

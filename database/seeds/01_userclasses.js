@@ -3,7 +3,8 @@ exports.seed = function(knex, Promise) {
       .then(function() {
         return knex("userclasses").insert([
             { ucid: 1, ucname: "Admin" },
-            { ucid: 2, ucname: "Moderator" }
+            { ucid: 2, ucname: "Moderator" },
+            { ucid: 3, ucname: "User" }
         ]);
       });
   };

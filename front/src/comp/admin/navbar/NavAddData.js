@@ -8,6 +8,7 @@ const NavAddData = ({ucid}) => {
         {(ucid === 1 || 2) && <NavLink className="left1em" exact to={`/admin/add/generation`}>Generation</NavLink>}
         {(ucid === 1 || 2) && <NavLink className="left1em" exact to={`/admin/add/rarity`}>Rarity</NavLink>}
         {(ucid === 1 || 2) && <NavLink className="left1em" exact to={`/admin/add/released`}>Released</NavLink>}
+        {(ucid === 1 || 2) && <NavLink className="left1em" exact to={`/admin/add/mega`}>Mega</NavLink>}
         </>
     );
 };

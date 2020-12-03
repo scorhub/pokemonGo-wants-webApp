@@ -2,13 +2,17 @@ import axios from 'axios';
 // const apiURI = '/api';
 const logURI = '/api/login';
 const verifiedURI = '/api/verified';
-const pokeURI = `${verifiedURI}/pokemons`;
+const adminURI = '/api/verified/admin';
+
 const userURI = `${verifiedURI}/users`;
 const wantsURI = `${verifiedURI}/wants`;
-const seedURI = `${verifiedURI}/seeds`;
 const featureURI = `${verifiedURI}/features`;
 const myWantsURI = `${verifiedURI}/mywants`;
-const addDataURI = `${verifiedURI}/adddata`;
+
+const pokeURI = `${adminURI}/pokemons`;
+const seedURI = `${adminURI}/seeds`;
+const addDataURI = `${adminURI}/adddata`;
+const manageModURI = `${adminURI}/moderator`;
 
 let token = null;
 
@@ -172,6 +176,8 @@ const getAddData = async type => {
     res = await axios.get(`${addDataURI}/rarity/list`, config);
   } else if (type === "released") {
     res = await axios.get(`${addDataURI}/released/list`, config);
+  } else if (type === "mega") {
+    res = await axios.get(`${addDataURI}/mega/list`, config);
   } else { return null; };
   return res.data;
 };
@@ -187,8 +193,22 @@ const patchAddData = async (id, status, type) => {
     res = await axios.patch(`${addDataURI}/rarity/${id}`, status, config);
   } else if (type === "released") {
     res = await axios.patch(`${addDataURI}/released/${id}`, status, config);
+  } else if (type === "mega") {
+    res = await axios.patch(`${addDataURI}/mega/${id}`, status, config);
   } else { return null; };
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData };
+const getModData = async () => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.get(`${manageModURI}`, config);
+  return res.data
+};
+
+const patchModData = async (id, data) => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.patch(`${manageModURI}/${id}`, data, config);
+  return res.data
+};
+
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData };

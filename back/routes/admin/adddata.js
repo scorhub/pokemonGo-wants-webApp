@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const config = require('../utils/config');
+const config = require('../../utils/config');
 const options = config.DATABASE_OPTIONS;
 const knex = require('knex')(options);
 
@@ -99,6 +99,30 @@ router.patch('/released/:id', (req, res, next) => {
         var updReleased = {};
         if (body.released !== undefined) { updReleased.released = body.released };
         knex('pokemons').where('pid', '=', id).update(updReleased)
+        .then(updated => {
+            res.status(204).end();
+        }).catch(err => { res.status(500).json({error: 'Database error on updating.'});});
+    }).catch(err => { res.status(500).json({error: 'Database error on updating.'});});
+});
+
+router.get('/mega/list', (req, res, next) => {
+    knex.select('pid', 'number', 'name', 'img').from('pokemons').whereNull('mega').orderBy('number', 'ASC')
+    .then(notSet => {
+        res.status(200).json(notSet);
+    }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
+});
+
+router.patch('/mega/:id', (req, res, next) => {
+    const body = req.body;
+    const id = req.params.id;
+    if (body.mega === undefined) { return res.status(400).json({error: 'Mega information required.'}); };
+    if (typeof body.mega !== 'boolean') { return res.status(400).json({error: 'Mega information required in boolean.'}); };
+    knex.first('*').from('pokemons').where('pid', '=', id)
+    .then(pokemon => {
+        if (pokemon.mega !== null) { return res.status(403).json({error: 'Mega information is already defined.'}); };
+        var updMega = {};
+        if (body.mega !== undefined) { updMega.mega = body.mega };
+        knex('pokemons').where('pid', '=', id).update(updMega)
         .then(updated => {
             res.status(204).end();
         }).catch(err => { res.status(500).json({error: 'Database error on updating.'});});

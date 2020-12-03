@@ -33,7 +33,9 @@ import AddTypes from './admin/add/AddTypes';
 import AddGeneration from './admin/add/AddGeneration';
 import AddRarity from './admin/add/AddRarity';
 import AddReleased from './admin/add/AddReleased';
+import AddMega from './admin/add/AddMega';
 import PrintFeaturesSeeds from './admin/prints/PrintFeaturesSeeds';
+import ManageModerator from './admin/users/ManageModerator';
 import CostumeWants from './wants/CostumeWants';
 
 const MainRouter = () => {
@@ -70,6 +72,8 @@ const MainRouter = () => {
                     <Route exact path={`/admin/add/generation`} render={(props) => <AddGeneration {...props} />} />
                     <Route exact path={`/admin/add/rarity`} render={(props) => <AddRarity {...props} />} />
                     <Route exact path={`/admin/add/released`} render={(props) => <AddReleased {...props} />} />
+                    <Route exact path={`/admin/add/mega`} render={(props) => <AddMega {...props} />} />
+                    <Route exact path={`/admin/users/moderator`} render={(props) => <ManageModerator {...props} />} />
                     <Route exact path={`/`} render={(props) => <Front {...props} />} />
                     <Route component={PageNotFound} />
                 </Switch>

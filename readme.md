@@ -121,7 +121,8 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        ├── *build*                         *# Compiled files*
        ├── public
        │  └── stylesheets
-       ├── routes
+       ├── routes                          # Api routes
+       │  └── admin                        # Admin api routes
        ├── *tests*                         *# Test for each interaction with backend*
        ├── tests_public                    # Test for each interaction with backend (not including encoded token)
        ├── utils
@@ -164,8 +165,9 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        │  │  │  ├── add                    # Data adding components
        │  │  │  ├── navbar                 # Admin Navbar addons
        │  │  │  └── prints                 # Components for printing data from database
-       │  │  │     ├── data                # Pokémon data printing components
-       │  │  │     └── wants               # Want data printing components
+       │  │  │  │  ├── data                # Pokémon data printing components
+       │  │  │  │  └── wants               # Want data printing components
+       │  │  │  └── users                  # User interactions for admin
        │  │  ├── hooks                     # Hooks for data inquiry from backend
        │  │  ├── parts                     # Partial areas of the page, e.g. Footer, Header, etc.
        │  │  └── wants                     # Pages for listing and interacting with wants

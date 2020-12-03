@@ -16,6 +16,7 @@ const NavbarAdmin = ({ucid}) => {
         {showAdder && <NavAddPokemons ucid={ucid} />}
         {(ucid === 1 || 2) && <NavLink exact to="#" activeClassName="notactive" id="showmemore" onClick={e => setShowModData(!showModData)}>Add Pokémon data {showModData ? <i className="fa fa-caret-up"></i> : <i className="fa fa-caret-down"></i>}</NavLink>}
         {showModData && <NavAddData ucid={ucid} />}
+        {ucid === 1 && <NavLink className="left1em" exact to={`/admin/users/moderator`}>Moderators</NavLink>}
         </>
     );
 };
