@@ -25,7 +25,7 @@ const AreanWants = ({type})  => {
     e.stopPropagation();
     let tempPokemon = areanWants.find(p => p.aid === id);
     tempPokemon = { ...tempPokemon, arwant: value };
-    apiService.changeWant(id, tempPokemon, type)
+    apiService.changeWant(id, {arwant: value}, type)
     .then(res => {
         const tempPokemons = areanWants.map(p => {
             if (p.aid === id) { p = tempPokemon; if(p.arwant === true) { p.arwant = 1;}; };

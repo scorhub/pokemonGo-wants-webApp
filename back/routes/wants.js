@@ -23,29 +23,28 @@ router.get('/', (req, res, next) => {
 });
 
 router.patch('/:id', (req, res) => {
-    const entryData = req.body;
     const id = req.params.id;
     const uid = res.locals.auth.uid;
-    if (!(typeof entryData.want === 'boolean')) { return res.status(400).json({error: 'Want must be in boolean!'}) };
-    const updData = { want: entryData.want };
+    if (!(typeof req.body.want === 'boolean')) { return res.status(400).json({error: 'Want must be in boolean!'}) };
     knex('wants').where('wpid', '=', id).andWhere('uid', '=', uid)
     .then(wanted => {
         if(wanted.length === 0){
             const newWant = {
-                wpid: req.body.pid,
+                wpid: id,
                 uid: uid,
-                want: true
+                want: req.body.want
             };
             knex('wants').insert(newWant)
             .then(wId => {
                 knex('changes').insert({uid: uid, wid: wId, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({error:'Database error in making new want.'}) });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         } else {
-            knex('wants').where('wpid', '=', id).andWhere('uid', '=', uid).update(updData) .then(status => {
+            knex('wants').where('wpid', '=', id).andWhere('uid', '=', uid).update(req.body)
+            .then(status => {
                 knex('changes').insert({uid: uid, wid: wanted[0].wid, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({ error: 'Database error in updating existing want.' }) });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         };
@@ -69,12 +68,10 @@ router.get('/always', (req, res, next) => {
 });
 
 router.patch('/always/:id', (req, res) => {
-    const entryData = req.body;
     const id = req.params.id;
     const uid = res.locals.auth.uid;
-    if (!(typeof entryData.awant === 'boolean')) { return res.status(400).json({error: 'Want must be in boolean!'}) };
-    const updAlwaysWant = { awant: entryData.awant };
-    if (entryData.awant === true) {
+    if (!(typeof req.body.awant === 'boolean')) { return res.status(400).json({error: 'Want must be in boolean!'}) };
+    if (req.body.awant === true) {
         knex.select('*').from('wants_always').where('wants_always.uid', '=', uid)
         knex('wants_always').where('uid', '=', uid).andWhere('awant', '=', true).count('awid as amount')
         .then(areanAmount => { if (areanAmount[0].amount >= 50) { res.status(403).json({error: 'Maximum amount of always wants is 50.'}) };
@@ -84,21 +81,21 @@ router.patch('/always/:id', (req, res) => {
     .then(AlwaysWant => {
         if(AlwaysWant.length === 0){
             const newAlwaysWant = {
-                awpid: req.body.pid,
+                awpid: id,
                 uid: uid,
-                awant: true
+                awant: req.body.awant
             };
             knex('wants_always').insert(newAlwaysWant)
             .then(awId => {
                 knex('changes').insert({uid: uid, awid: awId, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({error: 'Database error in making new always want.'}) });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         } else {
-            knex('wants_always').where('awpid', '=', id).andWhere('uid', '=', uid).update(updAlwaysWant)
+            knex('wants_always').where('awpid', '=', id).andWhere('uid', '=', uid).update(req.body)
             .then(status => {
                 knex('changes').insert({uid: uid, awid: AlwaysWant[0].awid, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({error: 'Database error in updating existing always want.'}) });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         };
@@ -122,30 +119,28 @@ router.get('/arean', (req, res, next) => {
 });
 
 router.patch('/arean/:id', (req, res) => {
-    const entryData = req.body;
     const id = req.params.id;
     const uid = res.locals.auth.uid;
-    if (!(typeof entryData.arwant === 'boolean')) { return res.status(400).json({error:'Want must be in boolean!'}) };
-    const updAreanWant = { arwant: entryData.arwant };
+    if (!(typeof req.body.arwant === 'boolean')) { return res.status(400).json({error:'Want must be in boolean!'}) };
     knex('wants_arean').where('arwpid', '=', id).andWhere('uid', '=', uid)
     .then(areanWant => {
         if(areanWant.length === 0){
             const newAreanWant = {
-                arwpid: req.body.aid,
+                arwpid: id,
                 uid: uid,
-                arwant: true
+                arwant: req.body.arwant
             };
             knex('wants_arean').insert(newAreanWant)
             .then(arwid => {
                 knex('changes').insert({uid: uid, arwid: arwid, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({error: 'Database error in making new areanwant.'})  });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         } else {
-            knex('wants_arean').where('arwpid', '=', id).andWhere('uid', '=', uid).update(updAreanWant)
+            knex('wants_arean').where('arwpid', '=', id).andWhere('uid', '=', uid).update(req.body)
             .then(status => {
                 knex('changes').insert({uid: uid, arwid: areanWant[0].arwid, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({error: 'Database error in updating existing areanwant.'}) });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         };
@@ -169,30 +164,28 @@ router.get('/costume', (req, res, next) => {
 });
 
 router.patch('/costume/:id', (req, res) => {
-    const entryData = req.body;
     const id = req.params.id;
     const uid = res.locals.auth.uid;
-    if (!(typeof entryData.cwant === 'boolean')) { return res.status(400).json({error:'Want must be in boolean!'}) };
-    const updCosWant = { cwant: entryData.cwant };
+    if (!(typeof req.body.cwant === 'boolean')) { return res.status(400).json({error:'Want must be in boolean!'}) };
     knex('wants_costume').where('cwpid', '=', id).andWhere('uid', '=', uid)
     .then(cosWant => {
         if(cosWant.length === 0){
             const newCosWant = {
-                cwpid: req.body.cid,
+                cwpid: id,
                 uid: uid,
-                cwant: true
+                cwant: req.body.cwant
             };
             knex('wants_costume').insert(newCosWant)
             .then(cwid => {
                 knex('changes').insert({uid: uid, cwid: cwid, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({error: 'Database error in making new costume want.'})  });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         } else {
-            knex('wants_costume').where('cwpid', '=', id).andWhere('uid', '=', uid).update(updCosWant)
+            knex('wants_costume').where('cwpid', '=', id).andWhere('uid', '=', uid).update(req.body)
             .then(status => {
                 knex('changes').insert({uid: uid, cwid: cosWant[0].cwid, changetime: new Date()})
-                .then(status => { res.status(200).json(entryData) })
+                .then(status => { res.status(204).end() })
                 .catch(err => { res.status(500).json({error: 'Database error in updating existing costume want.'}) });
             }).catch(err => { res.status(500).json({error: 'Database error in adding changes.'}) });
         };

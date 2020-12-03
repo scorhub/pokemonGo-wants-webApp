@@ -11,7 +11,6 @@ const CostumeWants = ({type})  => {
   const [searchPara, setSearchPara] = useState( {"filtered": ""} );
   const [filCostume, setFilCostume] = useState([]);
   const [filWantCos, setFilWantCos] = useState([]);
-  console.log(costumeWants)
 
   let searchCostume = searchPara.filtered.length > 0 ? filCostume : costumeWants;
   let searchCosWants = searchPara.filtered.length > 0 ? filWantCos : myCostumeWants;
@@ -26,7 +25,7 @@ const CostumeWants = ({type})  => {
     e.stopPropagation();
     let tempPokemon = costumeWants.find(p => p.cid === id);
     tempPokemon = { ...tempPokemon, cwant: value };
-    apiService.changeWant(id, tempPokemon, type)
+    apiService.changeWant(id, {cwant: value}, type)
     .then(res => {
         const tempPokemons = costumeWants.map(p => {
             if (p.cid === id) { p = tempPokemon; if(p.cwant === true) { p.cwant = 1;}; };

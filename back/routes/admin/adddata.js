@@ -13,7 +13,6 @@ router.get('/type/list', (req, res, next) => {
 
 router.patch('/type/:id', (req, res, next) => {
     const body = req.body;
-    console.log(body)
     const id = req.params.id;
     if (body.type1 === undefined && body.type2 === undefined) { return res.status(400).json({error: 'Type required.'}); };
     knex.first('*').from('pokemons').where('pid', '=', id)

@@ -25,7 +25,7 @@ const Wants = ({type}) => {
         e.stopPropagation();
         let tempPokemon = wants.find(p => p.pid === id);
         tempPokemon = { ...tempPokemon, want: value };
-        apiService.changeWant(id, tempPokemon, type)
+        apiService.changeWant(id, {want: value}, type)
         .then(res => {
             const tempPokemons = wants.map(p => {
                 if (p.pid === id) { p = tempPokemon; if(p.want === true) { p.want = 1;}; };

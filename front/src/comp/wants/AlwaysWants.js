@@ -25,7 +25,7 @@ const AlwaysWants = ({type})  => {
       e.stopPropagation();
       let tempPokemon = alWants.find(p => p.pid === id);
       tempPokemon = { ...tempPokemon, awant: value };
-      apiService.changeWant(id, tempPokemon, type)
+      apiService.changeWant(id, {awant: value}, type)
       .then(res => {
           const tempPokemons = alWants.map(p => {
               if (p.pid === id) { p = tempPokemon; if(p.awant === true) { p.awant = 1;}; };
