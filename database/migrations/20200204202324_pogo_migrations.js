@@ -97,9 +97,9 @@ exports.up = function(knex, Promise) {
     .createTable("news", t => {
       t.increments("nid").primary();
       t.integer("nuid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
-      t.date("ndate").notNullable();
       t.string("ntitle", 255).notNullable();
       t.string("ntext", 2500).nullable();
+      t.date("ndate").notNullable();
       t.boolean("narchived").notNullable().default(false);
     })
 };

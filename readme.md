@@ -252,8 +252,8 @@ module.exports = [
 ```
 module.exports = [
     { nid: 1, nuid: 1, ndate: '2020-12-04T22:00:00.000Z', ntitle: "Test News Title", ntext: null, narchived: 0 },
-    { nid: 2, nuid: 1, ndate: new Date(), ntitle: "Test News Title", ntext: null, narchived: 0 },
-    { nid: 3, nuid: 1, ndate: new Date(), ntitle: "Test News Title", ntext: null, narchived: 1 }
+    { nid: 2, nuid: 1, ntitle: "Test News Title", ntext: null, ndate: new Date(), narchived: 0 },
+    { nid: 3, nuid: 1, ntitle: "Test News Title", ntext: null, ndate: new Date(), narchived: 1 }
 ];
 ```
 ##### pokemonareandata.js

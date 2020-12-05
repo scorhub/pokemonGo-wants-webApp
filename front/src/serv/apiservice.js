@@ -13,6 +13,7 @@ const pokeURI = `${adminURI}/pokemons`;
 const seedURI = `${adminURI}/seeds`;
 const addDataURI = `${adminURI}/adddata`;
 const manageModURI = `${adminURI}/moderator`;
+const newsURI = `${adminURI}/news`;
 
 let token = null;
 
@@ -223,4 +224,10 @@ const getFrontFeed = async () => {
   return res.data
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed };
+const postNews = async (data, type) => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.post(`${newsURI}/`, data, config);
+  return res.data;
+};
+
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews };
