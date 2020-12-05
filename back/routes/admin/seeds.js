@@ -50,15 +50,21 @@ router.get('/features', (req, res, next) => {
 });
 
 router.get('/events', (req, res, next) => {
-
+    knex.select("*").from('events').orderBy('eid')
+    .then(rows => { res.status(200).json(rows) })
+    .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
 router.get('/eventmons', (req, res, next) => {
-
+    knex.select("*").from('eventmons').orderBy('emid')
+    .then(rows => { res.status(200).json(rows) })
+    .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
 router.get('/news', (req, res, next) => {
-    
+    knex.select("*").from('news').orderBy('nid')
+    .then(rows => { res.status(200).json(rows) })
+    .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
 module.exports = router;

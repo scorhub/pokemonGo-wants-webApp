@@ -26,6 +26,10 @@ import PrintWantSeeds from './admin/prints/wants/PrintWantSeeds';
 import PrintAlWantSeeds from './admin/prints/wants/PrintAlWantSeed';
 import PrintAreanWantSeeds from './admin/prints/wants/PrintAreanWantSeeds';
 import PrintCostumeWantSeeds from './admin/prints/wants/PrintCostumeWantSeeds';
+import PrintFeaturesSeeds from './admin/prints/otherseeds/PrintFeaturesSeeds';
+import PrintEventSeeds from './admin/prints/otherseeds/PrintEventSeeds';
+import PrintEventMonSeeds from './admin/prints/otherseeds/PrintEventMonSeeds';
+import PrintNewsSeeds from './admin/prints/otherseeds/PrintNewsSeeds';
 
 import AddPokemon from './admin/add/AddPokemon';
 import AddCostume from './admin/add/AddCostume';
@@ -34,7 +38,6 @@ import AddGeneration from './admin/add/AddGeneration';
 import AddRarity from './admin/add/AddRarity';
 import AddReleased from './admin/add/AddReleased';
 import AddMega from './admin/add/AddMega';
-import PrintFeaturesSeeds from './admin/prints/otherseeds/PrintFeaturesSeeds';
 import ManageModerator from './admin/users/ManageModerator';
 import CostumeWants from './wants/CostumeWants';
 
@@ -66,6 +69,9 @@ const MainRouter = () => {
                     <Route exact path={`/admin/print/areanwantseeds`} render={(props) => <PrintAreanWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/costumewantseeds`} render={(props) => <PrintCostumeWantSeeds {...props} />} />
                     <Route exact path={`/admin/print/featuresseeds`} render={(props) => <PrintFeaturesSeeds {...props} />} />
+                    <Route exact path={`/admin/print/eventseeds`} render={(props) => <PrintEventSeeds {...props} />} />
+                    <Route exact path={`/admin/print/eventmonsseeds`} render={(props) => <PrintEventMonSeeds {...props} />} />
+                    <Route exact path={`/admin/print/newsseeds`} render={(props) => <PrintNewsSeeds {...props} />} />
                     <Route exact path={`/admin/add/pokemon`} render={(props) => <AddPokemon {...props} />} />
                     <Route exact path={`/admin/add/costume`} render={(props) => <AddCostume {...props} />} />
                     <Route exact path={`/admin/add/types`} render={(props) => <AddTypes {...props} />} />
