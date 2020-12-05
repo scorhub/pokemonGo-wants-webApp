@@ -96,6 +96,7 @@ exports.up = function(knex, Promise) {
       t.boolean("inprogress").nullable().default(false);
       t.boolean("completed").nullable().default(false);
       t.string("dnote", 255).nullable();
+      t.boolean("farchived").nullable().default(false);
     })
     .createTable("news", t => {
       t.increments("nid").primary();
@@ -103,7 +104,7 @@ exports.up = function(knex, Promise) {
       t.datetime("ndate").notNullable();
       t.string("ntitle", 255).notNullable();
       t.string("ntext", 2500).nullable();
-      t.boolean("archived").nullable().default(false);
+      t.boolean("narchived").nullable().default(false);
     })
 };
 
