@@ -15,6 +15,7 @@ import OtherWants, { OneWants } from './wants/OtherWants';
 import Wants from './wants/Wants';
 import AlwaysWants from './wants/AlwaysWants';
 import AreanWants from './wants/AreanWants';
+import CostumeWants from './wants/CostumeWants';
 /* One component to handle all wantlists is not currently working.  */ 
 // import MasterWant from './wants/MasterWant';
 import Personal from './Personal';
@@ -39,7 +40,12 @@ import AddRarity from './admin/add/AddRarity';
 import AddReleased from './admin/add/AddReleased';
 import AddMega from './admin/add/AddMega';
 import ManageModerator from './admin/users/ManageModerator';
-import CostumeWants from './wants/CostumeWants';
+import WriteNews from './admin/news/WriteNews';
+import ModifyNews from './admin/news/ModifyNews';
+import ArchivedNews from './admin/news/ArchivedNews';
+import AddEvent from './admin/events/AddEvent';
+import ModifyEvent from './admin/events/ModifyEvent';
+import PastEvents from './admin/events/PastEvents';
 
 const MainRouter = () => {
     const [users, setUsers] = useState([]);
@@ -80,6 +86,12 @@ const MainRouter = () => {
                     <Route exact path={`/admin/add/released`} render={(props) => <AddReleased {...props} />} />
                     <Route exact path={`/admin/add/mega`} render={(props) => <AddMega {...props} />} />
                     <Route exact path={`/admin/users/moderator`} render={(props) => <ManageModerator {...props} />} />
+                    <Route exact path={`/admin/news/write`} render={(props) => <WriteNews {...props} />} />
+                    <Route exact path={`/admin/news/modify`} render={(props) => <ModifyNews {...props} />} />
+                    <Route exact path={`/admin/news/archived`} render={(props) => <ArchivedNews {...props} />} />
+                    <Route exact path={`/admin/events/add`} render={(props) => <AddEvent {...props} />} />
+                    <Route exact path={`/admin/events/modify`} render={(props) => <ModifyEvent {...props} />} />
+                    <Route exact path={`/admin/events/past`} render={(props) => <PastEvents {...props} />} />
                     <Route exact path={`/`} render={(props) => <Front {...props} />} />
                     <Route component={PageNotFound} />
                 </Switch>

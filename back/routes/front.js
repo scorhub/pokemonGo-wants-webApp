@@ -14,7 +14,6 @@ router.get('/', (req, res, next) => {
     let sixMonthsAgo = year + "-" + month + "-" + day;
     knex.select('eid as fid', 'ename', 'etext', 'estart', 'eend', 'elink', 'ewritedate as published').from('events').where('estart', '>=', sixMonthsAgo).orderBy('published', 'ASC')
     .then(events => {
-        console.log(events)
         knex.select('nid', 'nuid', 'ntitle', 'ntext', 'showname', 'ndate as published').from('news').whereNot('narchived', 1).join('users', 'users.uid', 'news.nuid').orderBy('published', 'ASC')
         .then(news => {
             let maxFid = 0;
