@@ -236,6 +236,12 @@ module.exports = [
     { eid: 7, ename: "Test Event 7", etext: null, estart: null, eend: null, ewritedate: new Date() }
 ];
 ```
+##### eventmonsdata.js
+```
+module.exports = [
+    { emid: 1, eid: 1, epid: 1 }
+]
+```
 ##### featuredata.js
 ```
 module.exports = [

@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
     if(month < 10) { month = "0" + month; };
     if(day < 10) { day = "0" + day; };
     let sixMonthsAgo = year + "-" + month + "-" + day;
-    console.log(sixMonthsAgo)
     knex.select('eid as fid', 'ename', 'etext', 'estart', 'eend', 'elink', 'ewritedate as published').from('events').where('estart', '>=', sixMonthsAgo).orderBy('published', 'ASC')
     .then(events => {
         console.log(events)

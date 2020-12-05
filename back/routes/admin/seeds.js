@@ -49,14 +49,22 @@ router.get('/features', (req, res, next) => {
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
+let dateNow = new Date();
+let year = dateNow.getFullYear();
+let month = dateNow.getMonth()-5;
+let day = dateNow.getDate();
+if(month < 10) { month = "0" + month; };
+if(day < 10) { day = "0" + day; };
+let sixMonthsAgo = year + "-" + month + "-" + day;
+
 router.get('/events', (req, res, next) => {
-    knex.select("*").from('events').orderBy('eid')
+    knex.select("*").from('events').where('estart', '>=', sixMonthsAgo).orderBy('eid')
     .then(rows => { res.status(200).json(rows) })
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
 
 router.get('/eventmons', (req, res, next) => {
-    knex.select("*").from('eventmons').orderBy('emid')
+    knex.select('emid', 'eventmons.eid', 'epid').from('eventmons').join('events', 'events.eid', 'eventmons.eid').where('estart', '>=', sixMonthsAgo).orderBy('emid')
     .then(rows => { res.status(200).json(rows) })
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
