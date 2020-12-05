@@ -80,12 +80,6 @@ exports.up = function(knex, Promise) {
       t.integer("eid").unsigned().references("eid").inTable("events").notNull().onDelete("cascade");
       t.integer("epid").unsigned().references("pid").inTable("pokemons").notNull().onDelete("cascade");
     })
-    .createTable("workinprogress", t => {
-      t.increments("wipid").primary();
-      t.string("title", 255).notNullable();
-      t.string("extrainfo", 1000).notNullable();
-      t.integer("uid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
-    })
     .createTable("askfeature", t => {
       t.increments("afid").primary();
       t.integer("afuid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
@@ -112,7 +106,6 @@ exports.down = function(knex, Promise) {
   return knex.schema
   .dropTableIfExists("news")
   .dropTableIfExists("askfeature")
-  .dropTableIfExists("workinprogress")
   .dropTableIfExists("eventmons")
   .dropTableIfExists("changes")
   .dropTableIfExists("wants_costume")

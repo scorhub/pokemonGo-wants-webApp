@@ -4,7 +4,7 @@ import { OtherDataHook } from '../../../hooks/SeedHooks';
 const EPokemon = ({epokemon}) => {
     return (
         <div>
-            &#123;&nbsp;emid&#58;&nbsp;{epokemon.emid}&#44;&nbsp;eid&#58;&nbsp;&#39;{epokemon.eid}&#39;&#44;&nbsp;epid&#58;&nbsp;&#39;{epokemon.epid}&#39;&#44;&nbsp;&#125;&#44;
+            &#123;&nbsp;emid&#58;&nbsp;{epokemon.emid}&#44;&nbsp;eid&#58;&nbsp;{epokemon.eid}&#44;&nbsp;epid&#58;&nbsp;{epokemon.epid}&nbsp;&#125;&#44;
         </div>
     );
 };
