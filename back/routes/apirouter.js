@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+var frontRouter = require('./front');
 var wantRouter = require('./wants');
 var userRouter = require('./users');
 var featureRouter = require('./features');
@@ -9,6 +10,7 @@ var changesRouter = require('./changes');
 var passwordRouter = require('./password');
 var adminRouter = require('./adminapi');
 
+app.use('/front', frontRouter);
 app.use('/wants', wantRouter);
 app.use('/users', userRouter);
 app.use('/features', featureRouter);

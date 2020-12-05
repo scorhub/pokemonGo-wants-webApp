@@ -228,10 +228,26 @@ module.exports = {
 I have used mysql as my database, but it can be changed to your preferred one, check [Knex](http://www.knexjs.org) for more information.
 
 Inside of ```datafiles```, there are 6 files that are needed to migrate database to server. Examples of contents of files are listed below:
+##### eventdata.js
+```
+module.exports = [
+    { eid: 1, ename: "Test Event", etext: null, estart: null, eend: null, ewritedate: '2020-12-02T22:00:00.000Z' },
+    { eid: 2, ename: "Test Event 2", etext: null, estart: null, eend: null, ewritedate: '2020-12-03T22:00:00.000Z' },
+    { eid: 7, ename: "Test Event 7", etext: null, estart: null, eend: null, ewritedate: new Date() }
+];
+```
 ##### featuredata.js
 ```
 module.exports = [
-    { afid: 1, afuid: 1, afdate: new Date(), aftitle: "Test Asking", afinfo: null, addedtolist: null, inprogress: null, completed: null, dnote: null, farchived: null }
+    { afid: 1, afuid: 1, afdate: new Date(), aftitle: "Test Asking", afinfo: null, addedtolist: null, inprogress: null, completed: null, dnote: null, farchived: 0 }
+];
+```
+##### newsdata.js
+```
+module.exports = [
+    { nid: 1, nuid: 1, ndate: '2020-12-04T22:00:00.000Z', ntitle: "Test News Title", ntext: null, narchived: 0 },
+    { nid: 2, nuid: 1, ndate: new Date(), ntitle: "Test News Title", ntext: null, narchived: 0 },
+    { nid: 3, nuid: 1, ndate: new Date(), ntitle: "Test News Title", ntext: null, narchived: 1 }
 ];
 ```
 ##### pokemonareandata.js

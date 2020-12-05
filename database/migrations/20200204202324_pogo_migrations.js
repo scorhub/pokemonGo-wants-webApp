@@ -13,10 +13,12 @@ exports.up = function(knex, Promise) {
     })
     .createTable("events", t => {
       t.increments("eid").primary();
-      t.string("etitle", 300).notNullable();
+      t.string("ename", 300).notNullable();
       t.string("etext", 2500).nullable();
       t.datetime("estart").nullable();
       t.datetime("eend").nullable();
+      t.string("elink", 250).nullable();
+      t.date("ewritedate").notNullable();
     })
     .createTable("pokemons", t => {
       t.increments("pid").primary();
@@ -90,15 +92,15 @@ exports.up = function(knex, Promise) {
       t.boolean("inprogress").nullable().default(false);
       t.boolean("completed").nullable().default(false);
       t.string("dnote", 255).nullable();
-      t.boolean("farchived").nullable().default(false);
+      t.boolean("farchived").notNullable().default(false);
     })
     .createTable("news", t => {
       t.increments("nid").primary();
       t.integer("nuid").unsigned().references("uid").inTable("users").notNull().onDelete("cascade");
-      t.datetime("ndate").notNullable();
+      t.date("ndate").notNullable();
       t.string("ntitle", 255).notNullable();
       t.string("ntext", 2500).nullable();
-      t.boolean("narchived").nullable().default(false);
+      t.boolean("narchived").notNullable().default(false);
     })
 };
 

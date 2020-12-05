@@ -4,7 +4,7 @@ import { OtherDataHook } from '../../../hooks/SeedHooks';
 const Event = ({event}) => {
     return (
         <div>
-            &#123;&nbsp;eid&#58;&nbsp;{event.eid}&#44;&nbsp;etitle&#58;&nbsp;&#39;{event.etitle}&#39;&#44;&nbsp;etext&#58;&nbsp;{event.etext !== null ? "'" + event.etext + "'" : "null"}&#44;&nbsp;estart&#58;&nbsp;{event.estart !== null ? "'" + event.estart + "'" : "null"}&#44;&nbsp;eend&#58;&nbsp;{event.eend !== null ? "'" + event.eend + "'" : "null"}&nbsp;&#125;&#44;
+            &#123;&nbsp;eid&#58;&nbsp;{event.eid}&#44;&nbsp;ename&#58;&nbsp;&#39;{event.ename}&#39;&#44;&nbsp;etext&#58;&nbsp;{event.etext !== null ? "'" + event.etext + "'" : "null"}&#44;&nbsp;estart&#58;&nbsp;{event.estart !== null ? "'" + event.estart + "'" : "null"}&#44;&nbsp;eend&#58;&nbsp;{event.eend !== null ? "'" + event.eend + "'" : "null"}&nbsp;elink&#58;&nbsp;{event.elink !== null ? "'" + event.elink + "'" : "null"}&nbsp;&#125;&#44;
         </div>
     );
 };

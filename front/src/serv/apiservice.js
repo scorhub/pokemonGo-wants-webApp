@@ -217,4 +217,10 @@ const patchModData = async (id, data) => {
   return res.data
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData };
+const getFrontFeed = async () => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.get(`${verifiedURI}/front`, config);
+  return res.data
+};
+
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed };
