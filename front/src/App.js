@@ -4,7 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import PageNotFound from './comp/PageNotFound';
+import PageNotFound from './comp/pages/PageNotFound';
 import PrivateRoute from './comp/PrivateRoute';
 import MainRouter from './comp/MainRouter';
 import Login from './comp/Login';

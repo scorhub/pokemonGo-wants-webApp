@@ -7,6 +7,8 @@ var userRouter = require('./users');
 var featureRouter = require('./features');
 var myWantsRouter = require('./mywants');
 var changesRouter = require('./changes');
+var newsRouter = require('./news');
+var eventsRouter = require('./events');
 var passwordRouter = require('./password');
 var adminRouter = require('./adminapi');
 
@@ -16,6 +18,8 @@ app.use('/users', userRouter);
 app.use('/features', featureRouter);
 app.use('/mywants', myWantsRouter);
 app.use('/changes', changesRouter);
+app.use('/news', newsRouter);
+app.use('/events', eventsRouter);
 app.use('/password', passwordRouter);
 app.use('/admin', adminRouter);
 

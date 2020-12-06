@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
-import FrontHook from './hooks/FrontHook';
+import FrontHook from '../hooks/FrontHook';
 
 const TextBox = ({text}) => {
     const [hidden, setHidden] = useState(false);

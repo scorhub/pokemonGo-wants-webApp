@@ -12,9 +12,9 @@ router.get('/', (req, res, next) => {
     if(month < 10) { month = "0" + month; };
     if(day < 10) { day = "0" + day; };
     let threeMonthsAgo = year + "-" + month + "-" + day;
-    knex.select('eid as fid', 'ename', 'etext', 'estart', 'eend', 'elink', 'ewritedate as published').from('events').where('estart', '>=', threeMonthsAgo).orderBy('published', 'ASC')
+    knex.select('eid as fid', 'ename', 'etext', 'estart', 'eend', 'elink', 'ewritedate as published').from('events').where('estart', '>=', threeMonthsAgo).orderBy('published', 'DESC')
     .then(events => {
-        knex.select('nid', 'nuid', 'ntitle', 'ntext', 'showname', 'ndate as published').from('news').whereNot('narchived', 1).join('users', 'users.uid', 'news.nuid').orderBy('published', 'ASC')
+        knex.select('nid', 'ntitle', 'ntext', 'showname', 'ndate as published').from('news').whereNot('narchived', 1).join('users', 'users.uid', 'news.nuid').orderBy('published', 'DESC')
         .then(news => {
             let maxFid = 0;
             if(events.length > 0){ maxFid = events.reduce((max, event) => (event.fid > max ? event.fid : max), events[0].fid); }

@@ -4,13 +4,16 @@ import { Switch, Route } from "react-router-dom";
 import Header from './parts/Header';
 import Navbar from './parts/Navbar';
 import Footer from './parts/Footer';
-import PageNotFound from './PageNotFound';
+import PageNotFound from './pages/PageNotFound';
 
 import TokenHook from './hooks/TokenHook';
 import GetOthersHook from './hooks/GetOthersHook';
 
-import Front from './Front';
-import AskFeature from './AskFeature';
+import Front from './pages/Front';
+import AskFeature from './pages/AskFeature';
+import Personal from './pages/Personal';
+import News from './pages/News';
+import Events from './pages/Events';
 import OtherWants, { OneWants } from './wants/OtherWants';
 import Wants from './wants/Wants';
 import AlwaysWants from './wants/AlwaysWants';
@@ -18,7 +21,6 @@ import AreanWants from './wants/AreanWants';
 import CostumeWants from './wants/CostumeWants';
 /* One component to handle all wantlists is not currently working.  */ 
 // import MasterWant from './wants/MasterWant';
-import Personal from './Personal';
 
 import PrintDataSeeds from './admin/prints/data/PrintDataSeeds';
 import PrintAreanDataSeeds from './admin/prints/data/PrintAreanDataSeeds';
@@ -67,6 +69,8 @@ const MainRouter = () => {
                     <Route exact path={`/otherwants/:uid`} render={(props) => <OneWants {...props} users={users} />} />
                     <Route exact path={`/askfeature`} render={(props) => <AskFeature {...props} />} />
                     <Route exact path={`/personal`} render={(props) => <Personal {...props} />} />
+                    <Route exact path={`/news`} render={(props) => <News {...props} />} />
+                    <Route exact path={`/events`} render={(props) => <Events {...props} />} />
                     <Route exact path={`/admin/print/dataseeds`} render={(props) => <PrintDataSeeds {...props} />} />
                     <Route exact path={`/admin/print/areandataseeds`} render={(props) => <PrintAreanDataSeeds {...props} />} />
                     <Route exact path={`/admin/print/costumedataseeds`} render={(props) => <PrintCostumeDataSeeds {...props} />} />

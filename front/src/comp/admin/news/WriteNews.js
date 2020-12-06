@@ -7,7 +7,7 @@ const WriteNews = () => {
     const addNews = (e) => {
         e.preventDefault();
         apiService.postNews(newNews)
-        .then(res => { })
+        .then(res => { window.location.reload() })
         .catch(e => { alert('Something went wrong.') });
     };
     

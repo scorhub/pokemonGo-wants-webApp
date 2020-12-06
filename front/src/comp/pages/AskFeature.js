@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import apiService from '../serv/apiservice';
-import GetFeaturesHook from './hooks/GetFeaturesHook';
+import apiService from '../../serv/apiservice';
+import GetFeaturesHook from '../hooks/GetFeaturesHook';
 
 const AskFeature = () => {
     const [newAsk, setNewAsk] = useState({ "aftitle": "", "afinfo": "" });

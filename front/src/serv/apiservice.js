@@ -8,12 +8,15 @@ const userURI = `${verifiedURI}/users`;
 const wantsURI = `${verifiedURI}/wants`;
 const featureURI = `${verifiedURI}/features`;
 const myWantsURI = `${verifiedURI}/mywants`;
+const newsURI = `${verifiedURI}/news`;
+const eventsURI = `${verifiedURI}/events`;
 
 const pokeURI = `${adminURI}/pokemons`;
 const seedURI = `${adminURI}/seeds`;
 const addDataURI = `${adminURI}/adddata`;
 const manageModURI = `${adminURI}/moderator`;
-const newsURI = `${adminURI}/news`;
+const adminNewsURI = `${adminURI}/news`;
+const adminEventsURI = `${adminURI}/events`;
 
 let token = null;
 
@@ -224,10 +227,28 @@ const getFrontFeed = async () => {
   return res.data
 };
 
-const postNews = async (data, type) => {
+const postNews = async data => {
   const config = { headers: { Authorization: token } };
-  const res = await axios.post(`${newsURI}/`, data, config);
+  const res = await axios.post(`${adminNewsURI}/`, data, config);
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews };
+const getNews = async () => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.get(`${newsURI}/`, config);
+  return res.data;
+};
+
+const postEvent = async data => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.post(`${adminEventsURI}/`, data, config);
+  return res.data;
+};
+
+const getEvents = async () => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.get(`${eventsURI}/`, config);
+  return res.data;
+};
+
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews, getNews, postEvent, getEvents };

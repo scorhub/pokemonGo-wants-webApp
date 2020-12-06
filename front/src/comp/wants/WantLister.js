@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageBox from '../ImageBox';
+import ImageBox from './ImageBox';
 
 const PokemonMapper = ({ pokemon, changeEngine, type }) => {
     if (type === "lucky"){

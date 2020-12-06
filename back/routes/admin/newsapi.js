@@ -5,7 +5,6 @@ const options = config.DATABASE_OPTIONS;
 const knex = require('knex')(options);
 
 router.post('/', (req, res, next) => {
-    console.log('admin news POST')
     let text = req.body.ntext.replace(/\n/g, '<br/>');;
     const newNews = {
         nuid: res.locals.auth.uid,
@@ -16,7 +15,7 @@ router.post('/', (req, res, next) => {
     };
     console.log(newNews)
     knex('news').insert(newNews)
-    .then(fid => { res.status(201).end() })
+    .then(nid => { res.status(201).end() })
     .catch(err => { res.status(500).json({error: 'Database error.'}) });
 });
 
