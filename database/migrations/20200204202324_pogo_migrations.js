@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
       t.string("username", 15).notNullable().unique();
       t.string("password", 255).notNullable();
       t.string("showname", 50).notNullable();
+      t.string("email", 50).nullable();
     })
     .createTable("events", t => {
       t.increments("eid").primary();
