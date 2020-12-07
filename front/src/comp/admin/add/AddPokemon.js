@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import apiService from '../../../serv/apiservice';
-import GetCountHook from '../../hooks/GetCountHook';
+import { GetCountHook } from '../../hooks/AdminHooks';
 
 const AddPokemon = () => {
     const [count, setCount] = useState([]);

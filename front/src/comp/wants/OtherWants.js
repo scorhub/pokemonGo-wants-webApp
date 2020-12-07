@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useParams, useRouteMatch } from 'react-router-dom';
-import { GetOtherWants } from '../hooks/GetOthersHook';
+import { GetOtherWants } from '../hooks/GetWantsHook';
 import WantLister from './WantLister';
 
 const OneWants = ({users}) => {

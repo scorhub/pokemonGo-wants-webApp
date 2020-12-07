@@ -11,4 +11,25 @@ const GetWantsHook = ({setList, type}) => {
   return (<></>);
 };
 
+const GetMyWantsHook = ({setList, type}) => {
+  const mywantshook = () => {
+    apiService.myWantGetter(type)
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(mywantshook, []);
+  return (<></>);
+};
+
+const GetOtherWants = ({setList, id, type}) => {
+  const othershook = () => {
+    apiService.otherWantGetter(id, type)
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(othershook, []);
+  return (<></>);
+};
+
 export default GetWantsHook;
+export { GetMyWantsHook, GetOtherWants };

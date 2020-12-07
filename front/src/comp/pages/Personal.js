@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GetMyWantsHook from '../hooks/GetMyWantsHook';
+import { GetMyWantsHook } from '../hooks/GetWantsHook';
 import WantLister from '../wants/WantLister';
 import apiService from '../../serv/apiservice';
 

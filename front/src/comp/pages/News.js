@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
-import NewsHook from '../hooks/NewsHook';
+import { NewsHook } from '../hooks/CommonHooks';
 import apiService from '../../serv/apiservice';
 
 const EditWindow = ({updEngine, editPost, setEditPost, setShow, id}) => {

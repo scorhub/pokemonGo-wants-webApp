@@ -21,5 +21,15 @@ const GetModHook = ({setList}) => {
   return (<></>);
 };
 
+const GetCountHook = ({setList}) => {
+  const counthook = () => {
+    apiService.getPokemonCount()
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(counthook, []);
+  return (<></>);
+};
+
 export default GetAddHook;
-export { GetModHook };
+export { GetModHook, GetCountHook };

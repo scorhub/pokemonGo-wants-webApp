@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
-import EventsHook from '../hooks/EventsHook';
+import { EventsHook } from '../hooks/CommonHooks';
 import apiService from '../../serv/apiservice';
 
 const EditWindow = ({updEngine, editEvent, setEditEvent, setShow, id}) => {

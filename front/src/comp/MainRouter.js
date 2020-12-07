@@ -7,7 +7,7 @@ import Footer from './parts/Footer';
 import PageNotFound from './pages/PageNotFound';
 
 import TokenHook from './hooks/TokenHook';
-import GetOthersHook from './hooks/GetOthersHook';
+import { GetOthersHook } from './hooks/CommonHooks';
 
 import Front from './pages/Front';
 import AskFeature from './pages/AskFeature';
@@ -43,10 +43,8 @@ import AddReleased from './admin/add/AddReleased';
 import AddMega from './admin/add/AddMega';
 import ManageModerator from './admin/users/ManageModerator';
 import WriteNews from './admin/news/WriteNews';
-import ModifyNews from './admin/news/ModifyNews';
 import ArchivedNews from './admin/news/ArchivedNews';
 import AddEvent from './admin/events/AddEvent';
-import ModifyEvent from './admin/events/ModifyEvent';
 import PastEvents from './admin/events/PastEvents';
 
 const MainRouter = () => {
@@ -91,10 +89,8 @@ const MainRouter = () => {
                     <Route exact path={`/admin/add/mega`} render={(props) => <AddMega {...props} />} />
                     <Route exact path={`/admin/users/moderator`} render={(props) => <ManageModerator {...props} />} />
                     <Route exact path={`/admin/news/write`} render={(props) => <WriteNews {...props} />} />
-                    <Route exact path={`/admin/news/modify`} render={(props) => <ModifyNews {...props} />} />
                     <Route exact path={`/admin/news/archived`} render={(props) => <ArchivedNews {...props} />} />
                     <Route exact path={`/admin/events/add`} render={(props) => <AddEvent {...props} />} />
-                    <Route exact path={`/admin/events/modify`} render={(props) => <ModifyEvent {...props} />} />
                     <Route exact path={`/admin/events/past`} render={(props) => <PastEvents {...props} />} />
                     <Route exact path={`/`} render={(props) => <Front {...props} />} />
                     <Route component={PageNotFound} />
