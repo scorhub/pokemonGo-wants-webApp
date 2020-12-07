@@ -21,16 +21,19 @@ As of this is hobby project, and not complete, user interface were originally wr
 	- [Root](#root-structure)
 - [Ignored Files](#ignored-files)
 - [How to Deploy](#how-to-deploy)
+	- [Set Up](#set-up)
+	- [Testing Backend](#testing-backend)
+	- [Run Locally](#run-locally)
 	- [Deploy Online](#deploy-online)
-	- [Test Locally](#test-locally)
 - [Licence](#licence)
 
 ## Version
 
-The app is currently labeled as version 0.58, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
+The app is currently labeled as version 0.6, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
 
 ### Version history
 
+- 0.6  Costume wants, news, events, moderator rights.
 - 0.58 Moderator navbar, add additional data to pokemon data, add costume variants.
 - 0.57 Moderator check added, always-want size restricted to 50.
 - 0.55 Tests added to backend
@@ -320,9 +323,13 @@ Only ignored file is *.gitignore*, remember to create one beforing uploading own
 
 To be added later
 
-### Deploy Online
+### Set Up
 
-### Test Locally
+### Testing Backend
+
+### Run Locally
+
+### Deploy Online
 
 ## Licence
 

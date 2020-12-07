@@ -44,7 +44,7 @@ router.get('/costume', (req, res, next) => {
 });
 
 router.get('/features', (req, res, next) => {
-    knex.select("*").from('askfeature').orderBy('afid')
+    knex.select("*").from('askfeature').whereNot('farchived', 1).orderBy('afid')
     .then(rows => { res.status(200).json(rows) })
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });
