@@ -233,9 +233,9 @@ const postNews = async data => {
   return res.data;
 };
 
-const getNews = async () => {
+const patchNews = async (id, data) => {
   const config = { headers: { Authorization: token } };
-  const res = await axios.get(`${newsURI}/`, config);
+  const res = await axios.patch(`${adminNewsURI}/${id}`, data, config);
   return res.data;
 };
 
@@ -245,10 +245,16 @@ const postEvent = async data => {
   return res.data;
 };
 
+const getNews = async () => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.get(`${newsURI}/`, config);
+  return res.data;
+};
+
 const getEvents = async () => {
   const config = { headers: { Authorization: token } };
   const res = await axios.get(`${eventsURI}/`, config);
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews, getNews, postEvent, getEvents };
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews, getNews, postEvent, getEvents, patchNews };

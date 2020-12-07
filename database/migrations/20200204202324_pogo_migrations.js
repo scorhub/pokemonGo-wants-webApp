@@ -101,6 +101,7 @@ exports.up = function(knex, Promise) {
       t.string("ntext", 2500).nullable();
       t.date("ndate").notNullable();
       t.boolean("narchived").notNullable().default(false);
+      t.date("nedited").nullable().default(null);
     })
 };
 

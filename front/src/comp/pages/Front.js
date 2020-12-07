@@ -28,7 +28,7 @@ const TextBox = ({text}) => {
             </>
             }
             <br/><br/>
-            <i>{text.showname}&nbsp;|&nbsp;{new Date(text.published).toLocaleDateString()}</i>
+        <i>{text.showname}&nbsp;|&nbsp;{new Date(text.published).toLocaleDateString()}{text.nedited !== null && <>&nbsp;|&nbsp;Last&nbsp;edited&nbsp;{new Date(text.nedited).toLocaleDateString()}</>}</i>
         </div>
         );
     } else {

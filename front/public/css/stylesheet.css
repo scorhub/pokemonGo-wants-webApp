@@ -55,7 +55,7 @@ footer {
   position: relative;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
   padding: 0.5em;
   margin: auto;
@@ -113,7 +113,7 @@ button {
   background-color: #4CAF50;
   color: white;
 }
-  
+
 .navbar .icon {
   display: none;
 }
@@ -217,4 +217,28 @@ button {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+}
+
+.editbutton{
+  position: absolute;
+  right: 1.5em;
+ }
+
+.editclosebutton{
+  position: absolute;
+  right: 1em;
+}
+
+.editwrapdiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.editwindow{
+  position: absolute;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: grey;
 }
