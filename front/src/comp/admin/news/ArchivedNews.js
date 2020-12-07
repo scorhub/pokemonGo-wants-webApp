@@ -21,7 +21,6 @@ const ArchivedNews = () => {
     const [archived, setArchived] = useState([]);
     const [show, setShow] = useState(false);
     const [editPost, setEditPost] = useState({"nid": "", "ntitle": "", "ntext": ""});
-    console.log(archived)
 
     const updEngine = () => {
         apiService.patchNews(editPost.nid, {"ntitle": editPost.ntitle, "ntext": editPost.ntext})

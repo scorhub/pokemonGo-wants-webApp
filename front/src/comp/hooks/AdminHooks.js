@@ -41,5 +41,15 @@ const GetArchivedHook = ({setList}) => {
   return (<></>);
 };
 
+const GetPastEventsHook = ({setList}) => {
+  const getpasteventshook = () => {
+    apiService.getPastEvents()
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(getpasteventshook, []);
+  return (<></>);
+};
+
 export default GetAddHook;
-export { GetModHook, GetCountHook, GetArchivedHook };
+export { GetModHook, GetCountHook, GetArchivedHook, GetPastEventsHook };

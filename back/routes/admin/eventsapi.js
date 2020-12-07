@@ -26,4 +26,10 @@ router.patch('/:id', (req, res, next) => {
     .catch(err => { res.status(500).json({error: 'Database error.'}) });
 });
 
+router.get('/past', (req, res, next) => {
+    knex.select('eid', 'ename', 'etext', 'estart', 'eend', 'elink', 'ewritedate').from('events').where('eend', '<', new Date()).orderBy('ewritedate', 'DESC')
+    .then(events => { res.status(200).json(events) })
+    .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
+});
+
 module.exports = router;

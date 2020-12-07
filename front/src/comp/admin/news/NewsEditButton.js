@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import apiService from '../../../serv/apiservice';
 
 const NewsEditButton = ({news, setEditPost, setShow, type}) => {
