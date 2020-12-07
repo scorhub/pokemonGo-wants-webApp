@@ -245,6 +245,12 @@ const postEvent = async data => {
   return res.data;
 };
 
+const patchEvents = async (id, data) => {
+  const config = { headers: { Authorization: token } };
+  const res = await axios.patch(`${adminEventsURI}/${id}`, data, config);
+  return res.data;
+};
+
 const getNews = async () => {
   const config = { headers: { Authorization: token } };
   const res = await axios.get(`${newsURI}/`, config);
@@ -257,4 +263,4 @@ const getEvents = async () => {
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews, getNews, postEvent, getEvents, patchNews };
+export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews, patchNews, postEvent, patchEvents, getNews, getEvents };

@@ -26,13 +26,13 @@ const AddEvent = () => {
             <h5 className="formtitle">Event name</h5>
             <input type="text" onChange={e => setRegField(e.target.value, "ename")} autoFocus="autofocus" required value={newEvent.ename} />
             <h5 className="formtitle">Event starts</h5>
-            <input type="datetime-local" onChange={e => setRegField(e.target.value, "estart")} autoFocus="autofocus" required min={minDate} value={newEvent.estart} />
+            <input type="datetime-local" onChange={e => setRegField(e.target.value, "estart")} required min={minDate} value={newEvent.estart} />
             <h5 className="formtitle">Event ends</h5>
-            <input type="datetime-local" onChange={e => setRegField(e.target.value, "eend")} autoFocus="autofocus" required min={newEvent.estart} value={newEvent.eend} />
+            <input type="datetime-local" onChange={e => setRegField(e.target.value, "eend")} required min={newEvent.estart} value={newEvent.eend} />
             <h5 className="formtitle">Event text</h5>
             <textarea rows="8" cols="50" onChange={e => setRegField(e.target.value, "etext")} required value={newEvent.etext} />
             <h5 className="formtitle">External link to event information</h5>
-            <input type="url" onChange={e => setRegField(e.target.value, "elink")} autoFocus="autofocus" value={newEvent.elink} />
+            <input type="url" onChange={e => setRegField(e.target.value, "elink")} value={newEvent.elink} />
             <div className="button">
                 <br />
                 <button type="submit">Send</button>

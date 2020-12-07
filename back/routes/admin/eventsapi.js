@@ -20,4 +20,10 @@ router.post('/', (req, res, next) => {
     .catch(err => { res.status(500).json({error: 'Database error.'}) });
 });
 
+router.patch('/:id', (req, res, next) => {
+    knex('events').where('eid', '=', req.params.id).update(req.body)
+    .then(eid => { res.status(204).end() })
+    .catch(err => { res.status(500).json({error: 'Database error.'}) });
+});
+
 module.exports = router;

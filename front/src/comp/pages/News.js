@@ -29,7 +29,7 @@ const EditWindow = ({updEngine, editPost, setEditPost, setShow, id}) => {
     );
 };
 
-const EditButton = ({news, setEditPost, editPost, setShow}) => {
+const EditButton = ({news, setEditPost, setShow}) => {
     const archivePost = (e) => {
         e.preventDefault();
         if(window.confirm("Are you sure you want the post to be archived?")){
