@@ -277,7 +277,7 @@ module.exports = [
 ##### userdata.js
 ```
 module.exports = [
-    { uid: 1, ucid: 1, username: 'name', password: 'hashed_pass', showname: 'Name' },
+    { uid: 1, ucid: 1, username: 'name', password: 'hashed_pass', showname: 'Name', email: 'name@example.org' },
     ];
 ```
 ##### wantsalwaysdata.js
