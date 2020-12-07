@@ -31,5 +31,15 @@ const GetCountHook = ({setList}) => {
   return (<></>);
 };
 
+const GetArchivedHook = ({setList}) => {
+  const getarchivedhook = () => {
+    apiService.getArchived()
+    .then(res => { setList(res) })
+    .catch(err => { console.log('error: ', err) });
+  };
+  useEffect(getarchivedhook, []);
+  return (<></>);
+};
+
 export default GetAddHook;
-export { GetModHook, GetCountHook };
+export { GetModHook, GetCountHook, GetArchivedHook };
