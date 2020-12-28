@@ -1,0 +1,37 @@
+### Post event ###
+POST http://localhost:3001/api/verified/admin/events HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "ename": "Test Event",
+        "estart": "2021-12-24T04:00:00.000Z",
+        "eend": "2021-12-24T22:00:00.000Z",
+        "etext": "Testing event posting",
+        "elink": "http://www.example.org"
+    }
+
+
+####### ####### ####### ####### #######
+
+
+### Change event data ###
+### (change 'ename' and value to other fieldname listed above and any given value to test other fields) ###
+PATCH  http://localhost:3001/api/verified/admin/events/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "ename": "Changing event name"
+    }
+
+
+####### ####### ####### ####### #######
+
+
+### Get archived events ###
+GET http://localhost:3001/api/verified/admin/events/past HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######

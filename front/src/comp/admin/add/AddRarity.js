@@ -1,23 +1,40 @@
 import React, { useState } from 'react';
 import GetAddHook from '../../hooks/AdminHooks';
-import apiService from '../../../serv/apiservice'
+import adminservice from '../../../serv/adminservice'
 
 const SingleLine = ({data, hideEngine, updEngine}) => {
-    const [info, setInfo] = useState({ 'rarity': null });
+    const [info, setInfo] = useState({ 'rarity': null, 'subrarity': null });
+
+    const setUpdField = (fieldname, value) => {
+        const tempUpdate = { ...info };
+        if(info.rarity === null && data.rarity !== null){ tempUpdate.rarity = data.rarity; };
+        tempUpdate[fieldname] = value;
+        setInfo(tempUpdate);
+    };
     return (
+        <>
         <tr key={data.pid}>
-            <td><img alt={data.name} src={data.img} /></td>
-            <td>{data.number}</td>
-            <td><input type="button" value="Hide" onClick={e => hideEngine(e, data.pid)} /></td>
-            <td>{data.name}</td>
-            <td><input type="button" value="Common" onClick={e => setInfo({'rarity': 'Common'})} /></td>
-            <td><input type="button" value="Uncommon" onClick={e => setInfo({'rarity': 'Uncommon'})} /></td>
-            <td><input type="button" value="Rare" onClick={e => setInfo({'rarity': 'Rare'})} /></td>
-            <td><input type="button" value="Legendary" onClick={e => setInfo({'rarity': 'Legendary'})} /></td>
-            <td><input type="button" value="Mythical" onClick={e => setInfo({'rarity': 'Mythical'})} /></td>
-            <td><input type="text" readOnly style={{ width: '7em', textAlign: 'center' }} placeholder="Choose status" value={info.rarity !== null ? info.rarity : "Choose status"} /></td>
-            <td><input type="button" value="Send data" onClick={e => updEngine(e, data.pid, info)} /></td>
+            <td rowSpan="2"><img alt={data.name} src={data.img} /></td>
+            <td rowSpan="2">{data.number}</td>
+            <td rowSpan="2"><input type="button" value="Hide" onClick={e => hideEngine(e, data.pid)} /></td>
+            <td rowSpan="2">{data.name}</td>
+            <td><input type="button" value="Common" onClick={e => setUpdField('rarity', 'Common')} /></td>
+            <td><input type="button" value="Uncommon" onClick={e => setUpdField('rarity', 'Uncommon')} /></td>
+            <td><input type="button" value="Rare" onClick={e => setUpdField('rarity', 'Rare')} /></td>
+            <td><input type="button" value="Legendary" onClick={e => setUpdField('rarity', 'Legendary')} /></td>
+            <td><input type="button" value="Mythical" onClick={e => setUpdField('rarity', 'Mythical')} /></td>
+            <td>{data.rarity === null ? <input type="text" readOnly style={{ width: '7em', textAlign: 'center' }} placeholder="Choose rarity" value={info.rarity !== null ? info.rarity : "Choose rarity"} /> : <input readOnly placeholder="Rarity" style={{ width: '7em', textAlign: 'center', background: 'lightgreen' }} value={data.rarity} /> }</td>
+            <td rowSpan="2"><input type="button" value="Send data" onClick={e => updEngine(e, data.pid, info)} /></td>
         </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="button" value="None" onClick={e => setUpdField('subrarity', 'None')} /></td>
+            <td><input type="button" value="Mythical" onClick={e => setUpdField('subrarity', 'Mythical')} /></td>
+            <td><input type="button" value="Seasonal" onClick={e => setUpdField('subrarity', 'Seasonal')} /></td>
+            <td><input type="button" value="Hatched" onClick={e => setUpdField('subrarity', 'Hatched')} /></td>
+            <td>{data.subrarity === null ? <input type="text" readOnly style={{ width: '7em', textAlign: 'center' }} placeholder="Choose subrarity" value={info.subrarity !== null ? info.subrarity : "Choose subrarity"} /> : <input readOnly placeholder="Subrarity" style={{ width: '7em', textAlign: 'center', background: 'lightgreen' }} value={data.rarity} /> }</td>
+        </tr>
+        </>
     );
 };
 
@@ -33,7 +50,7 @@ const AddRarity = () => {
         e.stopPropagation();
         if(status.rarity !== null) {
         const type = "rarity";
-        apiService.patchAddData(id, status, type)
+        adminservice.patchAddData(id, status, type)
         .then(res => {
             hideEngine(e, id);
         }).catch(err => {
@@ -43,7 +60,7 @@ const AddRarity = () => {
           } else { window.alert("Unknown error, please try again later."); };
         });
         } else {
-            window.alert("You must choose rarity before sending it!");
+            window.alert("Rarity must be chosen before sending data!");
         };
     };
 

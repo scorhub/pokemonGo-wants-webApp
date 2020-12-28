@@ -24,7 +24,7 @@ const EventsEditWindow = ({updEngine, editEvent, setEditEvent, setShow}) => {
                 <div className="button">
                 <h5 className="formtitle">External link to event information</h5>
                 <input type="url" onChange={e => setRegField(e.target.value, "elink")} value={editEvent.elink} />
-                    <br />
+                    <br/>
                     <button type="submit">Send</button>
                 </div>
             </form>

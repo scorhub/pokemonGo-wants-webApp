@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { GetArchivedHook } from '../../hooks/AdminHooks';
-import apiService from '../../../serv/apiservice';
+import adminservice from '../../../serv/adminservice';
 import NewsEditWindow from './NewsEditWindow';
 import NewsEditButton from './NewsEditButton';
 
@@ -23,7 +23,7 @@ const ArchivedNews = () => {
     const [editPost, setEditPost] = useState({"nid": "", "ntitle": "", "ntext": ""});
 
     const updEngine = () => {
-        apiService.patchNews(editPost.nid, {"ntitle": editPost.ntitle, "ntext": editPost.ntext})
+        adminservice.patchNews(editPost.nid, {"ntitle": editPost.ntitle, "ntext": editPost.ntext})
         .then(res => { window.location.reload() })
         .catch(e => { alert('Something went wrong.') });
     };

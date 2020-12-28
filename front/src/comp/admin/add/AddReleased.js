@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GetAddHook from '../../hooks/AdminHooks';
-import apiService from '../../../serv/apiservice'
+import adminservice from '../../../serv/adminservice'
 
 const SingleLine = ({data, hideEngine, updEngine}) => {
     const [info, setInfo] = useState({ 'released': null });
@@ -30,7 +30,7 @@ const AddReleased = () => {
         e.stopPropagation();
         if(status.released === true || status.released === false) {
         const type = "released";
-        apiService.patchAddData(id, status, type)
+        adminservice.patchAddData(id, status, type)
         .then(res => {
             hideEngine(e, id);
         }).catch(err => {

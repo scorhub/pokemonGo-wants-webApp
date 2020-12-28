@@ -1,0 +1,45 @@
+### Post news ###
+POST http://localhost:3001/api/verified/admin/news HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "ntitle": "Testing",
+        "ntext": "Testing news posting"
+    }
+
+
+####### ####### ####### ####### #######
+
+
+### Change title and or text of news post ###
+PATCH  http://localhost:3001/api/verified/admin/news/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "ntitle": "Testing news updating",
+        "ntext": "Updating news data."
+    }
+
+#######
+
+### Archive news post ###
+PATCH  http://localhost:3001/api/verified/admin/news/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "narchived": true
+    }
+
+
+####### ####### ####### ####### #######
+
+
+### Get archived news posts ###
+GET http://localhost:3001/api/verified/admin/news/archived HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######

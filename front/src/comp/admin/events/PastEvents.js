@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GetPastEventsHook } from '../../hooks/AdminHooks';
 import { NavLink } from "react-router-dom";
-import apiService from '../../../serv/apiservice';
+import adminservice from '../../../serv/adminservice';
 import EventsEditWindow from './EventsEditWindow';
 import EventBox from '../../pages/EventBox';
 
@@ -11,7 +11,7 @@ const PastEvents = () => {
     const [editEvent, setEditEvent] = useState({"eid": "", "ename": "", "etext": "", "estart": "", "eend": "", "elink": ""});
     
     const updEngine = () => {
-        apiService.patchEvents(editEvent.eid, {"ename": editEvent.ename, "etext": editEvent.etext, "estart": editEvent.estart, "eend": editEvent.eend, "elink": editEvent.elink})
+        adminservice.patchEvents(editEvent.eid, {"ename": editEvent.ename, "etext": editEvent.etext, "estart": editEvent.estart, "eend": editEvent.eend, "elink": editEvent.elink})
         .then(res => { window.location.reload() })
         .catch(e => { alert('Something went wrong.') });
     };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { NewsHook } from '../hooks/CommonHooks';
-import apiService from '../../serv/apiservice';
+import adminservice from '../../serv/adminservice';
 import NewsEditButton from '../admin/news/NewsEditButton';
 import NewsEditWindow from '../admin/news/NewsEditWindow';
 
@@ -24,7 +24,7 @@ const News = () => {
     const ucid = JSON.parse(window.localStorage.getItem('loggedWantAppUser')).ucid;
 
     const updEngine = () => {
-        apiService.patchNews(editPost.nid, {"ntitle": editPost.ntitle, "ntext": editPost.ntext})
+        adminservice.patchNews(editPost.nid, {"ntitle": editPost.ntitle, "ntext": editPost.ntext})
         .then(res => { window.location.reload() })
         .catch(e => { alert('Something went wrong.') });
     };

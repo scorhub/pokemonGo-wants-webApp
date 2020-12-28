@@ -98,9 +98,9 @@ const MasterWant = ({type}) => {
     return (
       <>
       <GetWantsHook setList={setWants} type={type} />
-      <br />
+      <br/>
       <input onChange={e => searchFilter(e.target.value, "filtered")} placeholder="Search by name" type="text"></input>
-      <br /><br />
+      <br/><br/>
       <button onClick={e => setShow(!show)}>{show ? "Show all" : "Show only wanted"}</button>
       <div className="container">
           {show ? <WantLister wants={searchMyWants} chnWant={changeEngine} type={type} /> : <WantLister wants={searchWants} chnWant={changeEngine} type={type} />}

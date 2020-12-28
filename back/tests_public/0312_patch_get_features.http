@@ -1,0 +1,65 @@
+### Add feature to working list ###
+PATCH http://localhost:3001/api/verified/admin/features/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "addedtolist": true
+    }
+
+#######
+
+### Add feature to in progress list ###
+PATCH http://localhost:3001/api/verified/admin/features/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "inprogress": true
+    }
+
+#######
+
+### Mark feature ready ###
+PATCH http://localhost:3001/api/verified/admin/features/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "completed": true
+    }
+
+#######
+
+### Add note to feature ###
+PATCH http://localhost:3001/api/verified/admin/features/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "dnote": "Additional test information"
+    }
+
+
+####### ####### ####### ####### #######
+
+
+### Archive feature ###
+PATCH http://localhost:3001/api/verified/admin/features/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "farchived": true
+    }
+
+
+####### ####### ####### ####### #######
+
+
+### Get archived features ###
+GET http://localhost:3001/api/verified/admin/features/archived HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######

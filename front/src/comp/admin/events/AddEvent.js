@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import apiService from '../../../serv/apiservice';
+import adminservice from '../../../serv/adminservice';
 
 const AddEvent = () => {
     const [newEvent, setNewEvent] = useState({"ename": "", "estart": "", "eend": "", "etext": "", "elink": ""});
 
     const addNews = (e) => {
         e.preventDefault();
-        apiService.postEvent(newEvent)
+        adminservice.postEvent(newEvent)
         .then(res => { window.location.reload() })
         .catch(e => { alert('Something went wrong.') });
     };
@@ -34,11 +34,11 @@ const AddEvent = () => {
             <h5 className="formtitle">External link to event information</h5>
             <input type="url" onChange={e => setRegField(e.target.value, "elink")} value={newEvent.elink} />
             <div className="button">
-                <br />
+                <br/>
                 <button type="submit">Send</button>
             </div>
         </form>
-        <br />
+        <br/>
         Starred (*) fields are required.
     </div>
     );

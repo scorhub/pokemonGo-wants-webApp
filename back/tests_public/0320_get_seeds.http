@@ -1,0 +1,105 @@
+### Get list of Pokémons from database ###
+GET http://localhost:3001/api/verified/admin/seeds/pokemons HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of arean forms from database ###
+GET http://localhost:3001/api/verified/admin/seeds/pokemons/arean HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of variant forms from database ###
+GET http://localhost:3001/api/verified/admin/seeds/pokemons/variant HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of costume forms from database ###
+GET http://localhost:3001/api/verified/admin/seeds/pokemons/costume HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of shiny forms from database ###
+GET http://localhost:3001/api/verified/admin/seeds/pokemons/shiny HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+###### ###### ###### ###### ###### ######
+
+
+ ###### NOTE: Following api commands do not give "full" list, as their search is restricted on backend ######
+
+### Get list of all lucky wants from database ###
+GET http://localhost:3001/api/verified/admin/seeds/wants/lucky HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all always wants from database ###
+GET http://localhost:3001/api/verified/admin/seeds/wants/always HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all arean wants from database ###
+GET http://localhost:3001/api/verified/admin/seeds/wants/arean HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all variant wants from database ###
+GET http://localhost:3001/api/verified/admin/seeds/wants/variant HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all costume wants from database ###
+GET http://localhost:3001/api/verified/admin/seeds/wants/costume HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all shiny wants from database ###
+GET http://localhost:3001/api/verified/admin/seeds/wants/shiny HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+###### ###### ###### ###### ######
+
+### Get list of all features from database ###
+GET http://localhost:3001/api/verified/admin/seeds/features HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all news from database ###
+GET http://localhost:3001/api/verified/admin/seeds/news HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all events from database ###
+GET http://localhost:3001/api/verified/admin/seeds/events HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+######
+
+### Get list of all eventmons from database ###
+GET http://localhost:3001/api/verified/admin/seeds/eventmons HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json

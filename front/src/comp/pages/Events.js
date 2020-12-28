@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { EventsHook } from '../hooks/CommonHooks';
-import apiService from '../../serv/apiservice';
+import adminservice from '../../serv/adminservice';
 import EventsEditWindow from '../admin/events/EventsEditWindow';
 import EventBox from './EventBox';
 
@@ -10,10 +10,9 @@ const Events = () => {
     const [show, setShow] = useState(false);
     const [editEvent, setEditEvent] = useState({"eid": "", "ename": "", "etext": "", "estart": "", "eend": "", "elink": ""});
     const ucid = JSON.parse(window.localStorage.getItem('loggedWantAppUser')).ucid;
-    console.log(editEvent)
     
     const updEngine = () => {
-        apiService.patchEvents(editEvent.eid, {"ename": editEvent.ename, "etext": editEvent.etext, "estart": editEvent.estart, "eend": editEvent.eend, "elink": editEvent.elink})
+        adminservice.patchEvents(editEvent.eid, {"ename": editEvent.ename, "etext": editEvent.etext, "estart": editEvent.estart, "eend": editEvent.eend, "elink": editEvent.elink})
         .then(res => { window.location.reload() })
         .catch(e => { alert('Something went wrong.') });
     };

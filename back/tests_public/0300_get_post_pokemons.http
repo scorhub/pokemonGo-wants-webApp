@@ -1,0 +1,70 @@
+### Get amount of Pokémons (rows on table) from database ###
+GET http://localhost:3001/api/verified/admin/pokemons/count HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+
+####### ####### ####### ####### #######
+
+
+### Add new Pokémon to database ###
+POST http://localhost:3001/api/verified/admin/pokemons HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "number": "001",
+        "name": "First one",
+        "img": "http://www.example.org"
+    }
+
+#######
+
+### Add new arean to database ###
+POST http://localhost:3001/api/verified/admin/pokemons/arean HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "number": "1",
+        "img": "http://www.example.org"
+    }
+
+#######
+
+### Add new variant to database ###
+POST http://localhost:3001/api/verified/admin/pokemons/variant HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "number": "1",
+        "version": "Test version",
+        "img": "http://www.example.org"
+    }
+
+#######
+
+### Add new costume to database ###
+POST http://localhost:3001/api/verified/admin/pokemons/costume HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "number": "1",
+        "version": "Test version",
+        "img": "http://www.example.org",
+        "cfirstappearance": "2020-12-31"
+    }
+
+#######
+
+### Add new shiny to database ###
+POST http://localhost:3001/api/verified/admin/pokemons/shiny HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "number": "1",
+        "shinyimg": "http://www.example.org"
+    }

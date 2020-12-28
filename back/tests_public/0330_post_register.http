@@ -1,0 +1,12 @@
+### Register new user ###
+POST http://localhost:3001/api/verified/admin/register HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "username": "testuser",
+        "password": "testuser",
+        "ucid": 3,
+        "showname": "testuser",
+        "email": "testuser@example.org"
+    }

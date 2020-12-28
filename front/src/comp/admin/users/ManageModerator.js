@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import apiService from '../../../serv/apiservice';
+import adminservice from '../../../serv/adminservice';
 import { GetModHook } from '../../hooks/AdminHooks';
 
 const SingleUser = ({data, updEngine}) => {
@@ -26,7 +26,7 @@ const ManageModerator = () => {
             if(curRights === 2 && status.moderator === true){ window.alert("User is already admin!");
             } else if(curRights === 3 && status.moderator === false){ window.alert("User is already regular user!");
             } else {
-                apiService.patchModData(id, status)
+                adminservice.patchModData(id, status)
                 .then(res => {
                     window.location.reload();
                 }).catch(err => {

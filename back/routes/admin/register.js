@@ -15,8 +15,7 @@ router.post('/', (req, res, next) => {
             password: passwordHash,
             showname: body.showname,
         };
-        knex('users').insert(userData)
-        .then(fid => { res.status(201).end() })
+        knex('users').insert(userData).then(fid => { res.status(201).end() })
         .catch(err => { res.status(500).json({error: 'Database error.'}) });
     }).catch(err => { res.status(418).json({error: 'Database error in register.'}) });
 });

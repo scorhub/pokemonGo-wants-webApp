@@ -2,7 +2,6 @@ import axios from 'axios';
 // const apiURI = '/api';
 const logURI = '/api/login';
 const verifiedURI = '/api/verified';
-const adminURI = '/api/verified/admin';
 
 const userURI = `${verifiedURI}/users`;
 const wantsURI = `${verifiedURI}/wants`;
@@ -10,13 +9,6 @@ const featureURI = `${verifiedURI}/features`;
 const myWantsURI = `${verifiedURI}/mywants`;
 const newsURI = `${verifiedURI}/news`;
 const eventsURI = `${verifiedURI}/events`;
-
-const pokeURI = `${adminURI}/pokemons`;
-const seedURI = `${adminURI}/seeds`;
-const addDataURI = `${adminURI}/adddata`;
-const manageModURI = `${adminURI}/moderator`;
-const adminNewsURI = `${adminURI}/news`;
-const adminEventsURI = `${adminURI}/events`;
 
 let token = null;
 
@@ -29,27 +21,6 @@ const login = async credentials => {
   return res.data;
 };
 
-const getPokemonCount = async () => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.get(`${pokeURI}/count`, config);
-  return res.data
-};
-
-const addPokemon = async (data, type) => {
-  const config = { headers: { Authorization: token } };
-  let res = null;
-  if (type === "normal") {
-    res = await axios.post(`${pokeURI}`, data, config);
-  } else if (type === "arean") {
-    res = await axios.post(`${pokeURI}/arean`, data, config);
-  } else if (type === "costume") {
-    res = await axios.post(`${pokeURI}/costume`, data, config);
-  } else if (type === "shiny") {
-    res = await axios.post(`${pokeURI}/shiny`, data, config);
-  } else { return null; };
-  return res.data;
-};
-
 const wantGetter = async type => {
   const config = { headers: { Authorization: token } };
   let res = null;
@@ -59,8 +30,12 @@ const wantGetter = async type => {
     res = await axios.get(`${wantsURI}/always`, config);
   } else if (type === "arean") {
     res = await axios.get(`${wantsURI}/arean`, config);
+  } else if (type === "variant") {
+    res = await axios.get(`${wantsURI}/variant`, config);
   } else if (type === "costume") {
     res = await axios.get(`${wantsURI}/costume`, config);
+  } else if (type === "shiny") {
+    res = await axios.get(`${wantsURI}/shiny`, config);
   } else { return null; };
   return res.data;
 };
@@ -74,51 +49,12 @@ const changeWant = async (id, tempPokemon, type) => {
     res = await axios.patch(`${wantsURI}/always/${id}`, tempPokemon, config);
   } else if (type === "arean") {
     res = await axios.patch(`${wantsURI}/arean/${id}`, tempPokemon, config);
+  } else if (type === "variant") {
+    res = await axios.patch(`${wantsURI}/variant/${id}`, tempPokemon, config);
   } else if (type === "costume") {
     res = await axios.patch(`${wantsURI}/costume/${id}`, tempPokemon, config);
-  } else { return null; };
-  return res.data;
-};
-
-const getPokemonSeeds = async (type) => {
-  const config = { headers: { Authorization: token } };
-  let res = null;
-  if (type === "normal") {
-    res = await axios.get(`${seedURI}/pokemons`, config);
-  } else if (type === "arean") {
-    res = await axios.get(`${seedURI}/pokemons/arean`, config);
-  } else if (type === "costume") {
-    res = await axios.get(`${seedURI}/pokemons/costume`, config);
-  } else { return null; };
-  return res.data;
-};
-
-const wantSeedGetter = async (type) => {
-  const config = { headers: { Authorization: token } };
-  let res = null;
-  if (type === "lucky") {
-    res = await axios.get(`${seedURI}/wants`, config);
-  } else if (type === "always") {
-    res = await axios.get(`${seedURI}/always`, config);
-  } else if (type === "arean") {
-    res = await axios.get(`${seedURI}/arean`, config);
-  } else if (type === "costume") {
-    res = await axios.get(`${seedURI}/costume`, config);
-  } else { return null; };
-  return res.data;
-};
-
-const otherDataSeeds = async (type) => {
-  const config = { headers: { Authorization: token } };
-  let res = null;
-  if (type === "features") {
-    res = await axios.get(`${seedURI}/features`, config);
-  } else if (type === "events") {
-    res = await axios.get(`${seedURI}/events`, config);
-  } else if (type === "eventmons") {
-    res = await axios.get(`${seedURI}/eventmons`, config);
-  } else if (type === "news") {
-    res = await axios.get(`${seedURI}/news`, config);
+  } else if (type === "shiny") {
+    res = await axios.patch(`${wantsURI}/shiny/${id}`, tempPokemon, config);
   } else { return null; };
   return res.data;
 };
@@ -150,8 +86,12 @@ const otherWantGetter = async (id, type) => {
     res = await axios.get(`${userURI}/always/${id}`, config);
   } else if (type === "arean") {
     res = await axios.get(`${userURI}/arean/${id}`, config);
+  } else if (type === "variant") {
+    res = await axios.get(`${userURI}/variant/${id}`, config);
   } else if (type === "costume") {
     res = await axios.get(`${userURI}/costume/${id}`, config);
+  } else if (type === "shiny") {
+    res = await axios.get(`${userURI}/shiny/${id}`, config);
   } else { return null; };
   return res.data;
 };
@@ -165,6 +105,12 @@ const myWantGetter = async type => {
     res = await axios.get(`${myWantsURI}/always`, config);
   } else if (type === "arean") {
     res = await axios.get(`${myWantsURI}/arean`, config);
+  } else if (type === "variant") {
+    res = await axios.get(`${myWantsURI}/variant`, config);
+  } else if (type === "costume") {
+    res = await axios.get(`${myWantsURI}/costume`, config);
+  } else if (type === "shiny") {
+    res = await axios.get(`${myWantsURI}/shiny`, config);
   } else { return null; };
   return res.data;
 };
@@ -175,92 +121,10 @@ const changePass = async newpass => {
   return res.data;
 };
 
-const getAddData = async type => {
-  const config = { headers: { Authorization: token } };
-  let res = null;
-  if (type === "type") {
-    res = await axios.get(`${addDataURI}/type/list`, config);
-  } else if (type === "generation") {
-    res = await axios.get(`${addDataURI}/generation/list`, config);
-  } else if (type === "rarity") {
-    res = await axios.get(`${addDataURI}/rarity/list`, config);
-  } else if (type === "released") {
-    res = await axios.get(`${addDataURI}/released/list`, config);
-  } else if (type === "mega") {
-    res = await axios.get(`${addDataURI}/mega/list`, config);
-  } else { return null; };
-  return res.data;
-};
-
-const patchAddData = async (id, status, type) => {
-  const config = { headers: { Authorization: token } };
-  let res = null;
-  if (type === "type") {
-    res = await axios.patch(`${addDataURI}/type/${id}`, status, config);
-  } else if (type === "generation") {
-    res = await axios.patch(`${addDataURI}/generation/${id}`, status, config);
-  } else if (type === "rarity") {
-    res = await axios.patch(`${addDataURI}/rarity/${id}`, status, config);
-  } else if (type === "released") {
-    res = await axios.patch(`${addDataURI}/released/${id}`, status, config);
-  } else if (type === "mega") {
-    res = await axios.patch(`${addDataURI}/mega/${id}`, status, config);
-  } else { return null; };
-  return res.data;
-};
-
-const getModData = async () => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.get(`${manageModURI}`, config);
-  return res.data
-};
-
-const patchModData = async (id, data) => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.patch(`${manageModURI}/${id}`, data, config);
-  return res.data
-};
-
 const getFrontFeed = async () => {
   const config = { headers: { Authorization: token } };
   const res = await axios.get(`${verifiedURI}/front`, config);
   return res.data
-};
-
-const postNews = async data => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.post(`${adminNewsURI}/`, data, config);
-  return res.data;
-};
-
-const patchNews = async (id, data) => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.patch(`${adminNewsURI}/${id}`, data, config);
-  return res.data;
-};
-
-const getArchived = async () => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.get(`${adminNewsURI}/archived`, config);
-  return res.data;
-};
-
-const postEvent = async data => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.post(`${adminEventsURI}/`, data, config);
-  return res.data;
-};
-
-const patchEvents = async (id, data) => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.patch(`${adminEventsURI}/${id}`, data, config);
-  return res.data;
-};
-
-const getPastEvents = async () => {
-  const config = { headers: { Authorization: token } };
-  const res = await axios.get(`${adminEventsURI}/past`, config);
-  return res.data;
 };
 
 const getNews = async () => {
@@ -275,4 +139,4 @@ const getEvents = async () => {
   return res.data;
 };
 
-export default { setToken, login, getPokemonCount, addPokemon, wantGetter, changeWant, getPokemonSeeds, wantSeedGetter, otherDataSeeds, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getAddData, patchAddData, getModData, patchModData, getFrontFeed, postNews, patchNews, getArchived, postEvent, patchEvents, getPastEvents, getNews, getEvents };
+export default { setToken, login, wantGetter, changeWant, getFeatures, askFeature, others, otherWantGetter, myWantGetter, changePass, getFrontFeed, getNews, getEvents };

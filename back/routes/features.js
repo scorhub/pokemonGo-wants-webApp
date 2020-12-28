@@ -5,7 +5,7 @@ const options = config.DATABASE_OPTIONS;
 const knex = require('knex')(options);
 
 router.get('/', (req, res, next) => {
-    knex.select('afid', 'afdate', 'aftitle', 'afinfo', 'addedtolist', 'inprogress', 'completed', 'uid', 'showname').from('askfeature').join('users', 'askfeature.afuid', 'users.uid').orderBy('afid', 'DESC')
+    knex.select('afid', 'afdate', 'aftitle', 'afinfo', 'addedtolist', 'inprogress', 'completed', 'dnote', 'uid', 'showname').from('askfeature').join('users', 'askfeature.afuid', 'users.uid').whereNot('farchived', 1).orderBy('afid', 'DESC')
     .then(feats => { res.status(200).json(feats) })
     .catch(err => { res.status(500).json({error: 'Database error while getting requests.'}) });
 });

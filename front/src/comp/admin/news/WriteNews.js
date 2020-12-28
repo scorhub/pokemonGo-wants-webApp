@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import apiService from '../../../serv/apiservice';
+import adminservice from '../../../serv/adminservice';
 
 const WriteNews = () => {
     const [newNews, setNewNews] = useState({"ntitle": "", "ntext": ""});
 
     const addNews = (e) => {
         e.preventDefault();
-        apiService.postNews(newNews)
+        adminservice.postNews(newNews)
         .then(res => { window.location.reload() })
         .catch(e => { alert('Something went wrong.') });
     };
@@ -25,11 +25,11 @@ const WriteNews = () => {
             <h5 className="formtitle">Text</h5>
             <textarea rows="8" cols="50" onChange={e => setRegField(e.target.value, "ntext")} required value={newNews.ntext} />
             <div className="button">
-                <br />
+                <br/>
                 <button type="submit">Send</button>
             </div>
         </form>
-        <br />
+        <br/>
         Starred (*) fields are required.
     </div>
     );

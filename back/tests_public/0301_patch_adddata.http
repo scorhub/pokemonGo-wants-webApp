@@ -1,0 +1,86 @@
+### Add Pokémon type(s) to database ###
+PATCH http://localhost:3001/api/verified/admin/adddata/type/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "type1": "Grass",
+        "type2": "Poison"
+    }
+
+#######
+
+### Add Pokémon type (single type) to database ###
+PATCH http://localhost:3001/api/verified/admin/adddata/type/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "type1": "Grass"
+    }
+
+#######
+
+### Trying to add type2, when type1 is not added - Gives an error ###
+PATCH http://localhost:3001/api/verified/admin/adddata/type/3 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "type2": "Poison"
+    }
+
+#######
+
+### Add Pokémon generation to database ###
+PATCH http://localhost:3001/api/verified/admin/adddata/generation/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "generation": 1
+    }
+
+#######
+
+### Add Pokémon rarity to database ###
+PATCH http://localhost:3001/api/verified/admin/adddata/rarity/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "rarity": "Uncommon"
+    }
+
+#######
+
+### Add Pokémon subrarity to database ###
+PATCH http://localhost:3001/api/verified/admin/adddata/rarity/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "subrarity": "None"
+    }
+
+#######
+
+### Add Pokémon released to database ###
+PATCH http://localhost:3001/api/verified/admin/adddata/released/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "released": true
+    }
+
+#######
+
+### Add Pokémon mega to database ###
+PATCH http://localhost:3001/api/verified/admin/adddata/mega/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "mega": true
+    }

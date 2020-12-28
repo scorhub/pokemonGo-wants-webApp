@@ -1,15 +1,17 @@
 Project
 ============================
 
-> Web app for making wanted list to Pokémon Go mobile game.
+> Web app to make wanted list for Pokémon Go mobile game.
 
-As of this is hobby project, and not complete, user interface were originally written in mix of English and Finnish. Althought I have done (quick) proofreading for the code, there may be still some non-English hiding.
+As of this is hobby project, and not complete, user interface were originally written in mix of English and Finnish. As so, there may be still some non-English hiding.
 
 # Table of Contents
 
 - [Version](#version)
 	- [Version history](#version-history)
 - [Features of the App](#features-of-the-app)
+- [Known Issues](#known-issues)
+- [Designer Notes](#designer-notes)
 - [Frameworks and Dependencies](#frameworks-and-dependencies)
 	- [Backend](#backend)
 	- [Database](#database)
@@ -41,17 +43,19 @@ The app is currently labeled as version 0.6, as it does not yet have all the bas
 
 ## Features of the App
 
-App can be used to track and show to your friends what you need and want to trade in Pokémon Go - mobile game.
+App is used to track and show to your friends what you need and want to trade in Pokémon Go - mobile game.
 
 #### User Features
 
 - Want lists:
   - Lucky Want (as what you want to trade in to fill "LuckyDex")
   - Always Want (what you can take in trade always, e.g. good for PVP, raids, etc.)
-  - Alolan Want (for Alolan variants)
-  - Galarian Want (for Galarian variants)
+  - Arean Want (for arean variants)
+  - Variant Want (for variant forms, i.e. Unown)
   - Costume Want (for event-based costume variants, i.e. Pikachu in Mimikyu costume)
+  - Shiny Want
 - Ask a feature (as single coder/player does not always spot everything)
+- Read news & events posted by admin
 - Change password
 
 #### Moderator Features
@@ -64,24 +68,47 @@ Current configuration of app gives moderator following access rights:
   - Generation
   - Rarity
   - Released
+  - Mega
 
 #### Admin Features
 
 App supports user class "Admin", and admin has extra features additionally to basic user and moderator.
 
-- Print seeds (Admin can print information from the database - the seed printer ignores not currently wanted Pokémons, so it can be used to clean up tables)
-- Add new Pokémons to database.
-  - Add Pokémon (as new Pokémons are added to mobile game, they can be easily added to the app).
-  - Add costume variant.
-- *Add news* (future feature, for posting crucial information of the game)
-- *Add events* (future feature, for posting upcoming events of the game, their time and info for easily to have on hand)
+- Post & edit News and Events
+    - Write news & event
+    - Edit news & event
+    - Hide / Set visible news
+    - Archive/unarchive news
+- Manage features
+    - Add to upcoming list, working list, mark as ready, add a note and/or archive/unarchive
+- Manage Pokémon data
+    - Add new Pokémons (regular ones, or differend versions for different want lists)
+    - Update data (currently update regular version image only)
+- Print data from database
+    - All database data from news, events, features, Pokémons and wants can be printed
+- Administer moderators (give / revoke rights)
 
 #### Upcoming Features
 
-I have long personal list of features to be implemented to the app, and here is the crucial ones that are under work:
-- Last changes on lists (as which Pokémons have lefted from each persons list and which are new wants)
-- Variant Want (for variants, i.e. Castform's weather variants)
-- Shiny Want
+- Filter with search & generation
+- Gender want
+- Page that lists all wanted Pokémons from other users, and shows who wants them (with color icons i.e.)
+- PVP Battle Pokémons with best IVs & movesets
+- Only Special / non-special trade filtering for want lists
+- Update pages for rest of the Pokémon informations
+- Accees rights & visibility moderation page for admin (can set which features are accessible by user classes)
+- Want list filtering by showing only released Pokémons
+- Email dependencie & email notification (for admin) when new feature ask is added
+- Event pokemons & showing them on event post
+
+## Known Issues
+
+- Filtering other player wants with name and generation is not working fully. Especially when swapping generations.
+- Images of Pokémons are swapped with image of Galarian Meowth when filtering wants with name.
+
+## Designer Notes
+
+The app features "print"-functionality to the admin. The components show database data in form, that knex understands. The basic idea behind the function is, that app can be easily moved from one server to another and database can be cleaned from non-essential information (as old feature asks and "not currently wanted" rows)
 
 ## Frameworks and Dependencies
 
@@ -113,19 +140,21 @@ I have long personal list of features to be implemented to the app, and here is 
 
 Folder structure has divided into three main sections: back, database and front.
 
-As of .gitignore, there are folders and files not uploaded. These ignored files and folders are marked on list on *stars* ```*ignored_folder/-file*```.
+As of .gitignore, there are folders and files not uploaded. These ignored files and folders are marked on list on *stars*, like ```*ignored_folder/-file*```.
 
 ### Backend Structure
 
     .
     └── back
        ├── bin
-       ├── mw                               # Middleware files
        ├── *build*                          *# Compiled files*
+       ├── mw                               # Middleware files
+       ├── *node_modules*
        ├── public
        │  └── stylesheets
        ├── routes                           # Api routes
        │  └── admin                         # Admin api routes
+       ├── set_up                           # Folder for initial set up files
        ├── *tests*                          *# Test for each interaction with backend*
        ├── tests_public                     # Test for each interaction with backend (not including encoded token)
        ├── utils
@@ -142,17 +171,10 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        ├── *node_modules*
        ├── seeds
        │  └── *datafiles*                   *# Needed to upload database*
-       │     ├── *pokemonareandata.js*      *# Data / image url for arean variants i.e. Alolan forms*
-       │     ├── *pokemoncostumedata.js*    *# Data / image url for costume variants*
-       │     ├── *wantsalwaysdata.js*       *# Predata of "always wants"*
-       │     ├── *wantsareandata.js*        *# Predata of "arean wants"*
-       │     ├── *wantscostumedata.js*      *# Predata of "costume wants"*
-       │     ├── *pokemondata.js*           *# Basic data (including image url) for Pokémons*
-       │     ├── *userdata.js*              *# Basic user data, includes premade hashed passwords*
-       │     └── *wantsdata.js*             *# Predata of "wants"*
+       │     └── *multiple datafiles*       *# Multiple files with predata, full listing and examples below*
+       ├── *knexfile.js*                    *# File for knex-interaction*
        ├── package-lock.json
-       ├── package.json
-       └── *knexfile.js*                    *# File for knex-interaction*
+       └── package.json
 
 ### Frontend Structure
 
@@ -166,13 +188,17 @@ As of .gitignore, there are folders and files not uploaded. These ignored files 
        │  ├── comp                          # Components
        │  │  ├── admin                      # Components for admin features
        │  │  │  ├── add                     # Data adding components
+       │  │  │  ├── events                  # Event components
        │  │  │  ├── navbar                  # Admin Navbar addons
+       │  │  │  ├── news                    # News components
        │  │  │  └── prints                  # Components for printing data from database
        │  │  │  │  ├── data                 # Pokémon data printing components
        │  │  │  │  ├── otherseeds           # Other seed data printing components
        │  │  │  │  └── wants                # Want data printing components
+       │  │  │  ├── upd                     # Data updating components
        │  │  │  └── users                   # User interactions for admin
        │  │  ├── hooks                      # Hooks for data inquiry from backend
+       │  │  ├── pages                      # Main pages of the app
        │  │  ├── parts                      # Partial areas of the page, e.g. Footer, Header, etc.
        │  │  └── wants                      # Pages for listing and interacting with wants
        │  ├── lib                           # For future use
@@ -211,9 +237,9 @@ As seen, most of the data are set defaults, remember to change database and secr
 
 #### Database
 > knexfile.js
-> datafiles folder with wantsalwaysdata.js, pokemonareandata.js, wantsareandata.js, pokemondata.js, userdata.js, wantsdata.js
+> datafiles folder with multiple files
 
-As with *node_modules*, ```knexfile.js``` and ```datafiles```folder is also ignored from repository.
+As with *node_modules*, ```knexfile.js``` and ```datafiles``` folder is also ignored from repository.
 
 ##### knexfile.js
 ```
@@ -230,7 +256,7 @@ module.exports = {
 ```
 I have used mysql as my database, but it can be changed to your preferred one, check [Knex](http://www.knexjs.org) for more information.
 
-Inside of ```datafiles```, there are 6 files that are needed to migrate database to server. Examples of contents of files are listed below:
+Inside of ```datafiles```, there are multiple files that are needed to migrate database to server. Examples of files and contents are listed below:
 ##### eventdata.js
 ```
 module.exports = [
@@ -262,19 +288,31 @@ module.exports = [
 ##### pokemonareandata.js
 ```
 module.exports = [
-    { aid: 1, apid: 19, areanimg: 'url' }
+    { aid: 1, apid: 19, paupdated: null, areanimg: 'url' }
     ];
 ```
 ##### pokemoncostumedata.js
 ```
 module.exports = [
-    { cid: 1, cpid: 25, version: 'version_name', costumeimg: 'costume_image_url'}
+    { cid: 1, cpid: 25, version: 'version_name', cfirstappearance: null, pcupdated: null, costumeimg: 'costume_image_url'}
+    ];
+```
+##### pokemonvariantdata.js
+```
+module.exports = [
+    { vid: 1, vpid: 351, vversion: 'version_name', pvupdated: null, variantimg: 'variant_image_url'},
+]
+```
+##### pokemonshinydata.js
+```
+module.exports = [
+    { sid: 1, spid: 1, psupdated: null, shinyimg: 'url'},
     ];
 ```
 ##### pokemondata.js
 ```
 module.exports = [
-      { pid: 1, number:'001', name:'name', img:'url', type1: null, type2: null, rarity: null, subrarity: null, released: true, generation: 'generation_number' }
+      { pid: 1, number:'001', name:'name', img:'url', type1: null, type2: null, rarity: null, subrarity: null, released: true, generation: 'generation_number', pupdated: null, maleimg: null, femimg: null }
     ];
 ```
 ##### userdata.js
@@ -301,13 +339,25 @@ module.exports = [
     { arwid: 1, arwpid:'3', uid:'1', arwant:'1'}
     ];
 ```
+##### wantsvariantdata.js
+```
+module.exports = [
+    { vwid: 1, vwpid: '1', uid: '1', vwant: '1'},
+    ]
+```
+##### wantsshinydata.js
+```
+module.exports = [
+    { swid: 1, swpid: '3', uid: '1', swant: '1'},
+    ]
+```
 ##### wantsdata.js
 ```
 module.exports = [
     { wid: 1, wpid:'1', uid:'1', want:'1' },
     ];
 ```
-As seen, ```pokemondata.js``` and ```pokemonareandata.js``` need outside image urls to work.
+As seen, ```pokemondata.js``` and its sisterfiles (*arean*, *variant*, *etc*) need outside image urls to work.
 
 #### Frontend
 >
@@ -334,7 +384,7 @@ To be added later
 ## Licence
 
 React, Node, Knex and their work are used under their respective licenses.
-
+s
 Pokémon © 1995-2020 Nintendo.
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br/>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.

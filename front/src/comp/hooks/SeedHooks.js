@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import apiService from '../../serv/apiservice';
+import adminservice from '../../serv/adminservice';
 
 const SeedsHook = ({setList, type}) => {
   const seedhook = () => {
-    apiService.wantSeedGetter(type)
+    adminservice.wantSeedGetter(type)
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(seedhook, []);
   return (<></>);
@@ -13,9 +13,9 @@ const SeedsHook = ({setList, type}) => {
 
 const GetDataHook = ({setList, type}) => {
   const datahook = () => {
-    apiService.getPokemonSeeds(type)
+    adminservice.getPokemonSeeds(type)
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(datahook, []);
   return (<></>);
@@ -23,9 +23,9 @@ const GetDataHook = ({setList, type}) => {
 
 const OtherDataHook = ({setList, type}) => {
   const otherdatahook = () => {
-    apiService.otherDataSeeds(type)
+    adminservice.otherDataSeeds(type)
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(otherdatahook, []);
   return (<></>);

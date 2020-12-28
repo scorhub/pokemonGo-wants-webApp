@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import apiService from '../../../serv/apiservice';
+import adminservice from '../../../serv/adminservice';
 import { GetCountHook } from '../../hooks/AdminHooks';
 
 const AddPokemon = () => {
@@ -10,7 +10,7 @@ const AddPokemon = () => {
     const addNewData = (e) => {
         e.preventDefault();
         const type = "normal";
-        apiService.addPokemon(newData, type)
+        adminservice.addPokemon(newData, type)
         .then(res => { })
         .catch(e => { alert('Something went wrong.') });
     };
@@ -34,11 +34,11 @@ const AddPokemon = () => {
                 <h5 className="formtitle">Name *</h5>
                 <input type="text" onChange={e => setDataField(e.target.value, "name")} autoFocus="autofocus" required value={newData.name} />
                 <div className="button">
-                    <br />
+                    <br/>
                     <button type="submit">Add Pokémon</button>
                 </div>
             </form>
-            <br />
+            <br/>
             Starred (*) fields are required.
         </div>
         </>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import GetAddHook from '../../hooks/AdminHooks';
-import apiService from '../../../serv/apiservice'
+import adminservice from '../../../serv/adminservice'
 
 const SingleLine = ({data, hideEngine, updEngine}) => {
-    const [info, setInfo] = useState({ 'generation': null });
+    const [info, setInfo] = useState({ 'generation': 0 });
     return (
         <tr key={data.pid}>
             <td><img alt={data.name} src={data.img} /></td>
@@ -19,7 +19,7 @@ const SingleLine = ({data, hideEngine, updEngine}) => {
             <td><input type="button" value="Gen 7" onClick={e => setInfo({'generation': 7})} /></td>
             <td><input type="button" value="Gen 8" onClick={e => setInfo({'generation': 8})} /></td>
             <td>&nbsp;</td>
-            <td><input type="text" readOnly style={{ width: '4em', textAlign: 'center' }} placeholder="Choose" value={info.generation !== null ? info.generation : "Choose"} /></td>
+            <td><input type="text" readOnly style={{ width: '4em', textAlign: 'center' }} placeholder="Choose" value={info.generation !== 0 ? info.generation : "Choose"} /></td>
             <td>&nbsp;</td>
             <td><input type="button" value="Send data" onClick={e => updEngine(e, data.pid, info)} /></td>
         </tr>
@@ -36,9 +36,9 @@ const AddGeneration = () => {
 
     const updEngine = (e, id, status) => {
         e.stopPropagation();
-        if(status.generation !== null) {
+        if(status.generation !== 0) {
         const type = "generation";
-        apiService.patchAddData(id, status, type)
+        adminservice.patchAddData(id, status, type)
         .then(res => {
             hideEngine(e, id);
         }).catch(err => {

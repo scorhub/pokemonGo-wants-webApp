@@ -1,0 +1,109 @@
+####### ####### GET commands gets full list of Pokémon entrys from database and combines personal wants to it ####### #######
+
+### Get lucky wants list ###
+GET http://localhost:3001/api/verified/wants HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######
+
+### Get always wants list ###
+GET http://localhost:3001/api/verified/wants/always HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######
+
+### Get arean wants list ###
+GET http://localhost:3001/api/verified/wants/arean HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######
+
+### Get variant wants list ###
+GET http://localhost:3001/api/verified/wants/variant HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######
+
+### Get costume wants list ###
+GET http://localhost:3001/api/verified/wants/costume HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######
+
+### Get shiny wants list ###
+GET http://localhost:3001/api/verified/wants/shiny HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+
+####### ####### ####### ####### #######
+
+
+### Change status of lucky want ###
+PATCH http://localhost:3001/api/verified/wants/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+{
+    "want": true
+}
+
+#######
+
+### Change status of always want ###
+PATCH http://localhost:3001/api/verified/wants/always/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "awant": true
+    }
+
+#######
+
+### Change status of arean want ###
+PATCH http://localhost:3001/api/verified/wants/arean/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "arwant": true
+    }
+
+#######
+
+### Change status of variant want ###
+PATCH http://localhost:3001/api/verified/wants/variant/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "vwant": true
+    }
+
+#######
+
+### Change status of costume want ###
+PATCH http://localhost:3001/api/verified/wants/costume/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "cwant": true
+    }
+
+#######
+
+### Change status of shiny want ###
+PATCH http://localhost:3001/api/verified/wants/shiny/1 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "swant": true
+    }

@@ -18,7 +18,7 @@ const NewsEditWindow = ({updEngine, editPost, setEditPost, setShow}) => {
                 <h5 className="formtitle">Text</h5>
                 <textarea rows="15" cols="75" onChange={e => setRegField(e.target.value, "ntext")} required value={editPost.ntext} />
                 <div className="button">
-                    <br />
+                    <br/>
                     <button type="submit">Send</button>
                 </div>
             </form>

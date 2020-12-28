@@ -31,7 +31,7 @@ router.patch('/type/:id', (req, res, next) => {
 });
 
 router.get('/generation/list', (req, res, next) => {
-    knex.select('pid', 'number', 'name', 'generation', 'img').from('pokemons').whereNull('generation').orderBy('number', 'ASC')
+    knex.select('pid', 'number', 'name', 'generation', 'img').from('pokemons').where('generation', 0).orderBy('number', 'ASC')
     .then(notSet => {
         res.status(200).json(notSet);
     }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
@@ -44,7 +44,7 @@ router.patch('/generation/:id', (req, res, next) => {
     if (isNaN(body.generation)) { return res.status(400).json({error: 'Generation required in number format.'}); };
     knex.first('*').from('pokemons').where('pid', '=', id)
     .then(pokemon => {
-        if (pokemon.generation !== null) { return res.status(403).json({error: 'Generation is already defined.'}); };
+        if (pokemon.generation !== 0) { return res.status(403).json({error: 'Generation is already defined.'}); };
         var updGeneration = {};
         if (body.generation !== undefined) { updGeneration.generation = body.generation };
         knex('pokemons').where('pid', '=', id).update(updGeneration)
@@ -55,7 +55,7 @@ router.patch('/generation/:id', (req, res, next) => {
 });
 
 router.get('/rarity/list', (req, res, next) => {
-    knex.select('pid', 'number', 'name', 'rarity', 'img').from('pokemons').whereNull('rarity').orderBy('number', 'ASC')
+    knex.select('pid', 'number', 'name', 'rarity', 'subrarity', 'img').from('pokemons').whereNull('rarity').orWhereNull('subrarity').orderBy('number', 'ASC')
     .then(notSet => {
         res.status(200).json(notSet);
     }).catch(err => { res.status(500).json({error: 'Database error on fetching data.'});});
@@ -68,8 +68,8 @@ router.patch('/rarity/:id', (req, res, next) => {
     knex.first('*').from('pokemons').where('pid', '=', id)
     .then(pokemon => {
         if ((pokemon.rarity && pokemon.subrarity) !== null) { return res.status(403).json({error: 'Rarities are already defined.'}); };
-        if ((pokemon.rarity !== null && body.rarity !== undefined)) { return res.status(403).json({error: 'Rarity is already defined.'}); };
-        if ((body.rarity === undefined && pokemon.rarity === null)) { return res.status(403).json({error: 'Rarity must be defined before subrarity.'}); };
+        if (pokemon.rarity !== null && body.rarity !== undefined) { return res.status(403).json({error: 'Rarity is already defined.'}); };
+        if (body.rarity === undefined && pokemon.rarity === null) { return res.status(403).json({error: 'Rarity must be defined before subrarity.'}); };
         var updRarity = {};
         if (body.rarity !== undefined) { updRarity.rarity = body.rarity };
         if (body.subrarity !== undefined) { updRarity.subrarity = body.subrarity };

@@ -62,9 +62,9 @@ const CostumeWants = ({type})  => {
   return (
     <>
     <GetWantsHook setList={setCostumeWants} type={type} />
-    <br />
+    <br/>
     <input onChange={e => searchFilter(e.target.value, "filtered")} placeholder="Search by name" type="text"></input>
-    <br /><br />
+    <br/><br/>
     <button onClick={e => setShow(!show)}>{show ? "Show all" : "Show only wanted"}</button>
     <div className="container">
         {show ? <WantLister wants={searchCosWants} changeEngine={changeEngine} type={type} /> : <WantLister wants={searchCostume} changeEngine={changeEngine} type={type} />}

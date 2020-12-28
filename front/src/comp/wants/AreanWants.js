@@ -62,9 +62,9 @@ const AreanWants = ({type})  => {
   return (
     <>
     <GetWantsHook setList={setAreanWants} type={type} />
-    <br />
+    <br/>
     <input onChange={e => searchFilter(e.target.value, "filtered")} placeholder="Search by name" type="text"></input>
-    <br /><br />
+    <br/><br/>
     <button onClick={e => setShow(!show)}>{show ? "Show all" : "Show only wanted"}</button>
     <div className="container">
         {show ? <WantLister wants={searchArWants} changeEngine={changeEngine} type={type} /> : <WantLister wants={searchArean} changeEngine={changeEngine} type={type} />}

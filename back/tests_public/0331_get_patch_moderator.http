@@ -1,0 +1,17 @@
+### Get list of users and their userclass ###
+GET http://localhost:3001/api/verified/admin/moderator HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+
+####### ####### ####### ####### #######
+
+
+### Change userclass of user ###
+PATCH http://localhost:3001/api/verified/admin/moderator/2 HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+    {
+        "moderator": true
+    }

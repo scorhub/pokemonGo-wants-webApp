@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GetAddHook from '../../hooks/AdminHooks';
-import apiService from '../../../serv/apiservice'
+import adminservice from '../../../serv/adminservice'
 
 const SingleLine = ({data, hideEngine, updEngine}) => {
     const [info, setInfo] = useState({ 'type1': '', 'type2': '' });
@@ -19,11 +19,11 @@ const SingleLine = ({data, hideEngine, updEngine}) => {
             <td rowSpan="2"><input type="button" value="Hide" onClick={e => hideEngine(e, data.pid)} /></td>
             <td rowSpan="2">{data.name}</td>
             <td>&nbsp;</td>
-            <td>{data.type1 === null ? <input type="text" onChange={e => setUpdField(e.target.value, "type1")} value={info.type1} placeholder="Type 1" required /> : <input readOnly placeholder="Type 1" value={data.type1} /> } </td>
+            <td>{data.type1 === null ? <input type="text" onChange={e => setUpdField(e.target.value, "type1")} value={info.type1} placeholder="Type 1" required /> : <input readOnly placeholder="Type 1" value={data.type1} /> }</td>
             <td rowSpan="2"><input type="button" value="Send data" onClick={e => updEngine(e, data.pid, info)} /></td>
         </tr>
         <tr>
-            <td><input type="button" value="None" onClick={e => setInfo({'type1': '', 'type2': 'None'})} /></td>
+            <td><input type="button" value="None" onClick={e => setInfo({'type1': info.type1, 'type2': 'None'})} /></td>
             <td><input type="text" onChange={e => setUpdField(e.target.value, "type2")} value={info.type2} placeholder="Type 2" /></td>
         </tr>
         </>
@@ -45,7 +45,7 @@ const AddTypes = () => {
             if(status.type1 !== '') { sendStatus.type1 = status.type1}
             if(status.type2 !== '') { sendStatus.type2 = status.type2}
             const type = "type";
-            apiService.patchAddData(id, sendStatus, type)
+            adminservice.patchAddData(id, sendStatus, type)
             .then(res => {
                 hideEngine(e, id);
             }).catch(err => {

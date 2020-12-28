@@ -1,0 +1,6 @@
+### Get events posts feed ###
+GET http://localhost:3001/api/verified/events HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######

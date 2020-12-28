@@ -8,15 +8,15 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cookie-parser": "~1.4.4",
+    "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
-    "jest": "^25.1.0",
+    "jest": "^25.5.4",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.20.9",
-    "morgan": "^1.9.1",
+    "knex": "^0.20.15",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.6"
   }
 }

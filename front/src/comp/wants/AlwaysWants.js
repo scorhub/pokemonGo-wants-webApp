@@ -15,11 +15,11 @@ const AlwaysWants = ({type})  => {
   let searchAlWants = searchPara.filtered.length > 0 ? filAlWants : alWants;
   let searchMyAlWants = searchPara.filtered.length > 0 ? filMyAlWants : myAlWants;
 
-  const mywalantshook = () => {
+  const myalwantshook = () => {
     let myTempWants = alWants.filter(n => n.awant === 1);
     setMyAlWants(myTempWants);
   };
-  useEffect(mywalantshook, [alWants]);
+  useEffect(myalwantshook, [alWants]);
 
   const changeEngine = (e, id, value) => {
       e.stopPropagation();
@@ -67,9 +67,9 @@ const AlwaysWants = ({type})  => {
   return (
     <>
     <GetWantsHook setList={setAlWants} type={type} />
-    <br />
+    <br/>
     <input onChange={e => searchFilter(e.target.value, "filtered")} placeholder="Search by name" type="text"></input>
-    <br /><br />
+    <br/><br/>
     <button onClick={e => setShow(!show)}>{show ? "Show all" : "Show only wanted"}</button>
     <div className="container">
         {show ? <WantLister wants={searchMyAlWants} changeEngine={changeEngine} type={type} /> : <WantLister wants={searchAlWants} changeEngine={changeEngine} type={type} />}

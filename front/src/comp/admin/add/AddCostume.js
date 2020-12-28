@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import apiService from '../../../serv/apiservice';
+import adminservice from '../../../serv/adminservice';
 
 const AddCostume = () => {
-    const [newCostume, setNewCostume] = useState({ "number": "", "version": "" , "img": "" });
+    const [newCostume, setNewCostume] = useState({ "number": "", "version": "", "img": "", "cfirstappearance": "" });
 
     const addNewCostume = (e) => {
         e.preventDefault();
         const type = "costume";
-        apiService.addPokemon(newCostume, type)
+        adminservice.addPokemon(newCostume, type)
         .then(res => {
-            setNewCostume({ "number": "", "version": "" , "img": "" });
+            setNewCostume({ "number": "", "version": "" , "img": "", "cfirstappearance": "" });
             window.alert('Costume added.')
         }).catch(e => { alert('Something went wrong.') });
     };
@@ -29,14 +29,16 @@ const AddCostume = () => {
                 <input type="number" onChange={e => setRegField(e.target.value, "number")} required value={newCostume.number} />
                 <h5 className="formtitle">Version name *</h5>
                 <input type="text" onChange={e => setRegField(e.target.value, "version")} required value={newCostume.version} />
+                <h5 className="formtitle">First appearance *</h5>
+                <input type="date" onChange={e => setRegField(e.target.value, "cfirstappearance")} required value={newCostume.cfirstappearance} />
                 <h5 className="formtitle">Image link *</h5>
                 <input type="text" onChange={e => setRegField(e.target.value, "img")} required value={newCostume.img} />
                 <div className="button">
-                    <br />
+                    <br/>
                     <button type="submit">Add Costume</button>
                 </div>
             </form>
-            <br />
+            <br/>
             Starred (*) fields are required.
         </div>
         </>

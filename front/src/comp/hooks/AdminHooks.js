@@ -1,11 +1,23 @@
 import React, { useEffect } from 'react';
-import apiService from '../../serv/apiservice';
+import adminService from '../../serv/adminservice';
+
+const AdminTokenHook = () => {
+    const admintokenhook = () => {
+      const loggedJSON = window.localStorage.getItem('loggedWantAppUser');
+      if (loggedJSON) {
+          const user = JSON.parse(loggedJSON);
+          if((user.ucid === 1 || 2)) { adminService.setToken(user.token); }
+      };
+  };
+    useEffect(admintokenhook, []);
+    return (<></>);
+};
 
 const GetAddHook = ({setList, type}) => {
   const getaddhook = () => {
-    apiService.getAddData(type)
+    adminService.getAddData(type)
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(getaddhook, []);
   return (<></>);
@@ -13,9 +25,9 @@ const GetAddHook = ({setList, type}) => {
 
 const GetModHook = ({setList}) => {
   const getmodhook = () => {
-    apiService.getModData()
+    adminService.getModData()
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(getmodhook, []);
   return (<></>);
@@ -23,9 +35,9 @@ const GetModHook = ({setList}) => {
 
 const GetCountHook = ({setList}) => {
   const counthook = () => {
-    apiService.getPokemonCount()
+    adminService.getPokemonCount()
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(counthook, []);
   return (<></>);
@@ -33,9 +45,9 @@ const GetCountHook = ({setList}) => {
 
 const GetArchivedHook = ({setList}) => {
   const getarchivedhook = () => {
-    apiService.getArchived()
+    adminService.getArchivedNews()
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(getarchivedhook, []);
   return (<></>);
@@ -43,13 +55,23 @@ const GetArchivedHook = ({setList}) => {
 
 const GetPastEventsHook = ({setList}) => {
   const getpasteventshook = () => {
-    apiService.getPastEvents()
+    adminService.getPastEvents()
     .then(res => { setList(res) })
-    .catch(err => { console.log('error: ', err) });
+    .catch(err => { window.alert('Error has occured: ' + err) });
   };
   useEffect(getpasteventshook, []);
   return (<></>);
 };
 
+const GetArchFeatsHook = ({setList}) => {
+  const getarchfeatshook = () => {
+    adminService.getArchivedFeats()
+    .then(res => { setList(res) })
+    .catch(err => { window.alert('Error has occured: ' + err) });
+  };
+  useEffect(getarchfeatshook, []);
+  return (<></>);
+};
+
 export default GetAddHook;
-export { GetModHook, GetCountHook, GetArchivedHook, GetPastEventsHook };
+export { AdminTokenHook, GetModHook, GetCountHook, GetArchivedHook, GetPastEventsHook, GetArchFeatsHook };

@@ -1,0 +1,6 @@
+### Get news posts feed ###
+GET http://localhost:3001/api/verified/news HTTP/1.1
+Authorization: bearer *token*
+content-type: application/json
+
+#######

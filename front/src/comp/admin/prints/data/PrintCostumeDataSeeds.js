@@ -4,7 +4,7 @@ import { GetDataHook } from '../../../hooks/SeedHooks';
 const SingleCostume = ({costume}) => {
     return (
     <div>
-        &#123;&nbsp;cid&#58;&nbsp;{costume.cid}&#44;&nbsp;cpid&#58;&nbsp;{costume.cpid}&#44;&nbsp;version&#58;&nbsp;&#39;{costume.version}&#39;&#44;&nbsp;costumeimg&#58;&nbsp;&#39;{costume.costumeimg}&#39;&#125;&#44;
+        &#123;&nbsp;cid&#58;&nbsp;{costume.cid}&#44;&nbsp;cpid&#58;&nbsp;{costume.cpid}&#44;&nbsp;version&#58;&nbsp;&#39;{costume.version}&#39;&#44;&nbsp;cfirstappearance&#58;&nbsp;{costume.cfirstappearance !== null ? "'" + costume.cfirstappearance + "'" : "null"}&#44;&nbsp;pcupdated&#58;&nbsp;{costume.pcupdated !== null ? costume.pcupdated : "null"}&#44;&nbsp;costumeimg&#58;&nbsp;&#39;{costume.costumeimg}&#39;&#125;&#44;
     </div>
     );
 };

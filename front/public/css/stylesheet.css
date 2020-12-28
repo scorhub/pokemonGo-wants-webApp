@@ -90,7 +90,7 @@ button {
 .navbar {
   position: relative;
   overflow: hidden;
-  background-color: #333;
+  background-color: rgb(51,51,51);
   z-index: 1;
 }
 
@@ -118,25 +118,44 @@ button {
   display: none;
 }
 
+.navbar .adminlvl1 {
+  background-color: rgb(65,65,65);
+}
+
+.navbar .adminlvl2 {
+  background-color: rgb(79,79,79);
+}
+
+.navbar .adminlvl3 {
+  background-color: rgb(93,93,93);
+}
+
 @media screen and (max-width: 720px) {
   .navbar a:not(:first-child) {display: none;}
   .navbar a.icon {
     float: right;
     display: block;
   }
-  .navbar .responsive {position: relative;}
-  .navbar .responsive .icon {
+}
+
+@media screen and (max-width: 720px) {
+  .navbar.responsive {position: relative;}
+  .navbar.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
-  .navbar .responsive a {
+  .navbar.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
   .wanted, .notWanted, .areanWant {
     padding: 0.1em;
+  }
+
+  .mobleft1em {
+    margin-left: 1em;
   }
 }
 
@@ -177,6 +196,34 @@ button {
 }
 
 .userboxes a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.printlinks {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 2em 0 0;
+}
+
+.printlinks ul {
+  padding-left: 1em;
+  margin: 0 0 2em 0;
+}
+
+.printlinks li {
+  display: inline-block;
+  list-style-type: none;
+  background-color: #E1E1E2;
+  color: #716E6E;
+  text-transform: capitalize;
+  font-size: 1.25em;
+  padding: 1em 2em 1em 2em;
+}
+
+.printlinks a {
   text-decoration: none;
   font-weight: 500;
 }
@@ -241,4 +288,26 @@ button {
   padding: 1em;
   border-radius: 10px;
   background-color: grey;
+}
+
+.readyfeature {
+  background-color: lightgreen;
+}
+
+.wipfeature {
+  background-color: cyan;
+}
+
+.listfeature {
+  background-color: lightblue;
+}
+
+.namebylink {
+  text-decoration: none;
+  color: black;
+  font-size: larger;
+}
+
+.nobackli {
+  background-color: white !important;
 }
