@@ -1,0 +1,22 @@
+### Create userclasses ###
+POST http://localhost:3001/api/initial/userclass HTTP/1.1
+content-type: application/json
+
+    {
+        "ucid": 1,
+        "ucname": "Admin"
+    }
+
+###### ###### ###### ###### ######
+
+### Register admin ###
+POST http://localhost:3001/api/initial/admin HTTP/1.1
+content-type: application/json
+
+    {
+        "username": "admin",
+        "password": "admin",
+        "showname": "admin",
+        "ucid": 1,
+        "email": "admin@example.org"
+    }

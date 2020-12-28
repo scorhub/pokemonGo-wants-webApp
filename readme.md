@@ -31,10 +31,11 @@ As of this is hobby project, and not complete, user interface were originally wr
 
 ## Version
 
-The app is currently labeled as version 0.6, as it does not yet have all the basic features as I would it like to have (as some listed in Upcoming Features)
+App is currently on version 1.0
 
 ### Version history
 
+- 1.0  Grand update: variant wants, admin interactions for news, events & features, api commands refactoring, code refactoring, Navbar reworked, shiny wants, package update, new http-test for backend, updated readme and more.
 - 0.6  Costume wants, news, events, moderator rights.
 - 0.58 Moderator navbar, add additional data to pokemon data, add costume variants.
 - 0.57 Moderator check added, always-want size restricted to 50.
@@ -108,7 +109,9 @@ App supports user class "Admin", and admin has extra features additionally to ba
 
 ## Designer Notes
 
-The app features "print"-functionality to the admin. The components show database data in form, that knex understands. The basic idea behind the function is, that app can be easily moved from one server to another and database can be cleaned from non-essential information (as old feature asks and "not currently wanted" rows)
+The app features "print"-functionality to the admin. The components show database data in form, that knex understands. The basic idea behind the function is, that app can be easily moved from one server to another and database can be cleaned from non-essential information (as old feature asks and "not currently wanted" rows).
+
+Git commit "Grand update: Road to version 1" were originally multiple smaller commits, but due an user error, updates are commited as one big blob.
 
 ## Frameworks and Dependencies
 
@@ -371,7 +374,7 @@ Only ignored file is *.gitignore*, remember to create one beforing uploading own
 
 ## How to Deploy
 
-To be added later
+To be added on later version.
 
 ### Set Up
 

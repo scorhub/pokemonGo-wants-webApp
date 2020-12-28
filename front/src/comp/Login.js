@@ -26,7 +26,7 @@ const Login = () => {
 
   return (
     <div className="item">
-      <h4>Kirjaudu sisään</h4>
+      <h4>Log In</h4>
       <form onSubmit={e => logMeIn(e)}>
         <input type="text" onChange={e => setNewLogin(e.target.value)} value={newLogin} autoFocus="autofocus" placeholder="Username" required />
         <br/>
