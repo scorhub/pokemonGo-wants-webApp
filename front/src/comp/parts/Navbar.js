@@ -36,7 +36,7 @@ const Navbar = () => {
           <NavLink exact to={`/news`} activeClassName="active">News</NavLink>
           <NavLink exact to={`/events`} activeClassName="active">Events</NavLink>
         
-        {(ucid === 1 || 2) && <NavLink exact to="#" activeClassName="notactive" id="showmemore" onClick={e => setShowAdmin(!showAdmin)}>{ucid === 1 ? "Admin " : "Moderator "}{showAdmin ? <i className="fa fa-caret-up"></i> : <i className="fa fa-caret-down"></i>}</NavLink>}
+        {(ucid === 1 || ucid === 2) && <NavLink exact to="#" activeClassName="notactive" id="showmemore" onClick={e => setShowAdmin(!showAdmin)}>{ucid === 1 ? "Admin " : "Moderator "}{showAdmin ? <i className="fa fa-caret-up"></i> : <i className="fa fa-caret-down"></i>}</NavLink>}
         {showAdmin && <NavbarAdmin ucid={ucid} />}
 
         <NavLink exact to="#" activeClassName="notactive" onClick={e => doLogout()}>Log Out</NavLink>

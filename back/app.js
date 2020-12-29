@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/login', loginRouter);
 app.use('/api/verified', isAuthenticated, apiRouter);
@@ -28,8 +28,8 @@ app.use('/api/verified', isAuthenticated, apiRouter);
 // // // // Route for initial setup
 // app.use('/api/initial/', initialRouter);
 
-// app.get('*', function(req, res) {
-//     res.sendFile('index.html', {root: path.join(__dirname, 'build/')});
-// });
+app.get('*', function(req, res) {
+    res.sendFile('index.html', {root: path.join(__dirname, 'build/')});
+});
 
 module.exports = app;
